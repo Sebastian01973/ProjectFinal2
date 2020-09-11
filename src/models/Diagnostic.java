@@ -8,26 +8,58 @@ public class Diagnostic {
     private LocalDate dateOfDiagnostic;
     private LocalDate dateOfDeath;
     private LocalDate dateOfRecovered;
-    private boolean isDeath;
-    private boolean isRecuperated;
+    private int number;
 
-    public Diagnostic(Patient patient, LocalDate dateOfDiagnostic, LocalDate dateOfDeath, LocalDate dateOfRecovered,boolean isDeath,boolean isRecuperated) {
-        this.isDeath = isDeath;
-        this.isRecuperated = isRecuperated;
-        validateDeath(dateOfDeath, (byte)1);
+    public Diagnostic(int number,Patient patient, LocalDate dateOfDiagnostic, LocalDate dateOfDeath, LocalDate dateOfRecovered) {
         this.dateOfDiagnostic = dateOfDiagnostic;
         this.patient = patient;
-        validateDeath(dateOfRecovered, (byte)2);
+        this.number = number;
+        validateRecovered(dateOfRecovered);
+        validateDeath(dateOfDeath);
+    }
+    
+    public void validateRecovered(LocalDate date) {
+    	this.dateOfRecovered = (patient.getStates() == Atention.RECOVERED || date == null)?date:null;
+    }
+    
+    public void validateDeath(LocalDate date) {
+    	this.dateOfDeath = (patient.getStates() == Atention.DECEASED || date == null)?date:null;
     }
 
-    public void validateDeath(LocalDate date,byte index){
-        switch (index) {
-            case 1:
-                this.dateOfDeath = (isDeath) ? date:null;
-                break;
-            case 2:
-                this.dateOfRecovered = (isRecuperated) ? date:null;
-                break;
-        }
-    }
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+
+	public LocalDate getDateOfDiagnostic() {
+		return dateOfDiagnostic;
+	}
+
+	public void setDateOfDiagnostic(LocalDate dateOfDiagnostic) {
+		this.dateOfDiagnostic = dateOfDiagnostic;
+	}
+
+	public LocalDate getDateOfDeath() {
+		return dateOfDeath;
+	}
+
+	public void setDateOfDeath(LocalDate dateOfDeath) {
+		this.dateOfDeath = dateOfDeath;
+	}
+
+	public LocalDate getDateOfRecovered() {
+		return dateOfRecovered;
+	}
+
+	public void setDateOfRecovered(LocalDate dateOfRecovered) {
+		this.dateOfRecovered = dateOfRecovered;
+	}
+	
+	public int getNumber() {
+		return this.number;
+	}
+	
 }

@@ -1,14 +1,10 @@
 package controllers;
 
-import persistence.HandlerLanguage;
-import views.Constant;
 import views.JFWindowsMain;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
-import static javax.swing.JOptionPane.showMessageDialog;
 
 public class Controller implements ActionListener {
 
