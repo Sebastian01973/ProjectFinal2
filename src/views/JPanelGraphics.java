@@ -99,13 +99,13 @@ public class JPanelGraphics extends JPanel{
 		}
 	}
 		
-	public static void main(String[] args) {
-		JDialog jDialog = new JDialog();
-		JPanelGraphics jpg = new JPanelGraphics(jDialog);
-		JScrollPane jsp = new JScrollPane(jpg);
-		jDialog.add(jsp);
-		jDialog.setSize(new Dimension(700,600));
-		jDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		jDialog.setVisible(true);
-	}
+//	public static void main(String[] args) {
+//		JDialog jDialog = new JDialog();
+//		JPanelGraphics jpg = new JPanelGraphics(jDialog);
+//		JScrollPane jsp = new JScrollPane(jpg);
+//		jDialog.add(jsp);
+//		jDialog.setSize(new Dimension(700,600));
+//		jDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+//		jDialog.setVisible(true);
+//	}
 }
