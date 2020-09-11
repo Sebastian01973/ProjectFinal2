@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class JMainPanel extends JPanel {
+public class JMainPanel extends JPanel implements Language{
 
     private JContainerBody jContainerBody;
     private JContainerHeader jContainerHeater;
@@ -32,4 +32,9 @@ public class JMainPanel extends JPanel {
     }
 
 
+    @Override
+    public void changeLanguage() {
+        jContainerHeater.changeLanguage();
+        jContainerBody.changeLanguage();
+    }
 }

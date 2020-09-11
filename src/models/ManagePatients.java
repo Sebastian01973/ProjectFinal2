@@ -3,6 +3,7 @@ package models;
 import java.util.ArrayList;
 
 public class ManagePatients {
+
 	private ArrayList<Diagnostic> diagnosticList;
 
 	public ManagePatients() {
@@ -13,7 +14,8 @@ public class ManagePatients {
 		diagnosticList.add(diagnostic);
 	}
 	
-	
+
+
 	public Object[] toObjectVector(int index) {
 		Diagnostic diagnostic = diagnosticList.get(index);
 		return new Object[] {

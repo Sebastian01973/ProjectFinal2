@@ -1,10 +1,12 @@
 package views.body;
 
+import views.Language;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class JContainerBody extends JPanel {
+public class JContainerBody extends JPanel implements Language {
 
     JContainerTable jContainerTable;
     JTableEast jTableEast;
@@ -18,5 +20,10 @@ public class JContainerBody extends JPanel {
         jContainerTable = new JContainerTable(actionListener);
         this.add(jContainerTable,BorderLayout.CENTER);
 
+    }
+
+    @Override
+    public void changeLanguage() {
+        jContainerTable.changeLanguage();
     }
 }

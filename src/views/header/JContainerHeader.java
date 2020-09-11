@@ -2,11 +2,12 @@ package views.header;
 
 import controllers.Command;
 import views.Constant;
+import views.Language;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
-public class JContainerHeader extends JPanel {
+public class JContainerHeader extends JPanel implements Language {
 
     private JMainMenu jMainMenu;
     private JMainToolBar jMainToolBar;
@@ -28,5 +29,10 @@ public class JContainerHeader extends JPanel {
         button1.setActionCommand(Command.C_ES_LANGUAGE.toString());
         button1.addActionListener(actionListener);
         this.add(button1);
+    }
+
+    @Override
+    public void changeLanguage() {
+
     }
 }

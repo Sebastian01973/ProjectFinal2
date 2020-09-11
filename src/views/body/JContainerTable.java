@@ -2,13 +2,14 @@ package views.body;
 
 import utilities.Utilities;
 import views.Constant;
+import views.Language;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class JContainerTable extends JPanel {
+public class JContainerTable extends JPanel implements Language {
 
     private DefaultTableModel dtmElements;
     private JTable jtElements;
@@ -26,7 +27,7 @@ public class JContainerTable extends JPanel {
             }
 
         };
-        dtmElements.setColumnIdentifiers(Constant.HEADERDS_TABLEMAIN);
+        dtmElements.setColumnIdentifiers(Utilities.getKeys(Constant.HEADERDS_TABLEMAIN));
         initComponents(actionListener);
     }
 
@@ -38,7 +39,9 @@ public class JContainerTable extends JPanel {
         jtElements.getTableHeader().setBackground(Constant.COLOR_GREEN_SOFT);
         jtElements.getTableHeader().setForeground(Constant.COLOR_WHITE);
         jtElements.getTableHeader().setPreferredSize(new Dimension(0, 50));
+        jtElements.getTableHeader().setFont(Constant.FONT_ARIAL_ROUNDER_17);
 
+        jtElements.setFont(Constant.FONT_ARIAL_ROUNDER_15);
         jtElements.setBackground(Constant.COLOR_WHITE);
         jtElements.setFillsViewportHeight(false);
         jtElements.setRowHeight( 35 );
@@ -58,5 +61,10 @@ public class JContainerTable extends JPanel {
 
     public void setDefaultTableModel(DefaultTableModel defaultTableModel) {
         this.dtmElements = defaultTableModel;
+    }
+
+    @Override
+    public void changeLanguage() {
+        dtmElements.setColumnIdentifiers(Utilities.getKeys(Constant.HEADERDS_TABLEMAIN));
     }
 }

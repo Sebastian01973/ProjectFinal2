@@ -1,6 +1,7 @@
 package views.header;
 
 import views.Constant;
+import views.Language;
 import views.models.JModelMenu;
 import views.models.JModelMenuItem;
 
@@ -8,10 +9,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class JMainMenu extends JMenuBar {
+public class JMainMenu extends JMenuBar implements Language {
 
-    JModelMenu menuFile,menuStadistic,menuPatient,menuLanguage;
-    JModelMenuItem mIFile,mILanSpanish,mILanEnglish,mIExit,mILoadFile,mISaveFile;
+    JModelMenu menuFile,menuStadistic,menuPatient;
+    JModelMenu menuLanguage;
+    JModelMenuItem mILanSpanish,mILanEnglish,mIExit,mILoadFile,mISaveFile;
+    JModelMenuItem mIAddPatient,mISearchPatient,mIModifyPatient
+            ,mIDeletePatient;
 
     public JMainMenu(ActionListener actionListener) {
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -29,7 +33,7 @@ public class JMainMenu extends JMenuBar {
     private void showMenuFile(ActionListener actionListener) {
         menuFile = new JModelMenu(Constant.M_FILE,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_HELVETICA_17);
 
-//        mISaveFile = new JModelMenuItem();
+
 
     }
 
@@ -42,5 +46,10 @@ public class JMainMenu extends JMenuBar {
     }
 
     private void showMenuLanguage(ActionListener actionListener) {
+    }
+
+    @Override
+    public void changeLanguage() {
+
     }
 }

@@ -29,5 +29,6 @@ public class JFWindowsMain extends JFrame implements Language{
     @Override
     public void changeLanguage() {
         this.setTitle(Utilities.getKey(Constant.APP_TITLE));
+        jMainPanel.changeLanguage();
     }
 }

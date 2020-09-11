@@ -54,13 +54,23 @@ public class Constant {
 
 //    Titulos del menu
 
-//    Titulos de menu archivo
-
+//    Titulos de menus
     public static final String M_FILE = "File";
+    public static final String M_ADD_DIAGNOSTIC = "Add_Diagnostic";
+    public static final String M_SEARCH_DIAGNOSTIC = "Search_Diagnostic";
+    public static final String M_MODIFY_DIAGNOSTIC = "Modify_Diagnostic";
+    public static final String M_DELETE_DIAGNOSTIC = "Delete_Diagnostic";
+    public static final String M_LANGUAGE = "Language";
+    public static final String M_LANGUAGE_ES = "Spanish";
+    public static final String M_LANGUAGE_US = "English";
+    public static final String M_SAVE = "Save";
+    public static final String M_LOAD = "Load";
+    public static final String M_EXIT = "Exit";
 
 
 
-//    Titulps de la tabla
-    public static final Object[] HEADERDS_TABLEMAIN = {"Identification_Patient","Gender","State", "Location_City" +
-        "Health_Condition","Type_Patient","Date_Diagnostic","Date_Recovered","Date_Death"};
+
+//    Titulos de la tabla
+    public static final Object[] HEADERDS_TABLEMAIN = {"Number_Case","Gender","Age","Attention", "Location_City",
+        "Health_Condition","Date_Diagnostic","Date_Recovered","Date_Death"};
 }
