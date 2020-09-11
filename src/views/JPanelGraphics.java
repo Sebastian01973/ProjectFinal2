@@ -107,5 +107,5 @@ public class JPanelGraphics extends JPanel{
 //		jDialog.setSize(new Dimension(700,600));
 //		jDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 //		jDialog.setVisible(true);
-//	}
+//	}//
 }
