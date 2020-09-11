@@ -35,5 +35,15 @@ public class JModelMenu extends JMenu{
 		this.setBackground(backGround);
 		this.setForeground(foreGround);
 		this.setFont(font);
-	}	
+	}
+
+	public JModelMenu(String text,String imgPath,Color backGround,Color foreGround,Font font,int width,int height) {
+		super(text);
+		ImageIcon image = new ImageIcon(getClass().getResource(imgPath));
+		Icon icon = new ImageIcon(image.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
+		this.setIcon(icon);
+		this.setBackground(backGround);
+		this.setForeground(foreGround);
+		this.setFont(font);
+	}
 }

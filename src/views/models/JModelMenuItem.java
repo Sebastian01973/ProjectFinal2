@@ -24,6 +24,16 @@ public class JModelMenuItem extends JMenuItem{
 		this.setIcon(icon);
 		this.setFont(font);
 	}
+
+	public JModelMenuItem(String text,String imagePath,Font font,int width,int height,Color...colors) {
+		super(text);
+		ImageIcon image = new ImageIcon(getClass().getResource(imagePath));
+		Icon icon = new ImageIcon(image.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
+		this.setIcon(icon);
+		this.setFont(font);
+		this.setBackground(colors[0]);
+		this.setForeground(colors[1]);
+	}
 	
 	public JModelMenuItem(String text,String imagePath,Font font) {
 		super(text);

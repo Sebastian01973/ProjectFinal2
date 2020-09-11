@@ -22,7 +22,10 @@ public class Constant {
     public static final String IMG_REFRESH = "/images/refresh.png";
     public static final String IMG_WRITE = "/images/write.png";
     public static final String IMG_CODE = "/images/Code.png";
+    public static final String IMG_SAVE = "/images/save.png";
     public static final String IMG_DOCUMENT = "/images/document.png";
+    public static final String IMG_WORLD = "/images/world.png";
+    public static final String IMG_BANNER = "/images/bannerCovid.jpg";
 
 
 
@@ -38,7 +41,8 @@ public class Constant {
     public static final Color COLOR_BLACK = Color.decode("#000000") ;
     public static final Color COLOR_BLUE_LIGHT = Color.decode("#52D9E9") ;
     public static final Color COLOR_GREEN_SOFT = Color.decode("#25B50F") ;
-
+    public static final Color COLOR_RED_TINTE = Color.decode("#C14343");
+    public static final Color COLOR_GRAY_LIGHT = Color.decode("#CDD7DD");
 
 
 //    Fuentes
