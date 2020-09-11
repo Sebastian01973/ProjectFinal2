@@ -8,6 +8,10 @@ import java.awt.event.ActionListener;
 
 public class JContainerHeader extends JPanel {
 
+    private JMainMenu jMainMenu;
+    private JMainToolBar jMainToolBar;
+
+
     public JContainerHeader(ActionListener actionListener) {
         this.setBackground(Constant.COLOR_BLUE_LIGHT);
         initComponents(actionListener);
