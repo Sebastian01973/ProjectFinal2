@@ -1,5 +1,6 @@
 package models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ManagePatients {
@@ -9,7 +10,11 @@ public class ManagePatients {
 	public ManagePatients() {
 		this.diagnosticList = new ArrayList<>();
 	}
-	
+
+	public Diagnostic createDiagnostic(int number, String location, Atention attention, byte age, Gender gender, HealthCondition healthCondition, LocalDate...dates){
+		return new Diagnostic(number,new Patient(location,attention,age,gender,healthCondition),dates[0],dates[1],dates[2]);
+	}
+
 	public void addDiagnostic(Diagnostic diagnostic) {
 		diagnosticList.add(diagnostic);
 	}
