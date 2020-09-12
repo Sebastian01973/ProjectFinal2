@@ -15,13 +15,25 @@ import java.awt.event.ActionListener;
 public class JMainMenu extends JMenuBar implements Language {
 
     JModelMenu menuFile,menuStadistic,menuPatient;
-    JModelMenu menuLanguage;
     JModelMenuItem mILanSpanish,mILanEnglish,mIExit,mILoadFile,mISaveFile,mIRefreshData;
-    JModelMenuItem mIAddPatient,mISearchPatient,mIModifyPatient
-            ,mIDeletePatient;
+
+    JModelMenu menuLanguage,menuReportCol,menuReportLocation,menuGraphics;
+
+    JModelMenu mReportDeathCol,mReportRecoveredCol,mReportDiagnosticCol;
+    JModelMenuItem mIrepRanAgeColDiag, mIrepAgeColDiag;
+    JModelMenuItem mIrepMonthColDeath,mIPerLethalityCol;
+    JModelMenuItem mIrepRanAgeColReco,mIrepAgeColReco, mIrepMonthColReco;
+
+    JModelMenu mReportDeathLoc,mReportRecoveredLoc,mReportDiagnosticLoc;
+    JModelMenuItem mIrepRanAgeLocDiag, mIrepAgeLocDiag;
+    JModelMenuItem mIrepMonthLocDeath,mIPerLethalityLoc;
+    JModelMenuItem mIrepRanAgeLocReco,mIrepAgeLocReco, mIrepMonthLocReco;
+
+    JModelMenuItem mITableLocation;
+    JModelMenuItem mIAddPatient,mISearchPatient,mIModifyPatient,mIDeletePatient;
 
     public JMainMenu(ActionListener actionListener) {
-        this.setLayout(new FlowLayout(FlowLayout.CENTER));
+        this.setLayout(new FlowLayout(FlowLayout.LEFT));
         this.setBorder(new EmptyBorder(15,10,5,15));
         this.setBackground(Constant.COLOR_GRAY_LIGHT);
         initComponents(actionListener);
@@ -29,7 +41,9 @@ public class JMainMenu extends JMenuBar implements Language {
 
     private void initComponents(ActionListener actionListener) {
         showMenuFile(actionListener);
-        showMenuStadistic(actionListener);
+        showMenuStadisticCol(actionListener);
+        showMenuStadisticLoc(actionListener);
+        showMenuStadisticGraphics(actionListener);
         showMenuPatient(actionListener);
     }
 
@@ -75,11 +89,127 @@ public class JMainMenu extends JMenuBar implements Language {
 
     }
 
-    private void showMenuStadistic(ActionListener actionListener){
-//        menuStadistic = new JModelMenu(Constant.M_FILE,Constant.IMG_FILE,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_ROCWELL,25,25);
+    private void showMenuStadisticCol(ActionListener actionListener){
+        menuStadistic = new JModelMenu(Utilities.getKey(Constant.M_STATISTICS),Constant.IMG_STADISTIC,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_ROCWELL,25,25);
+
+        menuReportCol = new JModelMenu(Utilities.getKey(Constant.M_STA_REPORT_COL),Constant.IMG_COl,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_ROCWELL,25,25);
+
+        mReportDiagnosticCol =new JModelMenu(Utilities.getKey(Constant.M_STA_REPORT_DIAGNOSTIC),Constant.IMG_COV_PATIENT,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_ROCWELL,25,25);
+
+        mIrepRanAgeColDiag = new JModelMenuItem(Utilities.getKey(Constant.M_REPORT_RANGE_AGE),Constant.IMG_RANGE_AGE,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIrepRanAgeColDiag.setActionCommand(Command.C_RANGE_AGE_COL_DIAG.toString());
+        mIrepRanAgeColDiag.addActionListener(actionListener);
+        mReportDiagnosticCol.add(mIrepRanAgeColDiag);
+
+        mIrepAgeColDiag = new JModelMenuItem(Utilities.getKey(Constant.M_REPORT_AGE),Constant.IMG_AGE,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIrepAgeColDiag.setActionCommand(Command.C_AGE_COL_DIAG.toString());
+        mIrepAgeColDiag.addActionListener(actionListener);
+        mReportDiagnosticCol.add(mIrepAgeColDiag);
+        menuReportCol.add(mReportDiagnosticCol);
+
+        mReportDeathCol =new JModelMenu(Utilities.getKey(Constant.M_STA_REPORT_DEATH),Constant.IMG_DEATH,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_ROCWELL,25,25);
+
+        mIPerLethalityCol = new JModelMenuItem(Utilities.getKey(Constant.M_PERCENTAGE_LETHALITY),Constant.IMG_COV_DEATH,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIPerLethalityCol.setActionCommand(Command.C_LETHALITY_COL_DEATH.toString());
+        mIPerLethalityCol.addActionListener(actionListener);
+        mReportDeathCol.add(mIPerLethalityCol);
+
+        mIrepMonthColDeath = new JModelMenuItem(Utilities.getKey(Constant.M_REPORT_MONTHS),Constant.IMG_COV_CALENDAR,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIrepMonthColDeath.setActionCommand(Command.C_MONTHS_COL_DEATH.toString());
+        mIrepMonthColDeath.addActionListener(actionListener);
+        mReportDeathCol.add(mIrepMonthColDeath);
+        menuReportCol.add(mReportDeathCol);
+
+        mReportRecoveredCol =new JModelMenu(Utilities.getKey(Constant.M_STA_REPORT_RECOVERED),Constant.IMG_COV_RECOVERED,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_ROCWELL,25,25);
+
+        mIrepRanAgeColReco = new JModelMenuItem(Utilities.getKey(Constant.M_REPORT_RANGE_AGE),Constant.IMG_RANGE_AGE,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIrepRanAgeColReco.setActionCommand(Command.C_RANGE_AGE_COL_RECO.toString());
+        mIrepRanAgeColReco.addActionListener(actionListener);
+        mReportRecoveredCol.add(mIrepRanAgeColReco);
+
+        mIrepAgeColReco = new JModelMenuItem(Utilities.getKey(Constant.M_REPORT_AGE),Constant.IMG_AGE,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIrepAgeColReco.setActionCommand(Command.C_AGE_COL_RECO.toString());
+        mIrepAgeColReco.addActionListener(actionListener);
+        mReportRecoveredCol.add(mIrepAgeColReco);
+
+        mIrepMonthColReco = new JModelMenuItem(Utilities.getKey(Constant.M_REPORT_MONTHS),Constant.IMG_COV_CALENDAR,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIrepMonthColReco.setActionCommand(Command.C_MONTHS_COL_RECO.toString());
+        mIrepMonthColReco.addActionListener(actionListener);
+        mReportRecoveredCol.add(mIrepMonthColReco);
+        menuReportCol.add(mReportRecoveredCol);
+
+        menuStadistic.add(menuReportCol);
+
+        this.add(menuStadistic);
+    }
+
+    private void showMenuStadisticLoc(ActionListener actionListener) {
+        menuReportLocation = new JModelMenu(Utilities.getKey(Constant.M_STA_REPORT_LOCATION),Constant.IMG_LOC,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_ROCWELL,25,25);
+
+        mITableLocation = new JModelMenuItem(Utilities.getKey(Constant.M_STA_TABLE_FOR_LOCATION),Constant.IMG_TABLE,Constant.FONT_ROCWELL,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mITableLocation.setActionCommand(Command.C_TABLE_LOC.toString());
+        mITableLocation.addActionListener(actionListener);
+        menuReportLocation.add(mITableLocation);
+
+        mReportDiagnosticLoc =new JModelMenu(Utilities.getKey(Constant.M_STA_REPORT_DIAGNOSTIC),Constant.IMG_COV_PATIENT,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_ROCWELL,25,25);
+
+        mIrepRanAgeLocDiag = new JModelMenuItem(Utilities.getKey(Constant.M_REPORT_RANGE_AGE),Constant.IMG_RANGE_AGE,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIrepRanAgeLocDiag.setActionCommand(Command.C_RANGE_AGE_LOC_DIAG.toString());
+        mIrepRanAgeLocDiag.addActionListener(actionListener);
+        mReportDiagnosticLoc.add(mIrepRanAgeLocDiag);
+
+        mIrepAgeLocDiag = new JModelMenuItem(Utilities.getKey(Constant.M_REPORT_AGE),Constant.IMG_AGE,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIrepAgeLocDiag.setActionCommand(Command.C_AGE_LOC_DIAG.toString());
+        mIrepAgeLocDiag.addActionListener(actionListener);
+        mReportDiagnosticLoc.add(mIrepAgeLocDiag);
+        menuReportLocation.add(mReportDiagnosticLoc);
+
+        mReportDeathLoc =new JModelMenu(Utilities.getKey(Constant.M_STA_REPORT_DEATH),Constant.IMG_DEATH,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_ROCWELL,25,25);
+
+        mIPerLethalityLoc = new JModelMenuItem(Utilities.getKey(Constant.M_PERCENTAGE_LETHALITY),Constant.IMG_COV_DEATH,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIPerLethalityLoc.setActionCommand(Command.C_LETHALITY_LOC_DEATH.toString());
+        mIPerLethalityLoc.addActionListener(actionListener);
+        mReportDeathLoc.add(mIPerLethalityLoc);
+
+        mIrepMonthLocDeath = new JModelMenuItem(Utilities.getKey(Constant.M_REPORT_MONTHS),Constant.IMG_COV_CALENDAR,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIrepMonthLocDeath.setActionCommand(Command.C_MONTHS_LOC_DEATH.toString());
+        mIrepMonthLocDeath.addActionListener(actionListener);
+        mReportDeathLoc.add(mIrepMonthLocDeath);
+        menuReportLocation.add(mReportDeathLoc);
+
+        mReportRecoveredLoc =new JModelMenu(Utilities.getKey(Constant.M_STA_REPORT_RECOVERED),Constant.IMG_COV_RECOVERED,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_ROCWELL,25,25);
+
+        mIrepRanAgeLocReco = new JModelMenuItem(Utilities.getKey(Constant.M_REPORT_RANGE_AGE),Constant.IMG_RANGE_AGE,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIrepRanAgeLocReco.setActionCommand(Command.C_RANGE_AGE_LOC_RECO.toString());
+        mIrepRanAgeLocReco.addActionListener(actionListener);
+        mReportRecoveredLoc.add(mIrepRanAgeLocReco);
+
+        mIrepAgeLocReco = new JModelMenuItem(Utilities.getKey(Constant.M_REPORT_AGE),Constant.IMG_AGE,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIrepAgeLocReco.setActionCommand(Command.C_AGE_LOC_RECO.toString());
+        mIrepAgeLocReco.addActionListener(actionListener);
+        mReportRecoveredLoc.add(mIrepAgeLocReco);
+
+        mIrepMonthLocReco = new JModelMenuItem(Utilities.getKey(Constant.M_REPORT_MONTHS),Constant.IMG_COV_CALENDAR,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIrepMonthLocReco.setActionCommand(Command.C_MONTHS_LOC_RECO.toString());
+        mIrepMonthLocReco.addActionListener(actionListener);
+        mReportRecoveredLoc.add(mIrepMonthLocReco);
+        menuReportLocation.add(mReportRecoveredLoc);
+
+        menuStadistic.add(menuReportLocation);
+    }
+
+    private void showMenuStadisticGraphics(ActionListener actionListener){
+        menuGraphics = new JModelMenu(Utilities.getKey(Constant.M_GRAP_REPORT),Constant.IMG_GRAPHICS,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_ROCWELL,25,25);
+
+
+        menuStadistic.add(menuGraphics);
     }
 
     private void showMenuPatient(ActionListener actionListener){
+
+    }
+
+    private void showMenuContactUs(ActionListener actionListener){
 
     }
 
@@ -94,6 +224,40 @@ public class JMainMenu extends JMenuBar implements Language {
         mILanEnglish.setText(Utilities.getKey(Constant.M_LANGUAGE_US));
         mIExit.setText(Utilities.getKey(Constant.M_EXIT));
 
+        menuStadistic.setText(Utilities.getKey(Constant.M_STATISTICS));
+        menuReportCol.setText(Utilities.getKey(Constant.M_STA_REPORT_COL));
+
+        mITableLocation.setText(Utilities.getKey(Constant.M_STA_TABLE_FOR_LOCATION));
+
+        mReportDiagnosticCol.setText(Utilities.getKey(Constant.M_STA_REPORT_DIAGNOSTIC));
+        mIrepRanAgeColDiag.setText(Utilities.getKey(Constant.M_REPORT_RANGE_AGE));
+        mIrepAgeColDiag.setText(Utilities.getKey(Constant.M_REPORT_AGE));
+
+        mReportDeathCol.setText(Utilities.getKey(Constant.M_STA_REPORT_DEATH));
+        mIPerLethalityCol.setText(Utilities.getKey(Constant.M_PERCENTAGE_LETHALITY));
+        mIrepMonthColDeath.setText(Utilities.getKey(Constant.M_REPORT_MONTHS));
+
+        mReportRecoveredCol.setText(Utilities.getKey(Constant.M_STA_REPORT_RECOVERED));
+        mIrepRanAgeColReco.setText(Utilities.getKey(Constant.M_REPORT_RANGE_AGE));
+        mIrepAgeColReco.setText(Utilities.getKey(Constant.M_REPORT_AGE));
+        mIrepMonthColReco.setText(Utilities.getKey(Constant.M_REPORT_MONTHS));
+
+        menuReportLocation.setText(Utilities.getKey(Constant.M_STA_REPORT_LOCATION));
+
+        mReportDiagnosticLoc.setText(Utilities.getKey(Constant.M_STA_REPORT_DIAGNOSTIC));
+        mIrepRanAgeLocDiag.setText(Utilities.getKey(Constant.M_REPORT_RANGE_AGE));
+        mIrepAgeLocDiag.setText(Utilities.getKey(Constant.M_REPORT_AGE));
+
+        mReportDeathLoc.setText(Utilities.getKey(Constant.M_STA_REPORT_DEATH));
+        mIPerLethalityLoc.setText(Utilities.getKey(Constant.M_PERCENTAGE_LETHALITY));
+        mIrepMonthLocDeath.setText(Utilities.getKey(Constant.M_REPORT_MONTHS));
+
+        mReportRecoveredLoc.setText(Utilities.getKey(Constant.M_STA_REPORT_RECOVERED));
+        mIrepRanAgeLocReco.setText(Utilities.getKey(Constant.M_REPORT_RANGE_AGE));
+        mIrepAgeLocReco.setText(Utilities.getKey(Constant.M_REPORT_AGE));
+        mIrepMonthLocReco.setText(Utilities.getKey(Constant.M_REPORT_MONTHS));
+
+        menuGraphics.setText(Utilities.getKey(Constant.M_GRAP_REPORT));
 
     }
 }

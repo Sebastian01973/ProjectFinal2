@@ -27,7 +27,45 @@ public class Constant {
     public static final String IMG_WORLD = "/images/world.png";
     public static final String IMG_BANNER = "/images/bannerCovid.jpg";
     public static final String IMG_HOME = "/images/Home.png";
+    public static final String IMG_RANGE_AGE = "/images/rangeAge.png";
+    public static final String IMG_AGE = "/images/age.png";
+    public static final String IMG_LOC = "/images/loc.png";
+    public static final String IMG_COl = "/images/col.png";
+    public static final String IMG_TABLE = "/images/table.png";
+    public static final String IMG_DEATH = "/images/death.jpg";
+    public static final String IMG_GRAPHICS = "/images/graphics.png";
+    public static final String IMG_LOCATION = "/images/location.png";
+    public static final String IMG_SEARCH_USER = "/images/searchuser.png";
+    public static final String IMG_STADITICS1 = "/images/staditics1.png";
+    public static final String IMG_STADISTIC = "/images/sta.png";
+    public static final String IMG_STADITICS2 = "/images/Statidist2.png";
+    public static final String IMG_STADITICSTORTE = "/images/statiditsTorte.png";
 
+    //Imagenes Covid
+    public static final String IMG_COV_AMBULANCE = "/images/Covid/Ambulance.png";
+    public static final String IMG_COV_ASYMPTOMATIC = "/images/Covid/asintomathic.png";
+    public static final String IMG_COV_BOOK_HEALTH = "/images/Covid/BookHealth.png";
+    public static final String IMG_COV_CALENDAR = "/images/Covid/CalendarCovid.png";
+    public static final String IMG_COV_CALL_EMERGENCY = "/images/Covid/CallEmergency.png";
+    public static final String IMG_COV_CHECK_TEMPERATURE = "/images/Covid/CallEmergency.png";
+    public static final String IMG_COV_DEATH = "/images/Covid/DeathCovid.png";
+    public static final String IMG_COV_DENSITY_HUMAN = "/images/Covid/DensityHuman.png";
+    public static final String IMG_COV_HAND_WASH = "/images/Covid/HandWash.png";
+    public static final String IMG_COV_HEALTHY = "/images/Covid/Healthy.png";
+    public static final String IMG_COV_HOME = "/images/Covid/HomeCovid.png";
+    public static final String IMG_COV_HOSPITAL = "/images/Covid/Hospital.png";
+    public static final String IMG_COV_MASK_MEDICAL = "/images/Covid/MaskMedical.png";
+    public static final String IMG_COV_MICRO_ORGANIS = "/images/Covid/microOrganis.png";
+    public static final String IMG_COV_PATIENT = "/images/Covid/patient.png";
+    public static final String IMG_COV_PROTECTION_WEAR = "/images/Covid/protectionWear.png";
+    public static final String IMG_COV_RECOVERED = "/images/Covid/recovered.png";
+    public static final String IMG_COV_SEARCH_VIRUS = "/images/Covid/SearchVirus.png";
+    public static final String IMG_COV_SICK_TEMPERATURE = "/images/Covid/sickTemperature.png";
+    public static final String IMG_COV_SICK_SNEEZE = "/images/Covid/sickSneeze.png";
+    public static final String IMG_COV_STADISTICS = "/images/Covid/Staditics.png";
+    public static final String IMG_COV_STOP_SHAKING = "/images/Covid/stopShaking.png";
+    public static final String IMG_COV_UCI = "/images/Covid/Uci.png";
+    public static final String IMG_COV_WORLD = "/images/Covid/World.png";
 
 
     //    Titulos Principales
@@ -44,7 +82,7 @@ public class Constant {
     public static final Color COLOR_GREEN_SOFT = Color.decode("#25B50F") ;
     public static final Color COLOR_RED_TINTE = Color.decode("#C14343");
     public static final Color COLOR_GRAY_LIGHT = Color.decode("#CDD7DD");
-    public static final Color COLOR_BLUE_COVID = Color.decode("#9bafca");
+    public static final Color COLOR_BLUE_COVID = Color.decode("#21adbe");
 
 
 //    Fuentes
@@ -76,7 +114,28 @@ public class Constant {
     public static final String M_HOME = "Home";
 
 //Menu Estadisticas
-    public static final String M_STADISTIC = "Stadistics";
+    public static final String M_STATISTICS = "Statistics";
+    public static final String M_STA_REPORT_COL = "Report_Colombia";
+    public static final String M_STA_REPORT_LOCATION = "Report_Location";
+    public static final String M_GRAP_REPORT = "Report_Graphics";
+
+    public static final String M_GRAP_FOR_MONTHS = "Report_Graphics_Months";
+    public static final String M_STA_STATE_HEALTH = "Report_State_Health";
+
+    public static final String M_STA_REPORT_DEATH = "Report_Death";
+    public static final String M_STA_REPORT_RECOVERED = "Report_Recovered";
+    public static final String M_STA_REPORT_DIAGNOSTIC= "Report_Diagnostic";
+
+    public static final String M_REPORT_RANGE_AGE= "Report_Range_Age";
+    public static final String M_REPORT_AGE= "Report_Age";
+    public static final String M_REPORT_MONTHS= "Report_Months";
+    public static final String M_PERCENTAGE_LETHALITY= "Report_Percentage_Lethality";
+
+    public static final String M_STA_TABLE_FOR_LOCATION = "Report_Table_Location";
+    public static final String M_STA_TABLE_FOR_COLOMBIA = "Report_Table_Colombia";
+
+
+
 //    public static final String M_STA_
 
 
