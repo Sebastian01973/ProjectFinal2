@@ -13,9 +13,14 @@ public class Constant {
     //    Imagenes
 
     public static final String IMG_ICON_APP = "/images/covidIcon.png";
+    public static final String IMG_ABOUT = "/images/about.jpg";
+    public static final String IMG_ABOUT_US = "/images/aboutUs.png";
+    public static final String IMG_ABOUT_APP = "/images/aboutApp.png";
     public static final String IMG_SPANISH = "/images/Spanish.png";
     public static final String IMG_ENGLISH = "/images/English.png";
     public static final String IMG_ADD_USER = "/images/addUser.png";
+    public static final String IMG_USER = "/images/User.png";
+    public static final String IMG_MODIFY_USER = "/images/modifyUser.png";
     public static final String IMG_FILE = "/images/file.png";
     public static final String IMG_EXIT = "/images/exit.png";
     public static final String IMG_EXIT_APP = "/images/exitApp.png";
@@ -36,6 +41,7 @@ public class Constant {
     public static final String IMG_GRAPHICS = "/images/graphics.png";
     public static final String IMG_LOCATION = "/images/location.png";
     public static final String IMG_SEARCH_USER = "/images/searchuser.png";
+    public static final String IMG_DELETE_USER = "/images/deleteUser.png";
     public static final String IMG_STADITICS1 = "/images/staditics1.png";
     public static final String IMG_STADISTIC = "/images/sta.png";
     public static final String IMG_STADITICS2 = "/images/Statidist2.png";
@@ -101,6 +107,7 @@ public class Constant {
 //    Titulos de menus
     public static final String M_FILE = "File";
     public static final String M_REFRESH = "Refresh";
+    public static final String M_PATIENT = "Patient";
     public static final String M_ADD_DIAGNOSTIC = "Add_Diagnostic";
     public static final String M_SEARCH_DIAGNOSTIC = "Search_Diagnostic";
     public static final String M_MODIFY_DIAGNOSTIC = "Modify_Diagnostic";
@@ -117,9 +124,6 @@ public class Constant {
     public static final String M_STATISTICS = "Statistics";
     public static final String M_STA_REPORT_COL = "Report_Colombia";
     public static final String M_STA_REPORT_LOCATION = "Report_Location";
-    public static final String M_GRAP_REPORT = "Report_Graphics";
-
-    public static final String M_GRAP_FOR_MONTHS = "Report_Graphics_Months";
     public static final String M_STA_STATE_HEALTH = "Report_State_Health";
 
     public static final String M_STA_REPORT_DEATH = "Report_Death";
@@ -132,15 +136,20 @@ public class Constant {
     public static final String M_PERCENTAGE_LETHALITY= "Report_Percentage_Lethality";
 
     public static final String M_STA_TABLE_FOR_LOCATION = "Report_Table_Location";
-    public static final String M_STA_TABLE_FOR_COLOMBIA = "Report_Table_Colombia";
+
+    //Menu de paciente,Graficos y Acerca de....
 
 
+    public static final String M_GRAP_FOR_MONTHS = "Report_Graphics_Months";
+    public static final String M_GRAP_BAR_REPORT = "Report_Graphics_Bar";
+    public static final String M_GRAP_REPORT = "Report_Graphics";
+    public static final String M_GRAP_TORTE_REPORT = "Report_Graphics_Torte";
 
-//    public static final String M_STA_
+    public static final String M_ABOUT = "About";
+    public static final String M_CREATORS = "About_Creators";
+    public static final String M_APPLICATION = "About_App";
 
-
-
-//    Titulos de la tabla
+    //    Titulos de la tabla
     public static final Object[] HEADERDS_TABLEMAIN = {"Number_Case","Gender","Age","Attention", "Location_City",
         "Health_Condition","Date_Diagnostic","Date_Recovered","Date_Death"};
 }
