@@ -14,7 +14,11 @@ import java.awt.event.ActionListener;
 
 public class JMainMenu extends JMenuBar implements Language {
 
-    JModelMenu menuFile,menuStadistic,menuPatient;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	JModelMenu menuFile,menuStadistic,menuPatient;
     JModelMenuItem mILanSpanish,mILanEnglish,mIExit,mILoadFile,mISaveFile,mIRefreshData;
 
     JModelMenu menuLanguage,menuReportCol,menuReportLocation,menuGraphics;
