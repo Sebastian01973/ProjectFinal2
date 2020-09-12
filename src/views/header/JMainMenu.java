@@ -14,11 +14,7 @@ import java.awt.event.ActionListener;
 
 public class JMainMenu extends JMenuBar implements Language {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	JModelMenu menuFile,menuStadistic,menuPatient;
+    JModelMenu menuFile,menuStadistic,menuPatient,menuAbout;
     JModelMenuItem mILanSpanish,mILanEnglish,mIExit,mILoadFile,mISaveFile,mIRefreshData;
 
     JModelMenu menuLanguage,menuReportCol,menuReportLocation,menuGraphics;
@@ -33,8 +29,11 @@ public class JMainMenu extends JMenuBar implements Language {
     JModelMenuItem mIrepMonthLocDeath,mIPerLethalityLoc;
     JModelMenuItem mIrepRanAgeLocReco,mIrepAgeLocReco, mIrepMonthLocReco;
 
-    JModelMenuItem mITableLocation;
+    JModelMenuItem mITableLocation,mIGraphicsTorte,mIGraphicsBar,mIGraphicsMonths;
+
     JModelMenuItem mIAddPatient,mISearchPatient,mIModifyPatient,mIDeletePatient;
+
+    JModelMenuItem mIAboutCreator,mIAboutApp;
 
     public JMainMenu(ActionListener actionListener) {
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -49,6 +48,7 @@ public class JMainMenu extends JMenuBar implements Language {
         showMenuStadisticLoc(actionListener);
         showMenuStadisticGraphics(actionListener);
         showMenuPatient(actionListener);
+        showMenuContactUs(actionListener);
     }
 
     private void showMenuFile(ActionListener actionListener) {
@@ -205,17 +205,65 @@ public class JMainMenu extends JMenuBar implements Language {
     private void showMenuStadisticGraphics(ActionListener actionListener){
         menuGraphics = new JModelMenu(Utilities.getKey(Constant.M_GRAP_REPORT),Constant.IMG_GRAPHICS,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_ROCWELL,25,25);
 
+        mIGraphicsMonths = new JModelMenuItem(Utilities.getKey(Constant.M_GRAP_FOR_MONTHS),Constant.IMG_STADITICS2,Constant.FONT_ROCWELL,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIGraphicsMonths.setActionCommand(Command.C_GRAPHICS_MONTHS.toString());
+        mIGraphicsMonths.addActionListener(actionListener);
+        menuGraphics.add(mIGraphicsMonths);
+
+        mIGraphicsBar = new JModelMenuItem(Utilities.getKey(Constant.M_GRAP_BAR_REPORT),Constant.IMG_STADITICS1,Constant.FONT_ROCWELL,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIGraphicsBar.setActionCommand(Command.C_GRAPHICS_BAR.toString());
+        mIGraphicsBar.addActionListener(actionListener);
+        menuGraphics.add(mIGraphicsBar);
+
+        mIGraphicsTorte = new JModelMenuItem(Utilities.getKey(Constant.M_GRAP_TORTE_REPORT),Constant.IMG_STADITICSTORTE,Constant.FONT_ROCWELL,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIGraphicsTorte.setActionCommand(Command.C_GRAPHICS_TORTE.toString());
+        mIGraphicsTorte.addActionListener(actionListener);
+        menuGraphics.add(mIGraphicsTorte);
 
         menuStadistic.add(menuGraphics);
     }
 
     private void showMenuPatient(ActionListener actionListener){
+        menuPatient = new JModelMenu(Utilities.getKey(Constant.M_PATIENT),Constant.IMG_USER,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_ROCWELL,25,25);
 
+        mIAddPatient = new JModelMenuItem(Utilities.getKey(Constant.M_ADD_DIAGNOSTIC),Constant.IMG_ADD_USER,Constant.FONT_ROCWELL,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIAddPatient.setActionCommand(Command.ADD_PATIENT.toString());
+        mIAddPatient.addActionListener(actionListener);
+        menuPatient.add(mIAddPatient);
+
+        mISearchPatient = new JModelMenuItem(Utilities.getKey(Constant.M_SEARCH_DIAGNOSTIC),Constant.IMG_SEARCH_USER,Constant.FONT_ROCWELL,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mISearchPatient.setActionCommand(Command.SEARCH_PATIENT.toString());
+        mISearchPatient.addActionListener(actionListener);
+        menuPatient.add(mISearchPatient);
+
+        mIModifyPatient = new JModelMenuItem(Utilities.getKey(Constant.M_MODIFY_DIAGNOSTIC),Constant.IMG_MODIFY_USER,Constant.FONT_ROCWELL,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIModifyPatient.setActionCommand(Command.MODIFY_PATIENT.toString());
+        mIModifyPatient.addActionListener(actionListener);
+        menuPatient.add(mIModifyPatient);
+
+        mIDeletePatient = new JModelMenuItem(Utilities.getKey(Constant.M_DELETE_DIAGNOSTIC),Constant.IMG_DELETE_USER,Constant.FONT_ROCWELL,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIDeletePatient.setActionCommand(Command.DELETE_PATIENT.toString());
+        mIDeletePatient.addActionListener(actionListener);
+        menuPatient.add(mIDeletePatient);
+
+        this.add(menuPatient);
     }
     //Hola
 
     private void showMenuContactUs(ActionListener actionListener){
+        menuAbout = new JModelMenu(Utilities.getKey(Constant.M_ABOUT),Constant.IMG_ABOUT,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_ROCWELL,25,25);
 
+        mIAboutCreator = new JModelMenuItem(Utilities.getKey(Constant.M_CREATORS),Constant.IMG_ABOUT_US,Constant.FONT_ROCWELL,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIAboutCreator.setActionCommand(Command.ABOUT_US.toString());
+        mIAboutCreator.addActionListener(actionListener);
+        menuAbout.add(mIAboutCreator);
+
+        mIAboutApp = new JModelMenuItem(Utilities.getKey(Constant.M_APPLICATION),Constant.IMG_ABOUT_APP,Constant.FONT_ROCWELL,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIAboutApp.setActionCommand(Command.ABOUT_APP.toString());
+        mIAboutApp.addActionListener(actionListener);
+        menuAbout.add(mIAboutApp);
+
+        this.add(menuAbout);
     }
 
     @Override
@@ -263,6 +311,18 @@ public class JMainMenu extends JMenuBar implements Language {
         mIrepMonthLocReco.setText(Utilities.getKey(Constant.M_REPORT_MONTHS));
 
         menuGraphics.setText(Utilities.getKey(Constant.M_GRAP_REPORT));
+        mIGraphicsMonths.setText(Utilities.getKey(Constant.M_GRAP_FOR_MONTHS));
+        mIGraphicsBar.setText(Utilities.getKey(Constant.M_GRAP_BAR_REPORT));
+        mIGraphicsTorte.setText(Utilities.getKey(Constant.M_GRAP_TORTE_REPORT));
 
+        menuPatient.setText(Utilities.getKey(Constant.M_PATIENT));
+        mIAddPatient.setText(Utilities.getKey(Constant.M_ADD_DIAGNOSTIC));
+        mISearchPatient.setText(Utilities.getKey(Constant.M_SEARCH_DIAGNOSTIC));
+        mIModifyPatient.setText(Utilities.getKey(Constant.M_MODIFY_DIAGNOSTIC));
+        mIDeletePatient.setText(Utilities.getKey(Constant.M_DELETE_DIAGNOSTIC));
+
+        menuAbout.setText(Utilities.getKey(Constant.M_ABOUT));
+        mIAboutCreator.setText(Utilities.getKey(Constant.M_CREATORS));
+        mIAboutApp.setText(Utilities.getKey(Constant.M_APPLICATION));
     }
 }
