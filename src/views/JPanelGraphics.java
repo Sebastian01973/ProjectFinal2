@@ -57,8 +57,7 @@ public class JPanelGraphics extends JPanel{
 		String[] labelsX = new String[] {"3","4","5","6","7","8","9","10","11","12"};
 		UtilitiesViews.drawAxis(xAxisx1, xAxisy, xAxisx2,xAxisy,graphics2D);
 		UtilitiesViews.drawXDivisions(graphics2D, lengthXAxis, labelsX, c);
-		
-		// grafiac de los datos
+		// grafica de los datos
 		drawFunction(graphics2D, datasX, datasY, datasX.length, lengthXAxis,
 				lengthYAxis);
 	}
