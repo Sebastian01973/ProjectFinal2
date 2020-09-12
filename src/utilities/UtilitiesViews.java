@@ -58,7 +58,8 @@ public class UtilitiesViews {
 		int x1= getSeparationAxis('x',0.08f,container);
 		int x2=	getSeparationAxis('x',0.1f,container);
 		int sizeDivision = length/labels.length;
-		for (int i = 0; i < labels.length; i++) {
+		for (int i = 0; i < labels.length
+				; i++) {
 			double value = i*100.0/100;
 			g2D.setColor(Color.red);
 			g2D.drawLine(x1, (int)(length-value*sizeDivision), x2, (int)(length-value*sizeDivision));
