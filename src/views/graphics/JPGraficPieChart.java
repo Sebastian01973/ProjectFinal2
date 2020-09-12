@@ -102,7 +102,7 @@ public class JPGraficPieChart extends JPanel{
 		y = 2*y;
 		y1 = 2*y1;
 	}
-	
+	//Hola
 	public static void main(String[] args) {
 		JDialog jDialog = new JDialog();
 		JPGraficPieChart jpg = new JPGraficPieChart(jDialog,new String[] {"1","2","3","4"},new int[] {50,50,50,50},
