@@ -2,13 +2,13 @@ package models;
 
 public class Patient {
 
-    private Atention atention;
-    private byte age;
-    private Gender gender;
-    private HealthCondition healthCondition;
-    private String location;
-    
-	public Patient(String location,Atention states, byte age, Gender gender, HealthCondition healthCondition) {
+	private String location;
+	private Attention atention;
+	private byte age;
+	private Gender gender;
+	private HealthCondition healthCondition;
+
+	public Patient(String location, Attention states, byte age, Gender gender, HealthCondition healthCondition) {
 		this.atention = states;
 		this.age = age;
 		this.gender = gender;
@@ -16,11 +16,11 @@ public class Patient {
 		this.location = location;
 	}
 
-	public Atention getStates() {
+	public Attention getStates() {
 		return atention;
 	}
 
-	public void setStates(Atention states) {
+	public void setStates(Attention states) {
 		this.atention = states;
 	}
 

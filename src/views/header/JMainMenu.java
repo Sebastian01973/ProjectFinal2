@@ -1,6 +1,7 @@
 package views.header;
 
 import controllers.Command;
+import utilities.Utilities;
 import views.Constant;
 import views.Language;
 import views.models.JModelMenu;
@@ -15,7 +16,7 @@ public class JMainMenu extends JMenuBar implements Language {
 
     JModelMenu menuFile,menuStadistic,menuPatient;
     JModelMenu menuLanguage;
-    JModelMenuItem mILanSpanish,mILanEnglish,mIExit,mILoadFile,mISaveFile;
+    JModelMenuItem mILanSpanish,mILanEnglish,mIExit,mILoadFile,mISaveFile,mIRefreshData;
     JModelMenuItem mIAddPatient,mISearchPatient,mIModifyPatient
             ,mIDeletePatient;
 
@@ -33,33 +34,39 @@ public class JMainMenu extends JMenuBar implements Language {
     }
 
     private void showMenuFile(ActionListener actionListener) {
-        menuFile = new JModelMenu(Constant.M_FILE,Constant.IMG_FILE,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_ROCWELL,25,25);
 
-        mILoadFile = new JModelMenuItem(Constant.M_LOAD,Constant.IMG_DOCUMENT,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        menuFile = new JModelMenu(Utilities.getKey(Constant.M_FILE),Constant.IMG_FILE,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_ROCWELL,25,25);
+
+        mILoadFile = new JModelMenuItem(Utilities.getKey(Constant.M_LOAD),Constant.IMG_DOCUMENT,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
         mILoadFile.setActionCommand(Command.LOAD_FILE.toString());
         mILoadFile.addActionListener(actionListener);
         menuFile.add(mILoadFile);
 
-        mISaveFile = new JModelMenuItem(Constant.M_SAVE,Constant.IMG_SAVE,Constant.FONT_HELVETICA_17,20,20,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mISaveFile = new JModelMenuItem(Utilities.getKey(Constant.M_SAVE),Constant.IMG_SAVE,Constant.FONT_HELVETICA_17,20,20,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
         mISaveFile.setActionCommand(Command.SAVE_FILE.toString());
         mISaveFile.addActionListener(actionListener);
         menuFile.add(mISaveFile);
 
-        menuLanguage = new JModelMenu(Constant.M_LANGUAGE,Constant.IMG_WORLD,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_HELVETICA_17,25,25);
+        mIRefreshData = new JModelMenuItem(Utilities.getKey(Constant.M_REFRESH),Constant.IMG_REFRESH,Constant.FONT_HELVETICA_17,20,20,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIRefreshData.setActionCommand(Command.REFRESH_DATA.toString());
+        mIRefreshData.addActionListener(actionListener);
+        menuFile.add(mIRefreshData);
 
-        mILanSpanish = new JModelMenuItem(Constant.M_LANGUAGE_ES,Constant.IMG_SPANISH,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        menuLanguage = new JModelMenu(Utilities.getKey(Constant.M_LANGUAGE),Constant.IMG_WORLD,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_HELVETICA_17,25,25);
+
+        mILanSpanish = new JModelMenuItem(Utilities.getKey(Constant.M_LANGUAGE_ES),Constant.IMG_SPANISH,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
         mILanSpanish.setActionCommand(Command.C_ES_LANGUAGE.toString());
         mILanSpanish.addActionListener(actionListener);
         menuLanguage.add(mILanSpanish);
 
-        mILanEnglish = new JModelMenuItem(Constant.M_LANGUAGE_US,Constant.IMG_ENGLISH,Constant.FONT_HELVETICA_17,23,23,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mILanEnglish = new JModelMenuItem(Utilities.getKey(Constant.M_LANGUAGE_US),Constant.IMG_ENGLISH,Constant.FONT_HELVETICA_17,23,23,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
         mILanEnglish.setActionCommand(Command.C_US_LANGUAGE.toString());
         mILanEnglish.addActionListener(actionListener);
         menuLanguage.add(mILanEnglish);
 
         menuFile.add(menuLanguage);
 
-        mIExit = new JModelMenuItem(Constant.M_EXIT,Constant.IMG_EXIT_APP,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        mIExit = new JModelMenuItem(Utilities.getKey(Constant.M_EXIT),Constant.IMG_EXIT_APP,Constant.FONT_HELVETICA_17,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
         mIExit.setActionCommand(Command.EXIT_APP.toString());
         mIExit.addActionListener(actionListener);
         menuFile.add(mIExit);
@@ -69,7 +76,7 @@ public class JMainMenu extends JMenuBar implements Language {
     }
 
     private void showMenuStadistic(ActionListener actionListener){
-
+//        menuStadistic = new JModelMenu(Constant.M_FILE,Constant.IMG_FILE,Constant.COLOR_WHITE,Constant.COLOR_BLACK,Constant.FONT_ROCWELL,25,25);
     }
 
     private void showMenuPatient(ActionListener actionListener){
@@ -78,6 +85,15 @@ public class JMainMenu extends JMenuBar implements Language {
 
     @Override
     public void changeLanguage() {
+        menuFile.setText(Utilities.getKey(Constant.M_FILE));
+        mILoadFile.setText(Utilities.getKey(Constant.M_LOAD));
+        mISaveFile.setText(Utilities.getKey(Constant.M_SAVE));
+        mIRefreshData.setText(Utilities.getKey(Constant.M_REFRESH));
+        menuLanguage.setText(Utilities.getKey(Constant.M_LANGUAGE));
+        mILanSpanish.setText(Utilities.getKey(Constant.M_LANGUAGE_ES));
+        mILanEnglish.setText(Utilities.getKey(Constant.M_LANGUAGE_US));
+        mIExit.setText(Utilities.getKey(Constant.M_EXIT));
+
 
     }
 }

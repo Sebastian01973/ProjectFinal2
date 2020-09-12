@@ -5,6 +5,7 @@ import utilities.Utilities;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class JFWindowsMain extends JFrame implements Language{
 
@@ -22,7 +23,19 @@ public class JFWindowsMain extends JFrame implements Language{
 
     private void initComponents(ActionListener actionListener) {
         jMainPanel = new JMainPanel(actionListener);
-        this.getContentPane().add(jMainPanel, BorderLayout.CENTER);
+        JScrollPane jspPanel = new JScrollPane(jMainPanel);
+        jspPanel.setViewportView(jMainPanel);
+        jspPanel.setOpaque(false);
+        this.getContentPane().add(jspPanel,BorderLayout.CENTER);
+        this.getContentPane().setForeground(Constant.COLOR_WHITE);
+    }
+
+    public void addElementToTable(Object[] objects){
+        jMainPanel.addElementToTable(objects);
+    }
+
+    public void addElementToTable(ArrayList<Object[]> matrix){
+        jMainPanel.addElementToTable(matrix);
     }
 
 

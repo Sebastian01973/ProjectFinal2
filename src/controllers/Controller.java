@@ -1,14 +1,17 @@
 package controllers;
 
+import models.ManagePatients;
 import views.JFWindowsMain;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static javax.swing.JOptionPane.showConfirmDialog;
+
 
 public class Controller implements ActionListener {
 
-    //models
+    ManagePatients managePatients;
     ConfigLanguage configLanguage;
     JFWindowsMain jfWindowsMain;
 
@@ -17,6 +20,7 @@ public class Controller implements ActionListener {
     public Controller() {
         configLanguage = new ConfigLanguage();
         configLanguage.loadConfiguration();
+        managePatients = new ManagePatients();
         jfWindowsMain = new JFWindowsMain(this);
         configLanguage.setJfWindowsMain(jfWindowsMain);
     }
@@ -32,7 +36,13 @@ public class Controller implements ActionListener {
             case SEARCH_PATIENT: this.searchPatient(); break;
             case MODIFY_PATIENT: this.modifyPatient(); break;
             case DELETE_PATIENT: this.deletePatient(); break;
+            case EXIT_APP: this.exitApp(); break;
+            case REFRESH_DATA: this.refreshData(); break;
         }
+    }
+
+    private void refreshData() {
+        jfWindowsMain.addElementToTable(managePatients.getMatrixList());
     }
 
     private void manageChangeLanguageUS() {
@@ -53,6 +63,7 @@ public class Controller implements ActionListener {
 
     private void addPatient(){
 
+
     }
 
     private void searchPatient(){
@@ -65,6 +76,13 @@ public class Controller implements ActionListener {
 
     private void deletePatient(){
 
+    }
+
+    private void exitApp() {
+        int option = showConfirmDialog(null, "Deseas salir");
+        if (option == 0) {
+            System.exit(0);
+        }
     }
 
 }

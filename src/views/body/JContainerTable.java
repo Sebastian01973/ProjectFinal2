@@ -1,13 +1,17 @@
 package views.body;
 
 import utilities.Utilities;
+import utilities.UtilitiesViews;
 import views.Constant;
 import views.Language;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class JContainerTable extends JPanel implements Language {
 
@@ -55,12 +59,43 @@ public class JContainerTable extends JPanel implements Language {
         this.setBorder(null);
     }
 
+    public void cleanRowsTable() {
+        dtmElements.setNumRows(0);
+    }
+
     public DefaultTableModel getDefaultTableModel() {
         return dtmElements;
     }
 
     public void setDefaultTableModel(DefaultTableModel defaultTableModel) {
         this.dtmElements = defaultTableModel;
+    }
+
+    public void addElementToTable(Object[] vector){
+        vector[6] = UtilitiesViews.toFormatterDate((LocalDate) vector[6]);
+        vector[7] = UtilitiesViews.toFormatterDate((LocalDate) vector[7]);
+        vector[8] = UtilitiesViews.toFormatterDate((LocalDate) vector[8]);
+        dtmElements.addRow(vector);
+    }
+
+    public void addElementToTable(ArrayList<Object[]> matrix){
+        cleanRowsTable();
+        dtmElements.setColumnIdentifiers(Utilities.getKeys(Constant.HEADERDS_TABLEMAIN));
+        for (Object[] objects : matrix) {
+            addElementToTable(objects);
+        }
+    }
+
+    private void centerText() {
+        DefaultTableCellRenderer centeRenderer = new DefaultTableCellRenderer();
+        centeRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        for (int i = 0; i < jtElements.getColumnCount(); i++) {
+            jtElements.getColumnModel().getColumn(i).setCellRenderer(centeRenderer);
+        }
+    }
+
+    public void deleteRowIndex(int index) {
+        dtmElements.removeRow(index);
     }
 
     @Override

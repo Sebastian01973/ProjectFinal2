@@ -26,6 +26,7 @@ public class Constant {
     public static final String IMG_DOCUMENT = "/images/document.png";
     public static final String IMG_WORLD = "/images/world.png";
     public static final String IMG_BANNER = "/images/bannerCovid.jpg";
+    public static final String IMG_HOME = "/images/Home.png";
 
 
 
@@ -43,6 +44,7 @@ public class Constant {
     public static final Color COLOR_GREEN_SOFT = Color.decode("#25B50F") ;
     public static final Color COLOR_RED_TINTE = Color.decode("#C14343");
     public static final Color COLOR_GRAY_LIGHT = Color.decode("#CDD7DD");
+    public static final Color COLOR_BLUE_COVID = Color.decode("#9bafca");
 
 
 //    Fuentes
@@ -60,6 +62,7 @@ public class Constant {
 
 //    Titulos de menus
     public static final String M_FILE = "File";
+    public static final String M_REFRESH = "Refresh";
     public static final String M_ADD_DIAGNOSTIC = "Add_Diagnostic";
     public static final String M_SEARCH_DIAGNOSTIC = "Search_Diagnostic";
     public static final String M_MODIFY_DIAGNOSTIC = "Modify_Diagnostic";
@@ -70,7 +73,11 @@ public class Constant {
     public static final String M_SAVE = "Save";
     public static final String M_LOAD = "Load";
     public static final String M_EXIT = "Exit";
+    public static final String M_HOME = "Home";
 
+//Menu Estadisticas
+    public static final String M_STADISTIC = "Stadistics";
+//    public static final String M_STA_
 
 
 

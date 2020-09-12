@@ -1,12 +1,12 @@
 package models;
 
-public enum Atention {
+public enum Attention {
 	RECOVERED("Recovered"),HOUSE("House"),DECEASED("Deceased"),
 	HOSPITAL("Hospital"),ICU_HOSPITAL("Icu_Hospital");
 	
 	private final String key;
 
-	private Atention(String key) {
+	private Attention(String key) {
 		this.key = key;
 	}
 
