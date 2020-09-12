@@ -212,6 +212,7 @@ public class JMainMenu extends JMenuBar implements Language {
     private void showMenuPatient(ActionListener actionListener){
 
     }
+    //Hola
 
     private void showMenuContactUs(ActionListener actionListener){
 
