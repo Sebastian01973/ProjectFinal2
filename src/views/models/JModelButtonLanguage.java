@@ -8,13 +8,19 @@ import java.net.URI;
 
 public class JModelButtonLanguage extends JButton{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String link;
 	private boolean status;
 
-	public JModelButtonLanguage(String text, String imagePath, Font font, Color...colors) {
+	public JModelButtonLanguage(String text, String imagePath, Font font,int width,int height,Color...colors) {
 		super(text);
 		this.setFont( font );
-		this.setIcon( new ImageIcon(getClass().getResource( imagePath )) );
+		ImageIcon image = new ImageIcon(getClass().getResource(imagePath));
+		Icon icon = new ImageIcon(image.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
+		this.setIcon(icon);
 		this.setBorderPainted( false );
 		this.setFocusable( false );
 		this.setOpaque(false);

@@ -36,7 +36,7 @@ public class JContainerTable extends JPanel implements Language {
         jtElements.setModel(dtmElements);
         jtElements.setIntercellSpacing(new Dimension(0, 0));
         jtElements.getTableHeader().setReorderingAllowed(false);
-        jtElements.getTableHeader().setBackground(Constant.COLOR_GREEN_SOFT);
+        jtElements.getTableHeader().setBackground(Constant.COLOR_RED_TINTE);
         jtElements.getTableHeader().setForeground(Constant.COLOR_WHITE);
         jtElements.getTableHeader().setPreferredSize(new Dimension(0, 50));
         jtElements.getTableHeader().setFont(Constant.FONT_ARIAL_ROUNDER_17);
