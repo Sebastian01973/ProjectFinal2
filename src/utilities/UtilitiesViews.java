@@ -1,5 +1,8 @@
 package utilities;
 
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Graphics2D;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.time.LocalDate;
@@ -24,4 +27,43 @@ public class UtilitiesViews {
             return "";
         }
     }
+    
+    //Utilities GRAPHICS
+    
+    public static void drawAxis(int x1,int y1,int x2,int y2,Graphics2D graphics2D) {
+    	graphics2D.drawLine(x1, y1, x2, y2);
+    }
+    
+    public static int getSeparationAxis(char Axis, float value,Container container) {
+    	if(Axis == 'x') {
+    		return (int) (container.getWidth()*value);
+    	}
+    	return (int) (container.getHeight()*value);
+    }
+    
+    public static void drawXDivisions(Graphics2D g2D,int length,String[] labels,Container c) {
+    	int x = getSeparationAxis('x',0.15f,c);
+		int y1 = getSeparationAxis('y',0.79f,c);
+		int y2 = getSeparationAxis('y',0.81f,c);
+		int increase = length/labels.length;
+		for (int i = 0; i < labels.length; i++) {
+			g2D.setColor(Color.red);
+			g2D.drawLine(x+(i*increase), y1, x+(i*increase), y2);
+			g2D.setColor(Color.black);
+			g2D.drawString(labels[i], x+(i*increase)-2, y2+11);
+		}
+    }
+    
+    public static void drawYDivisions(Graphics2D g2D,int length,String[] labels,Container container) {
+		int x1= getSeparationAxis('x',0.08f,container);
+		int x2=	getSeparationAxis('x',0.1f,container);
+		int sizeDivision = length/labels.length;
+		for (int i = 0; i < labels.length; i++) {
+			double value = i*100.0/100;
+			g2D.setColor(Color.red);
+			g2D.drawLine(x1, (int)(length-value*sizeDivision), x2, (int)(length-value*sizeDivision));
+			g2D.setColor(Color.black);
+			g2D.drawString(labels[i], x1-30, (int)(length-value*sizeDivision));
+		}
+	}
 }
