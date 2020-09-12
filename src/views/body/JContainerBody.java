@@ -5,6 +5,7 @@ import views.Language;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class JContainerBody extends JPanel implements Language {
 
@@ -20,6 +21,14 @@ public class JContainerBody extends JPanel implements Language {
         jContainerTable = new JContainerTable(actionListener);
         this.add(jContainerTable,BorderLayout.CENTER);
 
+    }
+
+    public void addElementToTable(Object[] objects){
+        jContainerTable.addElementToTable(objects);
+    }
+
+    public void addElementToTable(ArrayList<Object[]> matrix){
+        jContainerTable.addElementToTable(matrix);
     }
 
     @Override

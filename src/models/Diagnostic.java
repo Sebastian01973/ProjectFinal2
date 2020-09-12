@@ -19,11 +19,11 @@ public class Diagnostic {
     }
     
     public void validateRecovered(LocalDate date) {
-    	this.dateOfRecovered = (patient.getStates() == Atention.RECOVERED || date == null)?date:null;
+    	this.dateOfRecovered = (patient.getStates() == Attention.RECOVERED || date == null)?date:null;
     }
     
     public void validateDeath(LocalDate date) {
-    	this.dateOfDeath = (patient.getStates() == Atention.DECEASED || date == null)?date:null;
+    	this.dateOfDeath = (patient.getStates() == Attention.DECEASED || date == null)?date:null;
     }
 
 	public Patient getPatient() {
