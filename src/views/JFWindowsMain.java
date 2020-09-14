@@ -1,15 +1,19 @@
 package views;
 
+import org.json.simple.JsonObject;
 import utilities.Utilities;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import com.toedter.calendar.JDateChooser;
 
 public class JFWindowsMain extends JFrame implements Language{
 
-    JMainPanel jMainPanel;
+    private JMainPanel jMainPanel;
+    private JDateChooser jdCalendar;
+
 
     public JFWindowsMain (ActionListener actionListener){
         this.getContentPane().setBackground(Constant.COLOR_WHITE);
@@ -22,6 +26,7 @@ public class JFWindowsMain extends JFrame implements Language{
     }
 
     private void initComponents(ActionListener actionListener) {
+
         jMainPanel = new JMainPanel(actionListener);
         JScrollPane jspPanel = new JScrollPane(jMainPanel);
         jspPanel.setViewportView(jMainPanel);
