@@ -1,4 +1,4 @@
-package views.body;
+package views.table;
 
 import views.Language;
 
@@ -7,32 +7,32 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class JContainerBody extends JPanel implements Language {
+public class JContainerTable extends JPanel implements Language {
 
-    JContainerTable jContainerTable;
-    JTableEast jTableEast;
+    JPanelTable jPanelTable;
+    JPatientEast jTableEast;
 
-    public JContainerBody(ActionListener actionListener) {
+    public JContainerTable(ActionListener actionListener) {
         this.setLayout(new BorderLayout(0,0));
         initComponents(actionListener);
     }
 
     private void initComponents(ActionListener actionListener) {
-        jContainerTable = new JContainerTable(actionListener);
-        this.add(jContainerTable,BorderLayout.CENTER);
+        jPanelTable = new JPanelTable(actionListener);
+        this.add(jPanelTable,BorderLayout.CENTER);
 
     }
 
     public void addElementToTable(Object[] objects){
-        jContainerTable.addElementToTable(objects);
+        jPanelTable.addElementToTable(objects);
     }
 
     public void addElementToTable(ArrayList<Object[]> matrix){
-        jContainerTable.addElementToTable(matrix);
+        jPanelTable.addElementToTable(matrix);
     }
 
     @Override
     public void changeLanguage() {
-        jContainerTable.changeLanguage();
+        jPanelTable.changeLanguage();
     }
 }

@@ -1,6 +1,9 @@
 package views;
 
-import views.body.JContainerBody;
+import views.about.JContainerAbout;
+import views.home.JContainerHome;
+import views.statistic.JContainerStatistic;
+import views.table.JContainerTable;
 import views.footer.JContainerFooter;
 import views.header.JContainerHeader;
 
@@ -11,9 +14,13 @@ import java.util.ArrayList;
 
 public class JMainPanel extends JPanel implements Language{
 
-    private JContainerBody jContainerBody;
     private JContainerHeader jContainerHeater;
+    private JContainerHome jContainerHome;
+    private JContainerTable jContainerTable;
+    private JContainerStatistic jContainerStatistic;
+    private JContainerAbout jContainerAbout;
     private JContainerFooter jContainerFooter;
+
 
     public JMainPanel(ActionListener actionListener) {
         this.setLayout(new BorderLayout(0,0));
@@ -25,25 +32,30 @@ public class JMainPanel extends JPanel implements Language{
         jContainerHeater = new JContainerHeader(actionListener);
         this.add(jContainerHeater,BorderLayout.NORTH);
 
-        jContainerBody = new JContainerBody(actionListener);
-        this.add(jContainerBody,BorderLayout.CENTER);
+        jContainerHome = new JContainerHome(actionListener);
+        this.add(jContainerHome,BorderLayout.CENTER);
 
         jContainerFooter = new JContainerFooter(actionListener);
         this.add(jContainerFooter,BorderLayout.SOUTH);
     }
 
+    public void setBody(JPanel jPanel){
+        this.remove(jContainerHome);
+        this.add(jPanel);
+    }
+
     public void addElementToTable(Object[] objects){
-        jContainerBody.addElementToTable(objects);
+        jContainerTable.addElementToTable(objects);
     }
 
     public void addElementToTable(ArrayList<Object[]> matrix){
-        jContainerBody.addElementToTable(matrix);
+        jContainerTable.addElementToTable(matrix);
     }
 
 
     @Override
     public void changeLanguage() {
         jContainerHeater.changeLanguage();
-        jContainerBody.changeLanguage();
+        jContainerTable.changeLanguage();
     }
 }

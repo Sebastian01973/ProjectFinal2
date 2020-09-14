@@ -1,4 +1,4 @@
-package views.body;
+package views.table;
 
 import utilities.Utilities;
 import utilities.UtilitiesViews;
@@ -13,13 +13,13 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class JContainerTable extends JPanel implements Language {
+public class JPanelTable extends JPanel implements Language {
 
     private DefaultTableModel dtmElements;
     private JTable jtElements;
     private JScrollPane jScrollPane;
 
-    public JContainerTable(ActionListener actionListener){
+    public JPanelTable(ActionListener actionListener){
         this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
         this.setBackground(Constant.COLOR_WHITE);
         dtmElements = new DefaultTableModel() {

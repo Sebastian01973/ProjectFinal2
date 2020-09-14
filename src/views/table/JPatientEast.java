@@ -1,11 +1,11 @@
-package views.body;
+package views.table;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
-public class JTableEast extends JPanel {
+public class JPatientEast extends JPanel {
 
-    public JTableEast(ActionListener actionListener) {
+    public JPatientEast(ActionListener actionListener) {
         initComponents(actionListener);
     }
 

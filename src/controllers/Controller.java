@@ -3,6 +3,7 @@ package controllers;
 import models.ManagePatients;
 import views.JFWindowsMain;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -54,7 +55,7 @@ public class Controller implements ActionListener {
     }
 
     private void loadFile() {
-
+        jfWindowsMain.setJpanel(new JPanel());
     }
 
     private void saveFile(){

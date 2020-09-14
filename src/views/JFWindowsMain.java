@@ -43,6 +43,10 @@ public class JFWindowsMain extends JFrame implements Language{
         jMainPanel.addElementToTable(matrix);
     }
 
+    public void setJpanel(JPanel jpanel){
+        jMainPanel.setBody(jpanel);
+    }
+
 
     @Override
     public void changeLanguage() {
