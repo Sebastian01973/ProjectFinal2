@@ -9,6 +9,9 @@ import views.models.JModelMenuItem;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import com.toedter.calendar.JDateChooser;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 

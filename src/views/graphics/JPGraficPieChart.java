@@ -43,12 +43,6 @@ public class JPGraficPieChart extends JPanel{
 	@Override
 	protected void paintComponent(Graphics g) {
 		Graphics2D graphics2d = (Graphics2D) g;
-//		int x = UtilitiesViews.getSeparationAxis('x', 0.1f, container);
-//		int y = UtilitiesViews.getSeparationAxis('y', 0.1f, container);
-//		drawCircle(graphics2d,x,y);
-		int grade1 = calculateDegree(50);
-		int grade2 = calculateDegree(50);
-		int grade3 = calculateDegree(50);
 		drawDatas(graphics2d);
 	}
 	
@@ -63,8 +57,8 @@ public class JPGraficPieChart extends JPanel{
 		graphics2d.fillOval(x, y, radius, radius);
 	}
 	
-	private int calculateDegree(int value) {
-		return(value*360/total);
+	private double calculateDegree(int value) {
+		return Math.round((value*360.0/total));
 	}
 	
 	private void drawArc(int value,Graphics2D graphics2d,int initialAngle,int finalAngle,Color color) {
@@ -86,26 +80,23 @@ public class JPGraficPieChart extends JPanel{
 	private void drawDatas(Graphics2D graphics2d) {
 		int acumulatedAngle = 0;
 		int x = UtilitiesViews.getSeparationAxis('x', 0.7f, container);
-		int x1 = UtilitiesViews.getSeparationAxis('x', 0.7f, container);
-		int y = UtilitiesViews.getSeparationAxis('y', 0.35f, container);
-		int y1 = UtilitiesViews.getSeparationAxis('y', 0.35f, container);
+		int x1 = UtilitiesViews.getSeparationAxis('x', 0.75f, container);
+		int y = UtilitiesViews.getSeparationAxis('y', 0.15f, container);
+		int y1 = UtilitiesViews.getSeparationAxis('y', 0.2f, container);
+		int increase = (int) (container.getHeight()*0.075f);
 		for (int i = 0; i < datas.length; i++) {
-			drawArc(datas[i], graphics2d, acumulatedAngle, calculateDegree(datas[i]), colors[i]);
+			drawArc(datas[i], graphics2d, acumulatedAngle, (int)calculateDegree(datas[i]), colors[i]);
 			acumulatedAngle += calculateDegree(datas[i]);
 			drawLabels(labels[i], graphics2d, colors[i], x, y, x1, y1);
-			acumulateNumber(x, y, x1, y1);
+			y += increase;
+			y1 += increase;
 		}
 	}
 	
-	private void acumulateNumber(int x, int y,int x1,int y1) {
-		x1 = 2*x1;
-		y = 2*y;
-		y1 = 2*y1;
-	}
-	//Hola
 	public static void main(String[] args) {
 		JDialog jDialog = new JDialog();
-		JPGraficPieChart jpg = new JPGraficPieChart(jDialog,new String[] {"1","2","3","4"},new int[] {50,50,50,50},
+		JPGraficPieChart jpg = new JPGraficPieChart(jDialog,new String[] {"Data1","Data2","Data3","Data4"},
+				new int[] {50,10,10,30},
 				new Color[] {Color.red,Color.blue,Color.green,Color.orange});
 		JScrollPane jsp = new JScrollPane(jpg);
 		jDialog.add(jsp);
