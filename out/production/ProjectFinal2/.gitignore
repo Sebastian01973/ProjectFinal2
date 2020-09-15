@@ -1,6 +1,7 @@
-/views/
 /controllers/
+/images/
 /models/
 /persistence/
 /runner/
 /utilities/
+/views/

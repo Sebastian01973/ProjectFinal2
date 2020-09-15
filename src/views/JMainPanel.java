@@ -20,6 +20,8 @@ public class JMainPanel extends JPanel implements Language{
     private JContainerStatistic jContainerStatistic;
     private JContainerAbout jContainerAbout;
     private JContainerFooter jContainerFooter;
+    
+    public static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 
 
     public JMainPanel(ActionListener actionListener) {

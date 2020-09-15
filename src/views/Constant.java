@@ -72,7 +72,10 @@ public class Constant {
     public static final String IMG_COV_STOP_SHAKING = "/images/Covid/stopShaking.png";
     public static final String IMG_COV_UCI = "/images/Covid/Uci.png";
     public static final String IMG_COV_WORLD = "/images/Covid/World.png";
-
+    // imagenes home
+    public static final String IMG_H_RECOVERED = "/images/Home/recuperados.jpg";
+    public static final String IMG_H_CASES = "/images/Home/casos.jpg";
+    public static final String IMG_H_BANNER = "/images/Home/banner.jpg";
 
     //    Titulos Principales
 
@@ -81,6 +84,7 @@ public class Constant {
 //    Titulos Secundarios
 
     //    Colores
+    public static final String COLOR_BANNER = "#767676";
 
     public static final Color COLOR_WHITE = Color.decode("#FFFFFF") ;
     public static final Color COLOR_BLACK = Color.decode("#000000") ;

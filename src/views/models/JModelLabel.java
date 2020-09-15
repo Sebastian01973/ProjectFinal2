@@ -6,6 +6,11 @@ import java.awt.*;
 public class JModelLabel extends JLabel{
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * @descprtion Este metodo nos agrega una imagen a un label
 	 * @param icon
 	 */

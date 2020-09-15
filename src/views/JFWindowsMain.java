@@ -31,6 +31,7 @@ public class JFWindowsMain extends JFrame implements Language{
         JScrollPane jspPanel = new JScrollPane(jMainPanel);
         jspPanel.setViewportView(jMainPanel);
         jspPanel.setOpaque(false);
+        jspPanel.getVerticalScrollBar().setUnitIncrement(10);
         this.getContentPane().add(jspPanel,BorderLayout.CENTER);
         this.getContentPane().setForeground(Constant.COLOR_WHITE);
     }
