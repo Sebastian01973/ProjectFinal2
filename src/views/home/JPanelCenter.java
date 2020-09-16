@@ -1,6 +1,7 @@
 package views.home;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -35,7 +36,7 @@ public class JPanelCenter extends JPanel{
 	public JPanelCenter() {
 		grid = new GridModel(this);
 		this.setLayout(new GridBagLayout());
-		this.setBackground(Color.BLUE);
+		this.setBackground(Constant.COLOR_WHITE);
 		initComponents();
 	}
 	
@@ -47,16 +48,20 @@ public class JPanelCenter extends JPanel{
 		lbImgRecovered = new JModelLabel(Constant.IMG_H_RECOVERED, 200, 200);
 		addLabel(lbImgRecovered, 0, 1, 1, 1, 1, GridBagConstraints.PAGE_START, GridBagConstraints.NONE);
 		
-		lbImgDeceased = new JModelLabel(Constant.IMG_H_CASES, 200, 200);
+		lbImgDeceased = new JModelLabel(Constant.IMG_H_DECEASED, 200, 200);
 		addLabel(lbImgDeceased, 0, 2, 1, 1, 1, GridBagConstraints.PAGE_START, GridBagConstraints.NONE);
 		
-		lbTextCases = new JModelLabel("Casos:", Color.black, Constant.FONT_ARIAL_ROUNDER_17);
+		grid.setExternalBorder();
+		lbTextCases = new JModelLabel(Constant.TEXT_H_LABEL_CASOS, Constant.IMG_H_LABEL_CASES, Constant.FONT_ARIAL_ROUNDER_17
+				,Color.black);
 		addLabel(lbTextCases, 1, 0, 1, 1, 1, GridBagConstraints.PAGE_START, GridBagConstraints.SOUTHWEST);
 		
-		lbTextRevcovered = new JModelLabel("Recuperados:", Color.BLACK, Constant.FONT_ARIAL_ROUNDER_17);
+		lbTextRevcovered = new JModelLabel(Constant.TEXT_H_LABEL_RECOVERED, Constant.IMG_H_LABEL_RECOVERED,
+				Constant.FONT_ARIAL_ROUNDER_17, Constant.COLOR_BLACK);
 		addLabel(lbTextRevcovered, 1, 1, 1, 1, 1, GridBagConstraints.PAGE_START, GridBagConstraints.SOUTHWEST);
 		
-		lbTextDeceased = new JModelLabel("Fallecidos:", Color.BLACK, Constant.FONT_ARIAL_ROUNDER_17);
+		lbTextDeceased = new JModelLabel(Constant.TEXT_H_LABEL_DECEASED, Constant.IMG_H_LABEL_DECEASED, 
+				Constant.FONT_ARIAL_ROUNDER_17, Constant.COLOR_BLACK);
 		addLabel(lbTextDeceased, 1, 2, 1, 1, 1, GridBagConstraints.PAGE_START, GridBagConstraints.SOUTHWEST);
 	}
 	

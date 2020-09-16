@@ -22,45 +22,42 @@ public class JPanelGraphics extends JPanel{
 	private static final long serialVersionUID = 1L;
 	public static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 	
-	private Container c;
 	private int[] datasX;
 	private int[] datasY;
 
-	public JPanelGraphics(Container c,int[] datasX,int[] datasY) {
-		this.c = c;
+	public JPanelGraphics(int[] datasX,int[] datasY) {
 		this.datasX = datasX;
 		this.datasY = datasY;
 		this.setBackground(Color.white);
-		this.initComponenets(c);
+		this.initComponenets();
 	}
 	
-	private void initComponenets(Container c) {
+	private void initComponenets() {
 	}
 	
 	@Override
 	protected void paintComponent(Graphics g) {
 		Graphics2D graphics2D = (Graphics2D) g;
 		graphics2D.setStroke(new BasicStroke(2));
-		int yAxisx = UtilitiesViews.getSeparationAxis('x',0.09f,this.c);
-		int yAxisy1 = UtilitiesViews.getSeparationAxis('y',0.05f,this.c);
-		int yAxisy2 = UtilitiesViews.getSeparationAxis('y',0.8f,this.c);
+		int yAxisx = UtilitiesViews.getSeparationAxis('x',0.09f,this);
+		int yAxisy1 = UtilitiesViews.getSeparationAxis('y',0.05f,this);
+		int yAxisy2 = UtilitiesViews.getSeparationAxis('y',0.8f,this);
 		int lengthYAxis = yAxisy2-yAxisy1;
 		UtilitiesViews.drawAxis(yAxisx, yAxisy1, yAxisx,yAxisy2,graphics2D);
 		String[] labelsY = new String[] {"100K","200K","300K","400K","500K","600K","700K","800K","900K","1M"};
-		UtilitiesViews.drawYDivisions(graphics2D, lengthYAxis, labelsY, c);
+		UtilitiesViews.drawYDivisions(graphics2D, lengthYAxis, labelsY,this);
 
-		int xAxisx1 = UtilitiesViews.getSeparationAxis('x',0.09f,this.c);
-		int xAxisx2 = UtilitiesViews.getSeparationAxis('x',0.9f,this.c);
-		int xAxisy = UtilitiesViews.getSeparationAxis('y',0.8f,this.c);
+		int xAxisx1 = UtilitiesViews.getSeparationAxis('x',0.09f,this);
+		int xAxisx2 = UtilitiesViews.getSeparationAxis('x',0.9f,this);
+		int xAxisy = UtilitiesViews.getSeparationAxis('y',0.8f,this);
 		int lengthXAxis = xAxisx2-xAxisx1;
 		String[] labelsX = new String[] {"3","4","5","6","7","8","9","10","11","12"};
 		UtilitiesViews.drawAxis(xAxisx1, xAxisy, xAxisx2,xAxisy,graphics2D);
-		UtilitiesViews.drawXDivisions(graphics2D, lengthXAxis, labelsX, c);
+		UtilitiesViews.drawXDivisions(graphics2D, lengthXAxis, labelsX, this);
 
 		// grafiac de los datos
 		drawFunction(graphics2D, datasX, datasY, datasX.length, lengthXAxis,
 				lengthYAxis);
-
 	}
 	
 
@@ -72,7 +69,7 @@ public class JPanelGraphics extends JPanel{
 	}
 
 	private int[] parsePointsX(int[] points,int length, int lengthLabelsX) {
-		int x = UtilitiesViews.getSeparationAxis('x',0.15f,this.c);
+		int x = UtilitiesViews.getSeparationAxis('x',0.15f,this);
 		int transfrmedPoints [] = new int[points.length];
 		int increase = length/lengthLabelsX;
 		for (int i = 0; i < points.length; i++) {
@@ -103,7 +100,7 @@ public class JPanelGraphics extends JPanel{
 
 	public static void main(String[] args) {
 		JDialog jDialog = new JDialog();
-		JPanelGraphics jpg = new JPanelGraphics(jDialog,new int[] {3,4,5,6,7,8,9},new int[]{100,200,200,400,500,580,200});
+		JPanelGraphics jpg = new JPanelGraphics(new int[] {3,4,5,6,7,8,9},new int[]{100,200,200,400,500,580,200});
 		JScrollPane jsp = new JScrollPane(jpg);
 		jDialog.add(jsp);
 		jDialog.setSize(new Dimension(900,600));

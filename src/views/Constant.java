@@ -75,8 +75,20 @@ public class Constant {
     // imagenes home
     public static final String IMG_H_RECOVERED = "/images/Home/recuperados.jpg";
     public static final String IMG_H_CASES = "/images/Home/casos.jpg";
+    public static final String IMG_H_DECEASED = "/images/Home/fallecidos.jpg";
     public static final String IMG_H_BANNER = "/images/Home/banner.jpg";
-
+    public static final String IMG_H_LABEL_CASES = "/images/Home/5952754 - coronavirus forbidden keep distance no contact.png";
+    public static final String IMG_H_LABEL_RECOVERED = "/images/Home/recovered.png";
+    public static final String IMG_H_LABEL_DECEASED = "/images/Home/deceased.png";
+    public static final String IMG_H_LABEL_UPTC = "/images/Home/uptc.jpg";
+    //text home
+    public static final String TEXT_H_LABEL_CASOS = "Casos:";
+    public static final String TEXT_H_LABEL_RECOVERED = "Recuperados: ";
+    public static final String TEXT_H_LABEL_DECEASED = "Fallecidos: ";
+    public static final String TEXT_H_LABEL_NAME1 = "<html>Andrés Felipe Nausán Fajardo<p>Estudiante Ing. de Sistemas y Computación</html>";
+    public static final String TEXT_H_LABEL_NAME2 = "<html>Sebastán Felipe Martínez Samacá"
+    		+ "<p>Estudiante Ing. de Sistemas y Computación.</html>";
+    
     //    Titulos Principales
 
     public static final String APP_TITLE = "Corona_Virus";
@@ -93,6 +105,7 @@ public class Constant {
     public static final Color COLOR_RED_TINTE = Color.decode("#C14343");
     public static final Color COLOR_GRAY_LIGHT = Color.decode("#CDD7DD");
     public static final Color COLOR_BLUE_COVID = Color.decode("#21adbe");
+    public static final Color COLOR_HOME_FOOTER = Color.decode("#363435");
 
 
 //    Fuentes

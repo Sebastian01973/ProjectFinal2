@@ -25,6 +25,7 @@ public class JContainerHome extends JPanel {
 	
 	private JPanelNorth jPNorth;
 	private JPanelCenter jPCenter;
+	private JPFooter jPfooter;
 	private GridModel grid;
 	/**
      * Creates a new <code>JPanel</code> with a double buffer
@@ -43,10 +44,9 @@ public class JContainerHome extends JPanel {
     	
     	jPCenter = new JPanelCenter();
     	this.add(jPCenter, grid.insertComponent(1, 0, 1, 1,1,GridBagConstraints.FIRST_LINE_START,GridBagConstraints.BOTH));
-    }
-    
-    public void addBanner() {
     	
+    	jPfooter = new JPFooter();
+    	this.add(jPfooter,grid.insertComponent(2, 0, 1, 1, 1, GridBagConstraints.FIRST_LINE_START, GridBagConstraints.BOTH));
     }
   
 }

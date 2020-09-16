@@ -22,7 +22,21 @@ public class JModelLabel extends JLabel{
 		ImageIcon image;
 		image = new ImageIcon(getClass().getResource(imagePath));
 		Icon icon = new ImageIcon(image.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
+		this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 		this.setIcon(icon);
+	}
+	
+	public JModelLabel(String text,String imagePath,Font font,Color foreground) {
+		super(text);
+		ImageIcon image;
+		image = new ImageIcon(getClass().getResource(imagePath));
+		Icon icon = new ImageIcon(image.getImage());
+		this.setIcon(icon);
+		this.setOpaque(false);
+		this.setFont(font);
+		this.setForeground(foreground);
+		this.setHorizontalTextPosition( SwingConstants.CENTER );
+        this.setVerticalTextPosition( SwingConstants.BOTTOM );
 	}
 	
 	public JModelLabel(String text, Color fg, Font font) {

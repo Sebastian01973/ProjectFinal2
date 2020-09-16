@@ -1,17 +1,15 @@
 package views.home;
 
 import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import views.Constant;
 import views.JMainPanel;
+import views.models.GridModel;
 import views.models.JModelLabel;
 
 
@@ -21,24 +19,19 @@ public class JPanelNorth extends JPanel{
 	 * 
 	 */
 	private JModelLabel lableBanner;
+	private GridModel grid;
 	private static final long serialVersionUID = 1L;
-	private GridBagConstraints gbc;
 	
 	public JPanelNorth() {
-		gbc = new GridBagConstraints();
-//		this.setBackground(Color.decode(Constant.COLOR_BANNER));
-		this.setBackground(Color.red);
+		this.setBackground(Color.decode(Constant.COLOR_BANNER));
+		grid = new GridModel(this);
+//		this.setBackground(Color.red);
 		this.setLayout(new GridBagLayout());
 		initComponents();
 	}
 	
 	private void initComponents() {
-		lableBanner = new JModelLabel(Constant.IMG_H_BANNER);
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		gbc.gridheight = 1;
-		gbc.gridwidth = 1;
-		gbc.fill = GridBagConstraints.EAST;
-		this.add(lableBanner,gbc);
+		lableBanner = new JModelLabel(Constant.IMG_H_BANNER,(int) JMainPanel.SCREEN_SIZE.getWidth()-100,400);
+		this.add(lableBanner,grid.insertComponent(0, 0, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE));
 	}
 }
