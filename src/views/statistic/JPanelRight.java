@@ -1,24 +1,27 @@
-package views.home;
+package views.statistic;
 
 import views.Constant;
+import views.Language;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
-public class JContainerHome extends JPanel {
-
+public class JPanelRight extends JPanel implements Language {
     /**
      * Creates a new <code>JPanel</code> with a double buffer
      * and a flow layout.
      */
-    public JContainerHome(ActionListener actionListener) {
-        this.setBackground(Constant.COLOR_WHITE);
+    public JPanelRight(ActionListener actionListener) {
         initComponents(actionListener);
+        this.setBackground(Constant.COLOR_BLACK);
     }
 
     private void initComponents(ActionListener actionListener) {
 
     }
 
+    @Override
+    public void changeLanguage() {
 
+    }
 }

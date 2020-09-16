@@ -92,16 +92,4 @@ public class JPGraficPieChart extends JPanel{
 			y1 += increase;
 		}
 	}
-	
-	public static void main(String[] args) {
-		JDialog jDialog = new JDialog();
-		JPGraficPieChart jpg = new JPGraficPieChart(jDialog,new String[] {"Data1","Data2","Data3","Data4"},
-				new int[] {50,10,10,30},
-				new Color[] {Color.red,Color.blue,Color.green,Color.orange});
-		JScrollPane jsp = new JScrollPane(jpg);
-		jDialog.add(jsp);
-		jDialog.setSize(new Dimension(600,400));
-		jDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		jDialog.setVisible(true);
-	}
 }

@@ -89,17 +89,4 @@ public class JPBarGraphic extends JPanel{
 		graphics2d.fillRect(x, y, width, height);
 		graphics2d.drawString(label, x1, y1);
 	}
-
-	public static void main(String[] args) {
-		JDialog jDialog = new JDialog();
-		JPBarGraphic jpg = new JPBarGraphic(jDialog,new String[] {"1","2","3","4","5","6","7","8"},new String[] {
-				"10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"
-		},new int[] {22,33,45,88,70,40,80,90},new String[] {"Data1","Data","Data","Data","Data"
-				,"Data","Data7","Data8"},new Color[] {Color.red});
-		JScrollPane jsp = new JScrollPane(jpg);
-		jDialog.add(jsp);
-		jDialog.setSize(new Dimension(500,600));
-		jDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		jDialog.setVisible(true);
-	}
 }

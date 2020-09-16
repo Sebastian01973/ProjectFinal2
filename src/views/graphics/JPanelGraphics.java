@@ -13,7 +13,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class JPanelGraphics extends JPanel{
+public class JPanelGraphics extends  JPanel{
 
 
 	/**
@@ -30,11 +30,13 @@ public class JPanelGraphics extends JPanel{
 		this.c = c;
 		this.datasX = datasX;
 		this.datasY = datasY;
-		this.setBackground(Color.white);
+		c.setBackground(Color.white);
 		this.initComponenets(c);
 	}
 	
-	private void initComponenets(Container c) {
+	private void initComponenets(Container c) {{
+
+	}
 	}
 	
 	@Override
@@ -101,15 +103,15 @@ public class JPanelGraphics extends JPanel{
 		this.datasY = datasY;
 	}
 
-	public static void main(String[] args) {
-		JDialog jDialog = new JDialog();
-		JPanelGraphics jpg = new JPanelGraphics(jDialog,new int[] {3,4,5,6,7,8,9},new int[]{100,200,200,400,500,580,200});
-		JScrollPane jsp = new JScrollPane(jpg);
-		jDialog.add(jsp);
-		jDialog.setSize(new Dimension(900,600));
-		jDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		jpg.setDatasX(new int[] {3,4,5,6,7,8,9});
-		jpg.setDatasY(new int[]{100,100,100,400,500,580,200});
-		jDialog.setVisible(true);
-	}
+//	public static void main(String[] args) {
+//		JDialog jDialog = new JDialog();
+//		JPanelGraphics jpg = new JPanelGraphics(jDialog,new int[] {3,4,5,6,7,8,9},new int[]{100,200,200,400,500,580,200});
+//		JScrollPane jsp = new JScrollPane(jpg);
+//		jDialog.add(jsp);
+//		jDialog.setSize(new Dimension(900,600));
+//		jDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+//		jpg.setDatasX(new int[] {3,4,5,6,7,8,9});
+//		jpg.setDatasY(new int[]{100,100,100,400,500,580,200});
+//		jDialog.setVisible(true);
+//	}
 }

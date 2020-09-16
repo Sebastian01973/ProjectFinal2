@@ -37,6 +37,7 @@ public class Constant {
     public static final String IMG_LOC = "/images/loc.png";
     public static final String IMG_COl = "/images/col.png";
     public static final String IMG_TABLE = "/images/table.png";
+    public static final String IMG_TABLE1 = "/images/table1.png";
     public static final String IMG_DEATH = "/images/death.jpg";
     public static final String IMG_GRAPHICS = "/images/graphics.png";
     public static final String IMG_LOCATION = "/images/location.png";
@@ -86,11 +87,15 @@ public class Constant {
     //    Colores
     public static final String COLOR_BANNER = "#767676";
 
+    public static final Color COLOR_BLUE_DARK = Color.decode("#0e4892");
+    public static final Color COLOR_BLUE_LIGHT_G = Color.decode("#1592e4");
     public static final Color COLOR_WHITE = Color.decode("#FFFFFF") ;
     public static final Color COLOR_BLACK = Color.decode("#000000") ;
     public static final Color COLOR_BLUE_LIGHT = Color.decode("#52D9E9") ;
     public static final Color COLOR_GREEN_SOFT = Color.decode("#25B50F") ;
-    public static final Color COLOR_RED_TINTE = Color.decode("#C14343");
+    public static final Color COLOR_RED_TINTE = Color.decode("#e60000");
+    public static final Color COLOR_RED_LIGHT = Color.decode("#ff3334");
+    public static final Color COLOR_RED_DARK = Color.decode("#b40001");
     public static final Color COLOR_GRAY_LIGHT = Color.decode("#CDD7DD");
     public static final Color COLOR_BLUE_COVID = Color.decode("#21adbe");
 
@@ -123,30 +128,25 @@ public class Constant {
     public static final String M_LOAD = "Load";
     public static final String M_EXIT = "Exit";
     public static final String M_HOME = "Home";
+    public static final String M_TABLE = "Table";
 
 //Menu Estadisticas
     public static final String M_STATISTICS = "Statistics";
-    public static final String M_STA_REPORT_COL = "Report_Colombia";
     public static final String M_STA_REPORT_LOCATION = "Report_Location";
-    public static final String M_STA_STATE_HEALTH = "Report_State_Health";
 
     public static final String M_STA_REPORT_DEATH = "Report_Death";
     public static final String M_STA_REPORT_RECOVERED = "Report_Recovered";
     public static final String M_STA_REPORT_DIAGNOSTIC= "Report_Diagnostic";
 
-    public static final String M_REPORT_RANGE_AGE= "Report_Range_Age";
-    public static final String M_REPORT_AGE= "Report_Age";
-    public static final String M_REPORT_MONTHS= "Report_Months";
+    public static final String M_STATE_HEALTH= "Report_State_Health";
     public static final String M_PERCENTAGE_LETHALITY= "Report_Percentage_Lethality";
 
     public static final String M_STA_TABLE_FOR_LOCATION = "Report_Table_Location";
 
     //Menu de paciente,Graficos y Acerca de....
 
-
-    public static final String M_GRAP_FOR_MONTHS = "Report_Graphics_Months";
     public static final String M_GRAP_BAR_REPORT = "Report_Graphics_Bar";
-    public static final String M_GRAP_REPORT = "Report_Graphics";
+    public static final String M_GRAP_REPORT_LINE = "Report_Graphics_Line";
     public static final String M_GRAP_TORTE_REPORT = "Report_Graphics_Torte";
 
     public static final String M_ABOUT = "About";

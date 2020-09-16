@@ -1,5 +1,8 @@
 package utilities;
 
+import views.models.JModelLabel;
+
+import javax.swing.*;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Graphics2D;
@@ -66,5 +69,10 @@ public class UtilitiesViews {
 			g2D.setColor(Color.black);
 			g2D.drawString(labels[i], x1-30, (int)(length-value*sizeDivision));
 		}
+	}
+
+	public static JLabel spaceLabel(Color bg, Color fg){
+    	JLabel space = new JModelLabel("<html>s<p>s<p><html>",bg,fg);
+    	return  space;
 	}
 }
