@@ -15,14 +15,10 @@ import java.util.ArrayList;
 public class JMainPanel extends JPanel implements Language{
 
     private JContainerHeader jContainerHeater;
-    private JContainerHome jContainerHome;
-    private JContainerTable jContainerTable;
-    private JContainerStatistic jContainerStatistic;
-    private JContainerAbout jContainerAbout;
+    private JCardLayout jcardLayout;
     private JContainerFooter jContainerFooter;
-    
-    public static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 
+    public static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 
     public JMainPanel(ActionListener actionListener) {
         this.setLayout(new BorderLayout(0,0));
@@ -34,30 +30,36 @@ public class JMainPanel extends JPanel implements Language{
         jContainerHeater = new JContainerHeader(actionListener);
         this.add(jContainerHeater,BorderLayout.NORTH);
 
-        jContainerHome = new JContainerHome(actionListener);
-        this.add(jContainerHome,BorderLayout.CENTER);
+        jcardLayout = new JCardLayout(actionListener);
+        this.add(jcardLayout,BorderLayout.CENTER);
 
         jContainerFooter = new JContainerFooter(actionListener);
         this.add(jContainerFooter,BorderLayout.SOUTH);
     }
 
-    public void setBody(JPanel jPanel){
-        this.remove(jContainerHome);
-        this.add(jPanel);
+    public void showPanels(String command){
+        jcardLayout.showPanels(command);
     }
 
+    public void showCardGraphics(String command){
+        jcardLayout.showCardGraphics(command);
+    }
+
+
     public void addElementToTable(Object[] objects){
-        jContainerTable.addElementToTable(objects);
+        jcardLayout.addElementToTable(objects);
     }
 
     public void addElementToTable(ArrayList<Object[]> matrix){
-        jContainerTable.addElementToTable(matrix);
+        jcardLayout.addElementToTable(matrix);
     }
 
 
     @Override
     public void changeLanguage() {
         jContainerHeater.changeLanguage();
-        jContainerTable.changeLanguage();
+        jcardLayout.changeLanguage();
     }
+
+
 }

@@ -1,9 +1,9 @@
 package controllers;
 
 import models.ManagePatients;
+import views.JCardLayout;
 import views.JFWindowsMain;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,7 +15,6 @@ public class Controller implements ActionListener {
     ManagePatients managePatients;
     ConfigLanguage configLanguage;
     JFWindowsMain jfWindowsMain;
-
 
 
     public Controller() {
@@ -31,6 +30,13 @@ public class Controller implements ActionListener {
         switch (Command.valueOf(e.getActionCommand())){
             case C_ES_LANGUAGE: this.manageChangeLanguageES(); break;
             case C_US_LANGUAGE: this.manageChangeLanguageUS(); break;
+            case C_MENU_HOME: showPanels(Command.C_MENU_HOME.toString());break;
+            case C_MENU_TABLE: showPanels(Command.C_MENU_TABLE.toString());break;
+            case C_MENU_STATISTIC: showPanels(Command.C_MENU_STATISTIC.toString());break;
+            case C_MENU_ABOUT: showPanels(Command.C_MENU_ABOUT.toString());break;
+            case C_GRAPHICS_LINE: showGraphics(Command.C_GRAPHICS_LINE.toString()); break;
+            case C_GRAPHICS_BAR: showGraphics(Command.C_GRAPHICS_BAR.toString()); break;
+            case C_GRAPHICS_TORTE: showGraphics(Command.C_GRAPHICS_TORTE.toString()); break;
             case LOAD_FILE: this.loadFile(); break;
             case SAVE_FILE: this.saveFile(); break;
             case ADD_PATIENT: this.addPatient(); break;
@@ -40,6 +46,15 @@ public class Controller implements ActionListener {
             case EXIT_APP: this.exitApp(); break;
             case REFRESH_DATA: this.refreshData(); break;
         }
+    }
+
+    private void showGraphics(String command){
+        jfWindowsMain.showCardGraphics(command);
+    }
+
+
+    private void showPanels(String command) {
+        jfWindowsMain.showPanels(command);
     }
 
     private void refreshData() {
@@ -55,7 +70,7 @@ public class Controller implements ActionListener {
     }
 
     private void loadFile() {
-        jfWindowsMain.setJpanel(new JPanel());
+
     }
 
     private void saveFile(){

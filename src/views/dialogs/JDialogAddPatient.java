@@ -27,6 +27,8 @@ public class JDialogAddPatient extends JDialog implements Language {
         this.setSize(new Dimension(500, 650));
         this.setLocationRelativeTo(jfWindowsMain);
         initComponents(actionListener);
+
+
     }
 
 

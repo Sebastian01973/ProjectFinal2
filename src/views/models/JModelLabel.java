@@ -12,7 +12,7 @@ public class JModelLabel extends JLabel{
 
 	/**
 	 * @descprtion Este metodo nos agrega una imagen a un label
-	 * @param icon
+	 * @param
 	 */
 	public JModelLabel(String imagePath) {
 		this.setIcon( new ImageIcon(getClass().getResource( imagePath )));
@@ -43,6 +43,13 @@ public class JModelLabel extends JLabel{
 		super(text);
 		this.setOpaque(false);
 		this.setFont(font);
+		this.setForeground(fg);
+	}
+
+	public JModelLabel(String text, Color bg, Color fg) {
+		super(text);
+		this.setOpaque(false);
+		this.setBackground(bg);
 		this.setForeground(fg);
 	}
 	

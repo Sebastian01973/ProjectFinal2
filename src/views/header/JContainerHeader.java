@@ -16,7 +16,6 @@ import java.awt.event.ActionListener;
 public class JContainerHeader extends JPanel implements Language {
 
     private JMainMenu jMainMenu;
-    private JMainToolBar jMainToolBar;
     private JModelLabel jMLBanner;
     private JModelButtonLanguage jBSpanish,jBEnglish,jBHome;
     JModelPanel panelLanguage,panelBanner;
@@ -39,9 +38,6 @@ public class JContainerHeader extends JPanel implements Language {
 
         jMainMenu = new JMainMenu(actionListener);
         this.add(jMainMenu, BorderLayout.CENTER);
-
-        jMainToolBar = new JMainToolBar(actionListener);
-        this.add(jMainToolBar,BorderLayout.SOUTH);
 
         panelLanguage = new JModelPanel(new FlowLayout(0),Constant.COLOR_BLACK);
         jBSpanish = new JModelButtonLanguage(Utilities.getKey(Constant.M_LANGUAGE_ES),Constant.IMG_SPANISH,Constant.FONT_NEW_ROMAN_13,25,25,Constant.COLOR_BLACK,Constant.COLOR_WHITE);

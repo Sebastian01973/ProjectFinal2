@@ -1,6 +1,5 @@
 package views;
 
-import org.json.simple.JsonObject;
 import utilities.Utilities;
 
 import javax.swing.*;
@@ -12,7 +11,6 @@ import com.toedter.calendar.JDateChooser;
 public class JFWindowsMain extends JFrame implements Language{
 
     private JMainPanel jMainPanel;
-    private JDateChooser jdCalendar;
 
 
     public JFWindowsMain (ActionListener actionListener){
@@ -36,6 +34,14 @@ public class JFWindowsMain extends JFrame implements Language{
         this.getContentPane().setForeground(Constant.COLOR_WHITE);
     }
 
+    public void showPanels(String command){
+        jMainPanel.showPanels(command);
+    }
+
+    public void showCardGraphics(String command){
+        jMainPanel.showCardGraphics(command);
+    }
+
     public void addElementToTable(Object[] objects){
         jMainPanel.addElementToTable(objects);
     }
@@ -43,11 +49,6 @@ public class JFWindowsMain extends JFrame implements Language{
     public void addElementToTable(ArrayList<Object[]> matrix){
         jMainPanel.addElementToTable(matrix);
     }
-
-    public void setJpanel(JPanel jpanel){
-        jMainPanel.setBody(jpanel);
-    }
-
 
     @Override
     public void changeLanguage() {

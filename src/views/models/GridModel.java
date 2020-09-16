@@ -36,6 +36,22 @@ public class GridModel {
 		constraints.fill = fill;
 		return constraints;
 	}
+
+	public GridBagConstraints insertComponent(int row, int column,Insets insets){
+		constraints.gridy = row;
+		constraints.gridx = column;
+		constraints.insets = insets;
+		return constraints;
+	}
+
+	public GridBagConstraints insertComponent(int row, int column, int width, int height,Insets insets){
+		constraints.gridy = row;
+		constraints.gridx = column;
+		constraints.gridwidth = width;
+		constraints.gridheight = height;
+		constraints.insets = insets;
+		return constraints;
+	}
 	/**
 	 * 
 	 * Keeps row and height

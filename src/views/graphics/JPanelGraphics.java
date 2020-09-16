@@ -13,7 +13,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class JPanelGraphics extends JPanel{
+public class JPanelGraphics extends  JPanel{
 
 
 	/**
@@ -28,13 +28,7 @@ public class JPanelGraphics extends JPanel{
 	public JPanelGraphics(int[] datasX,int[] datasY) {
 		this.datasX = datasX;
 		this.datasY = datasY;
-		this.setBackground(Color.white);
-		this.initComponenets();
 	}
-	
-	private void initComponenets() {
-	}
-	
 	@Override
 	protected void paintComponent(Graphics g) {
 		Graphics2D graphics2D = (Graphics2D) g;
