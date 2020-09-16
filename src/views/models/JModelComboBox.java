@@ -18,7 +18,7 @@ import javax.swing.plaf.basic.BasicComboBoxUI;
 
 import views.Constant;
 
-public class JModelComboBox extends JComboBox<Object>{
+public class JModelComboBox<A> extends JComboBox<Object>{
 	
 	/**
 	 * 

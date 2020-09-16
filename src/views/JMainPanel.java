@@ -1,9 +1,5 @@
 package views;
 
-import views.about.JContainerAbout;
-import views.home.JContainerHome;
-import views.statistic.JContainerStatistic;
-import views.table.JContainerTable;
 import views.footer.JContainerFooter;
 import views.header.JContainerHeader;
 

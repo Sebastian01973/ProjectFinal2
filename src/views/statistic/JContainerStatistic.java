@@ -1,17 +1,8 @@
 package views.statistic;
 
-import views.Constant;
 import views.Language;
-import views.graphics.JPBarGraphic;
-import views.graphics.JPGraficPieChart;
-import views.graphics.JPanelGraphics;
-import views.home.JPanelNorth;
-import views.models.GridModel;
-import views.models.GridSystem;
-import views.models.JModelLabel;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 

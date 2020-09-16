@@ -45,6 +45,7 @@ public class JPCardGraphics extends JPanel implements Language {
 
     public void showCardGraphics(String command){
         cardLayout.show(this,command);
+        this.revalidate();
     }
 
     @Override

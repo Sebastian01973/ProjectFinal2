@@ -1,11 +1,13 @@
 package views.dialogs;
 
 import com.toedter.calendar.JDateChooser;
-import utilities.Utilities;
+import models.Attention;
+import models.Gender;
+import models.HealthCondition;
 import views.Constant;
 import views.JFWindowsMain;
 import views.Language;
-import views.models.JModelPanel;
+import views.models.JModelComboBox;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,8 +15,11 @@ import java.awt.event.ActionListener;
 
 public class JDialogAddPatient extends JDialog implements Language {
 
-    private JModelPanel jpanel;
     private JSpinner jsAge;
+    private  JModelComboBox<Gender> jCBGender;
+    private JModelComboBox<Attention> jCBAttention;
+    private JModelComboBox<HealthCondition> JCBHealth;
+
     private JDateChooser jDateChooser;
     private JButton jBCreate,jBCancel;
 

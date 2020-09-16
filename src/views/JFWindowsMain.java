@@ -26,11 +26,7 @@ public class JFWindowsMain extends JFrame implements Language{
     private void initComponents(ActionListener actionListener) {
 
         jMainPanel = new JMainPanel(actionListener);
-        JScrollPane jspPanel = new JScrollPane(jMainPanel);
-        jspPanel.setViewportView(jMainPanel);
-        jspPanel.setOpaque(false);
-        jspPanel.getVerticalScrollBar().setUnitIncrement(10);
-        this.getContentPane().add(jspPanel,BorderLayout.CENTER);
+        this.getContentPane().add(jMainPanel,BorderLayout.CENTER);
         this.getContentPane().setForeground(Constant.COLOR_WHITE);
     }
 

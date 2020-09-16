@@ -46,6 +46,7 @@ public class JModelLabel extends JLabel{
 		this.setForeground(fg);
 	}
 
+
 	public JModelLabel(String text, Color bg, Color fg) {
 		super(text);
 		this.setOpaque(false);

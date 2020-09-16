@@ -12,6 +12,99 @@ public class Constant {
 
     //    Imagenes
 
+
+    //text home
+    public static final String TEXT_H_LABEL_CASOS = "Casos:";
+    public static final String TEXT_H_LABEL_RECOVERED = "Recuperados: ";
+    public static final String TEXT_H_LABEL_DECEASED = "Fallecidos: ";
+    public static final String TEXT_H_LABEL_NAME1 = "<html>Andrés Felipe Nausán Fajardo<p>Estudiante Ing. de Sistemas y Computación</html>";
+    public static final String TEXT_H_LABEL_NAME2 = "<html>Sebastán Felipe Martínez Samacá"
+    		+ "<p>Estudiante Ing. de Sistemas y Computación.</html>";
+    
+    //    Titulos Principales
+
+    public static final String APP_TITLE = "Corona_Virus";
+
+//    Titulos Secundarios
+
+    //    Colores
+    public static final String COLOR_BANNER = "#767676";
+
+    public static final Color COLOR_BLUE_DARK = Color.decode("#0e4892");
+    public static final Color COLOR_BLUE_LIGHT_G = Color.decode("#1592e4");
+    public static final Color COLOR_WHITE = Color.decode("#FFFFFF") ;
+    public static final Color COLOR_BLACK = Color.decode("#000000") ;
+    public static final Color COLOR_BLUE_LIGHT = Color.decode("#52D9E9") ;
+    public static final Color COLOR_GREEN_SOFT = Color.decode("#25B50F") ;
+    public static final Color COLOR_RED_TINTE = Color.decode("#e60000");
+    public static final Color COLOR_RED_LIGHT = Color.decode("#ff3334");
+    public static final Color COLOR_RED_DARK = Color.decode("#b40001");
+    public static final Color COLOR_GRAY_LIGHT = Color.decode("#f6f8f9");
+    public static final Color COLOR_BLUE_COVID = Color.decode("#21adbe");
+    public static final Color COLOR_HOME_FOOTER = Color.decode("#363435");
+
+
+//    Fuentes
+    public static final Font FONT_ROCWELL = new Font("Rockwell",Font.PLAIN, 20);
+    public static final Font FONT_NEW_ROMAN_13 = new Font("Times New Roman",Font.PLAIN, 13);
+    public static final Font FONT_NEW_ROMAN_25 = new Font("Times New Roman",Font.PLAIN, 25);
+    public static final Font FONT_COMPONENTS_DIALOG_COST = new Font("Bodoni MT", Font.PLAIN, 15);
+    public static final Font FONT_ARIAL_ROUNDER_17 = new Font("Arial Rounded MT Bold", Font.PLAIN, 17);
+    public static final Font FONT_ARIAL_ROUNDER_30 = new Font("Arial Rounded MT Bold", Font.PLAIN, 30);
+    public static final Font FONT_ARIAL_ROUNDER_15 = new Font("Arial Rounded MT Bold", Font.PLAIN, 15);
+    public static final Font FONT_HELVETICA_17 = new Font("Helvetica", Font.PLAIN, 17);
+    public static final Font FONT_HELVETICA_15 = new Font("Helvetica", Font.PLAIN, 15);
+
+
+//    Titulos del menu
+
+//    Titulos de menus
+    public static final String M_FILE = "File";
+    public static final String M_REFRESH = "Refresh";
+    public static final String M_PATIENT = "Patient";
+    public static final String M_ADD_DIAGNOSTIC = "Add_Diagnostic";
+    public static final String M_SEARCH_DIAGNOSTIC = "Search_Diagnostic";
+    public static final String M_MODIFY_DIAGNOSTIC = "Modify_Diagnostic";
+    public static final String M_DELETE_DIAGNOSTIC = "Delete_Diagnostic";
+    public static final String M_LANGUAGE = "Language";
+    public static final String M_LANGUAGE_ES = "Spanish";
+    public static final String M_LANGUAGE_US = "English";
+    public static final String M_SAVE = "Save";
+    public static final String M_LOAD = "Load";
+    public static final String M_EXIT = "Exit";
+    public static final String M_HOME = "Home";
+    public static final String M_TABLE = "Table";
+
+//Menu Estadisticas
+    public static final String M_STATISTICS = "Statistics";
+    public static final String M_STA_REPORT_LOCATION = "Report_Location";
+
+    public static final String M_STA_REPORT_DEATH = "Report_Death";
+    public static final String M_STA_REPORT_RECOVERED = "Report_Recovered";
+    public static final String M_STA_REPORT_DIAGNOSTIC= "Report_Diagnostic";
+
+    public static final String M_STATE_HEALTH= "Report_State_Health";
+    public static final String M_PERCENTAGE_LETHALITY= "Report_Percentage_Lethality";
+
+    public static final String M_STA_TABLE_FOR_LOCATION = "Report_Table_Location";
+
+    //Menu de paciente,Graficos y Acerca de....
+
+    public static final String M_GRAP_BAR_REPORT = "Report_Graphics_Bar";
+    public static final String M_GRAP_REPORT_LINE = "Report_Graphics_Line";
+    public static final String M_GRAP_TORTE_REPORT = "Report_Graphics_Torte";
+
+    public static final String M_ABOUT = "About";
+    public static final String M_CREATORS = "About_Creators";
+    public static final String M_APPLICATION = "About_App";
+    public static final String M_TITLTE_STATES = "Title_States";
+    public static final String M_DIALOG_STATES = "Dialog_States";
+
+
+    //    Titulos de la tabla
+    public static final Object[] HEADERDS_TABLEMAIN = {"Number_Case","Gender","Age","Attention", "Location_City",
+        "Health_Condition","Date_Diagnostic","Date_Recovered","Date_Death"};
+
     public static final String IMG_ICON_APP = "/images/covidIcon.png";
     public static final String IMG_ABOUT = "/images/about.jpg";
     public static final String IMG_ABOUT_US = "/images/aboutUs.png";
@@ -82,91 +175,40 @@ public class Constant {
     public static final String IMG_H_LABEL_RECOVERED = "/images/Home/recovered.png";
     public static final String IMG_H_LABEL_DECEASED = "/images/Home/deceased.png";
     public static final String IMG_H_LABEL_UPTC = "/images/Home/uptc.jpg";
-    //text home
-    public static final String TEXT_H_LABEL_CASOS = "Casos:";
-    public static final String TEXT_H_LABEL_RECOVERED = "Recuperados: ";
-    public static final String TEXT_H_LABEL_DECEASED = "Fallecidos: ";
-    public static final String TEXT_H_LABEL_NAME1 = "<html>Andrés Felipe Nausán Fajardo<p>Estudiante Ing. de Sistemas y Computación</html>";
-    public static final String TEXT_H_LABEL_NAME2 = "<html>Sebastán Felipe Martínez Samacá"
-    		+ "<p>Estudiante Ing. de Sistemas y Computación.</html>";
-    
-    //    Titulos Principales
 
-    public static final String APP_TITLE = "Corona_Virus";
+    //Imagenes Departamentos
+    public static final String IMG_AMAZONAS = "/images/states/Amazonas.jpg";
+    public static final String IMG_ANTIOQUIA = "/images/states/Antioquia.jpg";
+    public static final String IMG_ARAUCA = "/images/states/Arauca.jpg";
+    public static final String IMG_ATLANTICO = "/images/states/Atlantico.jpg";
+    public static final String IMG_BOGOTA = "/images/states/Bogota.jpg";
+    public static final String IMG_BOLIVAR = "/images/states/Bolivar.jpg";
+    public static final String IMG_BOYACA = "/images/states/Boyaca.jpg";
+    public static final String IMG_CALDAS = "/images/states/Caldas.jpg";
+    public static final String IMG_CAQUETA = "/images/states/Caqueta.jpg";
+    public static final String IMG_CASANARE = "/images/states/Casanare.jpg";
+    public static final String IMG_CAUCA = "/images/states/Cauca.jpg";
+    public static final String IMG_CESAR = "/images/states/Cesar.jpg";
+    public static final String IMG_CHOCO = "/images/states/Choco.jpg";
+    public static final String IMG_CORDOBA = "/images/states/Cordoba.jpg";
+    public static final String IMG_CUNDINAMARCA = "/images/states/Cundinamarca.jpg";
+    public static final String IMG_GUIANIA = "/images/states/Guainia.jpg";
+    public static final String IMG_GUAJIRA = "/images/states/Guajira.jpg";
+    public static final String IMG_GUAVIARE = "/images/states/Guaviare.jpg";
+    public static final String IMG_HUILA = "/images/states/Huila.jpg";
+    public static final String IMG_MAGDALENA = "/images/states/Magdalena.jpg";
+    public static final String IMG_META = "/images/states/Meta.jpg";
+    public static final String IMG_NARIÑO = "/images/states/Nariño.jpg";
+    public static final String IMG_NORTE_SANTANDER = "/images/states/NorteSantander.jpg";
+    public static final String IMG_PUTUMAYO = "/images/states/Putumayo.jpg";
+    public static final String IMG_QUINDIO = "/images/states/Quindio.jpg";
+    public static final String IMG_RISARALDAS = "/images/states/Risaralda.jpg";
+    public static final String IMG_SAN_ANDRES = "/images/states/SanAndres.jpg";
+    public static final String IMG_SANTANDER = "/images/states/Santander.jpg";
+    public static final String IMG_SUCRE = "/images/states/Sucre.jpg";
+    public static final String IMG_TOLIMA = "/images/states/Tolima.jpg";
+    public static final String IMG_VALLE_CAUCA = "/images/states/ValleCauca.jpg";
+    public static final String IMG_VAUPES = "/images/states/Vaupes.jpg";
+    public static final String IMG_VICHADA = "/images/states/Vichada.jpg";
 
-//    Titulos Secundarios
-
-    //    Colores
-    public static final String COLOR_BANNER = "#767676";
-
-    public static final Color COLOR_BLUE_DARK = Color.decode("#0e4892");
-    public static final Color COLOR_BLUE_LIGHT_G = Color.decode("#1592e4");
-    public static final Color COLOR_WHITE = Color.decode("#FFFFFF") ;
-    public static final Color COLOR_BLACK = Color.decode("#000000") ;
-    public static final Color COLOR_BLUE_LIGHT = Color.decode("#52D9E9") ;
-    public static final Color COLOR_GREEN_SOFT = Color.decode("#25B50F") ;
-    public static final Color COLOR_RED_TINTE = Color.decode("#e60000");
-    public static final Color COLOR_RED_LIGHT = Color.decode("#ff3334");
-    public static final Color COLOR_RED_DARK = Color.decode("#b40001");
-    public static final Color COLOR_GRAY_LIGHT = Color.decode("#CDD7DD");
-    public static final Color COLOR_BLUE_COVID = Color.decode("#21adbe");
-    public static final Color COLOR_HOME_FOOTER = Color.decode("#363435");
-
-
-//    Fuentes
-    public static final Font FONT_ROCWELL = new Font("Rockwell",Font.PLAIN, 20);
-    public static final Font FONT_NEW_ROMAN_13 = new Font("Times New Roman",Font.PLAIN, 13);
-    public static final Font FONT_NEW_ROMAN_25 = new Font("Times New Roman",Font.PLAIN, 25);
-    public static final Font FONT_COMPONENTS_DIALOG_COST = new Font("Bodoni MT", Font.PLAIN, 15);
-    public static final Font FONT_ARIAL_ROUNDER_17 = new Font("Arial Rounded MT Bold", Font.PLAIN, 17);
-    public static final Font FONT_ARIAL_ROUNDER_15 = new Font("Arial Rounded MT Bold", Font.PLAIN, 15);
-    public static final Font FONT_HELVETICA_17 = new Font("Helvetica", Font.PLAIN, 17);
-    public static final Font FONT_HELVETICA_15 = new Font("Helvetica", Font.PLAIN, 15);
-
-
-//    Titulos del menu
-
-//    Titulos de menus
-    public static final String M_FILE = "File";
-    public static final String M_REFRESH = "Refresh";
-    public static final String M_PATIENT = "Patient";
-    public static final String M_ADD_DIAGNOSTIC = "Add_Diagnostic";
-    public static final String M_SEARCH_DIAGNOSTIC = "Search_Diagnostic";
-    public static final String M_MODIFY_DIAGNOSTIC = "Modify_Diagnostic";
-    public static final String M_DELETE_DIAGNOSTIC = "Delete_Diagnostic";
-    public static final String M_LANGUAGE = "Language";
-    public static final String M_LANGUAGE_ES = "Spanish";
-    public static final String M_LANGUAGE_US = "English";
-    public static final String M_SAVE = "Save";
-    public static final String M_LOAD = "Load";
-    public static final String M_EXIT = "Exit";
-    public static final String M_HOME = "Home";
-    public static final String M_TABLE = "Table";
-
-//Menu Estadisticas
-    public static final String M_STATISTICS = "Statistics";
-    public static final String M_STA_REPORT_LOCATION = "Report_Location";
-
-    public static final String M_STA_REPORT_DEATH = "Report_Death";
-    public static final String M_STA_REPORT_RECOVERED = "Report_Recovered";
-    public static final String M_STA_REPORT_DIAGNOSTIC= "Report_Diagnostic";
-
-    public static final String M_STATE_HEALTH= "Report_State_Health";
-    public static final String M_PERCENTAGE_LETHALITY= "Report_Percentage_Lethality";
-
-    public static final String M_STA_TABLE_FOR_LOCATION = "Report_Table_Location";
-
-    //Menu de paciente,Graficos y Acerca de....
-
-    public static final String M_GRAP_BAR_REPORT = "Report_Graphics_Bar";
-    public static final String M_GRAP_REPORT_LINE = "Report_Graphics_Line";
-    public static final String M_GRAP_TORTE_REPORT = "Report_Graphics_Torte";
-
-    public static final String M_ABOUT = "About";
-    public static final String M_CREATORS = "About_Creators";
-    public static final String M_APPLICATION = "About_App";
-
-    //    Titulos de la tabla
-    public static final Object[] HEADERDS_TABLEMAIN = {"Number_Case","Gender","Age","Attention", "Location_City",
-        "Health_Condition","Date_Diagnostic","Date_Recovered","Date_Death"};
 }
