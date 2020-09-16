@@ -3,22 +3,20 @@ package views.statistic;
 import controllers.Command;
 import views.Constant;
 import views.Language;
-import views.graphics.JPBarGraphic;
-import views.graphics.JPGraficPieChart;
-import views.graphics.JPanelGraphics;
+import views.graphics.*;
 
 import javax.swing.*;
 
-import com.sun.xml.internal.ws.client.sei.ValueSetter;
 
 import java.awt.*;
 
 public class JPCardGraphics extends JPanel implements Language {
 
+    
+    private CardLayout cardLayout;
     private JPanelGraphics jPanelGraphics;
     private JPBarGraphic jpBarGraphic;
     private JPGraficPieChart jpGraficPieChart;
-    private CardLayout cardLayout;
 
     public JPCardGraphics() {
         cardLayout = new CardLayout();
@@ -49,6 +47,7 @@ public class JPCardGraphics extends JPanel implements Language {
 
     public void showCardGraphics(String command){
         cardLayout.show(this,command);
+        this.revalidate();
     }
 
     @Override

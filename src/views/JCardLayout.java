@@ -1,7 +1,7 @@
 package views;
 
 import controllers.Command;
-import views.about.JContainerAbout;
+import views.states.JContainerStates;
 import views.home.JContainerHome;
 import views.statistic.JContainerStatistic;
 import views.table.JContainerTable;
@@ -16,7 +16,7 @@ public class JCardLayout extends JPanel implements Language {
     private JContainerHome jContainerHome;
     private JContainerTable jContainerTable;
     private JContainerStatistic jContainerStatistic;
-    private JContainerAbout jContainerAbout;
+    private JContainerStates jContainerStates;
     private CardLayout cardLayout;
 
     public JCardLayout(ActionListener actionListener) {
@@ -28,7 +28,11 @@ public class JCardLayout extends JPanel implements Language {
 
     private void initComponents(ActionListener actionListener) {
         jContainerHome = new JContainerHome(actionListener);
-        this.add(jContainerHome,Command.C_MENU_HOME.toString());
+        JScrollPane jspPanel = new JScrollPane(jContainerHome);
+        jspPanel.setViewportView(jContainerHome);
+        jspPanel.setOpaque(false);
+        jspPanel.getVerticalScrollBar().setUnitIncrement(10);
+        this.add(jspPanel,Command.C_MENU_HOME.toString());
 
         jContainerTable = new JContainerTable(actionListener);
         this.add(jContainerTable, Command.C_MENU_TABLE.toString());
@@ -36,8 +40,8 @@ public class JCardLayout extends JPanel implements Language {
         jContainerStatistic = new JContainerStatistic(actionListener);
         this.add(jContainerStatistic,Command.C_MENU_STATISTIC.toString());
 
-        jContainerAbout = new JContainerAbout(actionListener);
-        this.add(jContainerAbout,Command.C_MENU_ABOUT.toString());
+        jContainerStates = new JContainerStates(actionListener);
+        this.add(jContainerStates,Command.C_MENU_ABOUT.toString());
     }
 
     public void showPanels(String command){
@@ -60,5 +64,6 @@ public class JCardLayout extends JPanel implements Language {
     public void changeLanguage() {
         jContainerTable.changeLanguage();
         jContainerStatistic.changeLanguage();
+        jContainerStates.changeLanguage();
     }
 }
