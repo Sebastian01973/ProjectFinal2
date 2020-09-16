@@ -8,6 +8,9 @@ import views.graphics.JPGraficPieChart;
 import views.graphics.JPanelGraphics;
 
 import javax.swing.*;
+
+import com.sun.xml.internal.ws.client.sei.ValueSetter;
+
 import java.awt.*;
 
 public class JPCardGraphics extends JPanel implements Language {
@@ -32,7 +35,8 @@ public class JPCardGraphics extends JPanel implements Language {
                 ,"Data","Data7","Data8"},new Color[] {Color.red});
         this.add(jpBarGraphic,Command.C_GRAPHICS_BAR.toString());
 
-        jPanelGraphics = new JPanelGraphics(new int[] {3,4,5,6,7,8,9,},new int[]{100,200,200,400,500,580,200});
+        jPanelGraphics = new JPanelGraphics(new int[] {3,4,5,6,7,8,9,},new int[]{100,200,200,400,500,580,200}
+        );
         this.add(jPanelGraphics, Command.C_GRAPHICS_LINE.toString());
 
 

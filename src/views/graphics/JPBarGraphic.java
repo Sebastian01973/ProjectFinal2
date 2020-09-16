@@ -38,6 +38,9 @@ public class JPBarGraphic extends JPanel{
 	@Override
 	protected void paintComponent(Graphics g) {
 		Graphics2D graphics2d = (Graphics2D) g;
+		graphics2d.setColor(Color.white);
+		graphics2d.fillRect(0, 0, this.getWidth(), this.getHeight());
+		graphics2d.setColor(Color.black);
 		graphics2d.setStroke(new BasicStroke(2));
 		//eje y
 		int yAxisx = UtilitiesViews.getSeparationAxis('x',0.09f,this.container);

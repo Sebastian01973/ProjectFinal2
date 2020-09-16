@@ -39,10 +39,13 @@ public class JPGraficPieChart extends JPanel{
 		this.colors = colors;
 		calculateTotal();
 	}
-
+	
 	@Override
 	protected void paintComponent(Graphics g) {
 		Graphics2D graphics2d = (Graphics2D) g;
+		graphics2d.setColor(Color.white);
+		graphics2d.fillRect(0, 0, this.getWidth(), this.getHeight());
+		graphics2d.setColor(Color.black);
 		drawDatas(graphics2d);
 	}
 	

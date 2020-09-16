@@ -29,9 +29,13 @@ public class JPanelGraphics extends  JPanel{
 		this.datasX = datasX;
 		this.datasY = datasY;
 	}
+	
 	@Override
 	protected void paintComponent(Graphics g) {
 		Graphics2D graphics2D = (Graphics2D) g;
+		graphics2D.setColor(Color.white);
+		graphics2D.fillRect(0, 0, this.getWidth(), this.getHeight());
+		graphics2D.setColor(Color.black);
 		graphics2D.setStroke(new BasicStroke(2));
 		int yAxisx = UtilitiesViews.getSeparationAxis('x',0.09f,this);
 		int yAxisy1 = UtilitiesViews.getSeparationAxis('y',0.05f,this);
@@ -90,17 +94,5 @@ public class JPanelGraphics extends  JPanel{
 
 	public void setDatasY(int[] datasY) {
 		this.datasY = datasY;
-	}
-
-	public static void main(String[] args) {
-		JDialog jDialog = new JDialog();
-		JPanelGraphics jpg = new JPanelGraphics(new int[] {3,4,5,6,7,8,9},new int[]{100,200,200,400,500,580,200});
-		JScrollPane jsp = new JScrollPane(jpg);
-		jDialog.add(jsp);
-		jDialog.setSize(new Dimension(900,600));
-		jDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		jpg.setDatasX(new int[] {3,4,5,6,7,8,9});
-		jpg.setDatasY(new int[]{100,100,100,400,500,580,200});
-		jDialog.setVisible(true);
 	}
 }
