@@ -1,7 +1,6 @@
 package controllers;
 
 import models.ManagePatients;
-import views.JCardLayout;
 import views.JFWindowsMain;
 
 import java.awt.event.ActionEvent;
@@ -33,7 +32,7 @@ public class Controller implements ActionListener {
             case C_MENU_HOME: showPanels(Command.C_MENU_HOME.toString());break;
             case C_MENU_TABLE: showPanels(Command.C_MENU_TABLE.toString());break;
             case C_MENU_STATISTIC: showPanels(Command.C_MENU_STATISTIC.toString());break;
-            case C_MENU_ABOUT: showPanels(Command.C_MENU_ABOUT.toString());break;
+            case C_MENU_LOCATION: showPanels(Command.C_MENU_LOCATION.toString());break;
             case C_GRAPHICS_LINE: showGraphics(Command.C_GRAPHICS_LINE.toString()); break;
             case C_GRAPHICS_BAR: showGraphics(Command.C_GRAPHICS_BAR.toString()); break;
             case C_GRAPHICS_TORTE: showGraphics(Command.C_GRAPHICS_TORTE.toString()); break;

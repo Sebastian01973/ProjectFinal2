@@ -1,7 +1,6 @@
 package views.header;
 
 import controllers.Command;
-import org.w3c.dom.css.CSSStyleSheet;
 import utilities.Utilities;
 import views.Constant;
 import views.Language;
@@ -30,7 +29,9 @@ public class JContainerHeader extends JPanel implements Language {
     private void initComponents(ActionListener actionListener) {
 
         panelBanner = new JModelPanel(new FlowLayout(0),Constant.COLOR_BLUE_COVID);
-        jBHome = new JModelButtonLanguage(Utilities.getKey(Constant.M_HOME),Constant.IMG_HOME,Constant.FONT_NEW_ROMAN_13,35,35,Constant.COLOR_BLACK,Constant.COLOR_WHITE);
+        jBHome = new JModelButtonLanguage(Utilities.getKey(Constant.M_HOME),Constant.IMG_HOME,Constant.FONT_HELVETICA_13,35,35,Constant.COLOR_BLACK,Constant.COLOR_WHITE);
+        jBHome.setActionCommand(Command.C_MENU_HOME.toString());
+        jBHome.addActionListener(actionListener);
         panelBanner.add(jBHome);
         jMLBanner = new JModelLabel(Constant.IMG_BANNER,350,65);
         panelBanner.add(jMLBanner);
@@ -40,12 +41,12 @@ public class JContainerHeader extends JPanel implements Language {
         this.add(jMainMenu, BorderLayout.CENTER);
 
         panelLanguage = new JModelPanel(new FlowLayout(0),Constant.COLOR_BLACK);
-        jBSpanish = new JModelButtonLanguage(Utilities.getKey(Constant.M_LANGUAGE_ES),Constant.IMG_SPANISH,Constant.FONT_NEW_ROMAN_13,25,25,Constant.COLOR_BLACK,Constant.COLOR_WHITE);
+        jBSpanish = new JModelButtonLanguage(Utilities.getKey(Constant.M_LANGUAGE_ES),Constant.IMG_SPANISH,Constant.FONT_HELVETICA_13,25,25,Constant.COLOR_BLACK,Constant.COLOR_WHITE);
         jBSpanish.setActionCommand(Command.C_ES_LANGUAGE.toString());
         jBSpanish.addActionListener(actionListener);
         panelLanguage.add(jBSpanish);
 
-        jBEnglish = new JModelButtonLanguage(Utilities.getKey(Constant.M_LANGUAGE_US),Constant.IMG_ENGLISH,Constant.FONT_NEW_ROMAN_13,25,25,Constant.COLOR_BLACK,Constant.COLOR_WHITE);
+        jBEnglish = new JModelButtonLanguage(Utilities.getKey(Constant.M_LANGUAGE_US),Constant.IMG_ENGLISH,Constant.FONT_HELVETICA_13,25,25,Constant.COLOR_BLACK,Constant.COLOR_WHITE);
         jBEnglish.setActionCommand(Command.C_US_LANGUAGE.toString());
         jBEnglish.addActionListener(actionListener);
         panelLanguage.add(jBEnglish);

@@ -30,30 +30,27 @@ public class Constant {
     //    Colores
     public static final String COLOR_BANNER = "#767676";
 
-    public static final Color COLOR_BLUE_DARK = Color.decode("#0e4892");
-    public static final Color COLOR_BLUE_LIGHT_G = Color.decode("#1592e4");
-    public static final Color COLOR_WHITE = Color.decode("#FFFFFF") ;
+    public static final Color COLOR_BLUE_DARK = Color.decode("#1a3855");
+    public static final Color COLOR_BLUE_LIGHT_G = Color.decode("#2b4372");
+    public static final Color COLOR_WHITE = Color.decode("#fffefd") ;
     public static final Color COLOR_BLACK = Color.decode("#000000") ;
-    public static final Color COLOR_BLUE_LIGHT = Color.decode("#52D9E9") ;
-    public static final Color COLOR_GREEN_SOFT = Color.decode("#25B50F") ;
-    public static final Color COLOR_RED_TINTE = Color.decode("#e60000");
-    public static final Color COLOR_RED_LIGHT = Color.decode("#ff3334");
-    public static final Color COLOR_RED_DARK = Color.decode("#b40001");
-    public static final Color COLOR_GRAY_LIGHT = Color.decode("#f6f8f9");
-    public static final Color COLOR_BLUE_COVID = Color.decode("#21adbe");
+    public static final Color COLOR_BLUE_COVID = Color.decode("#032841");
     public static final Color COLOR_HOME_FOOTER = Color.decode("#363435");
+    public static final Color COLOR_BLUE_RIGHT = Color.decode("#044a98");
+    public static final Color COLOR_PURPLE = Color.decode("#851FA5");
 
 
 //    Fuentes
     public static final Font FONT_ROCWELL = new Font("Rockwell",Font.PLAIN, 20);
-    public static final Font FONT_NEW_ROMAN_13 = new Font("Times New Roman",Font.PLAIN, 13);
     public static final Font FONT_NEW_ROMAN_25 = new Font("Times New Roman",Font.PLAIN, 25);
-    public static final Font FONT_COMPONENTS_DIALOG_COST = new Font("Bodoni MT", Font.PLAIN, 15);
+    public static final Font FONT_BONODI_15 = new Font("Bodoni MT", Font.PLAIN, 15);
     public static final Font FONT_ARIAL_ROUNDER_17 = new Font("Arial Rounded MT Bold", Font.PLAIN, 17);
+    public static final Font FONT_ARIAL_ROUNDER_25 = new Font("Arial Rounded MT Bold", Font.PLAIN, 25);
     public static final Font FONT_ARIAL_ROUNDER_30 = new Font("Arial Rounded MT Bold", Font.PLAIN, 30);
     public static final Font FONT_ARIAL_ROUNDER_15 = new Font("Arial Rounded MT Bold", Font.PLAIN, 15);
     public static final Font FONT_HELVETICA_17 = new Font("Helvetica", Font.PLAIN, 17);
     public static final Font FONT_HELVETICA_15 = new Font("Helvetica", Font.PLAIN, 15);
+    public static final Font FONT_HELVETICA_13 = new Font("Helvetica",Font.PLAIN, 13);
 
 
 //    Titulos del menu
@@ -94,11 +91,19 @@ public class Constant {
     public static final String M_GRAP_REPORT_LINE = "Report_Graphics_Line";
     public static final String M_GRAP_TORTE_REPORT = "Report_Graphics_Torte";
 
-    public static final String M_ABOUT = "About";
+    public static final String M_LOCATION = "Location";
     public static final String M_CREATORS = "About_Creators";
     public static final String M_APPLICATION = "About_App";
     public static final String M_TITLTE_STATES = "Title_States";
     public static final String M_DIALOG_STATES = "Dialog_States";
+
+    //Dialogos y labels
+
+    public static final String L_NUMBER_CASES = "Number_Cases";
+    public static final String L_NUMBER_DEATH = "Number_Death";
+    public static final String L_RESUME_CASES = "Resume_Cases";
+    public static final String L_NUMBER_DIAGNOSTIC = "Number_Diagnostic";
+
 
 
     //    Titulos de la tabla
@@ -143,6 +148,7 @@ public class Constant {
 
     //Imagenes Covid
     public static final String IMG_COV_AMBULANCE = "/images/Covid/Ambulance.png";
+    public static final String IMG_COV_CORONA = "/images/Covid/coronavirus.png";
     public static final String IMG_COV_ASYMPTOMATIC = "/images/Covid/asintomathic.png";
     public static final String IMG_COV_BOOK_HEALTH = "/images/Covid/BookHealth.png";
     public static final String IMG_COV_CALENDAR = "/images/Covid/CalendarCovid.png";
@@ -177,6 +183,9 @@ public class Constant {
     public static final String IMG_H_LABEL_UPTC = "/images/Home/uptc.jpg";
 
     //Imagenes Departamentos
+
+
+    public static final String IMG_BANDERA = "/images/states/BanderaColombia.jpg";
     public static final String IMG_AMAZONAS = "/images/states/Amazonas.jpg";
     public static final String IMG_ANTIOQUIA = "/images/states/Antioquia.jpg";
     public static final String IMG_ARAUCA = "/images/states/Arauca.jpg";
@@ -211,4 +220,11 @@ public class Constant {
     public static final String IMG_VAUPES = "/images/states/Vaupes.jpg";
     public static final String IMG_VICHADA = "/images/states/Vichada.jpg";
 
+
+    public static final String[] IMGS_DEPART = new String[]{IMG_AMAZONAS,IMG_ANTIOQUIA,IMG_ARAUCA, IMG_SAN_ANDRES,IMG_ATLANTICO,
+            IMG_BOGOTA, IMG_BOLIVAR, IMG_BOYACA, IMG_CALDAS, IMG_CAQUETA,IMG_CASANARE,
+            IMG_CAUCA, IMG_CESAR, IMG_CHOCO, IMG_CUNDINAMARCA,IMG_CORDOBA , IMG_GUIANIA, IMG_GUAVIARE,IMG_HUILA,IMG_GUAJIRA,
+             IMG_MAGDALENA, IMG_META, IMG_NARIÑO, IMG_NORTE_SANTANDER,
+            IMG_PUTUMAYO, IMG_QUINDIO, IMG_RISARALDAS, IMG_SANTANDER, IMG_SUCRE,
+            IMG_TOLIMA, IMG_VALLE_CAUCA,IMG_VAUPES, IMG_VICHADA};
 }

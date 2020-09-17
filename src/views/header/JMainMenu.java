@@ -39,8 +39,8 @@ public class JMainMenu extends JMenuBar implements Language {
         menuStatistic.addActionListener(actionListener);
         this.add(menuStatistic);
 
-        menuAbout = new JModelMenuItem(Utilities.getKey(Constant.M_ABOUT),Constant.IMG_ABOUT,Constant.FONT_ROCWELL,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
-        menuAbout.setActionCommand(Command.C_MENU_ABOUT.toString());
+        menuAbout = new JModelMenuItem(Utilities.getKey(Constant.M_LOCATION),Constant.IMG_LOCATION,Constant.FONT_ROCWELL,25,25,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        menuAbout.setActionCommand(Command.C_MENU_LOCATION.toString());
         menuAbout.addActionListener(actionListener);
         this.add(menuAbout);
 
@@ -54,6 +54,6 @@ public class JMainMenu extends JMenuBar implements Language {
 
         menuStatistic.setText(Utilities.getKey(Constant.M_STATISTICS));
 
-        menuAbout.setText(Utilities.getKey(Constant.M_ABOUT));
+        menuAbout.setText(Utilities.getKey(Constant.M_LOCATION));
     }
 }

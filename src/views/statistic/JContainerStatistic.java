@@ -30,7 +30,7 @@ public class JContainerStatistic extends JPanel implements Language {
         jPanelLeft = new JPanelLeft(actionListener);
         this.add(jPanelLeft,BorderLayout.WEST);
 
-        jPanelRight = new JPanelRight(actionListener);
+        jPanelRight = new JPanelRight();
         this.add(jPanelRight,BorderLayout.EAST);
 
         jpCardGraphics = new JPCardGraphics();

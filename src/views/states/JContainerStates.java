@@ -28,6 +28,6 @@ public class JContainerStates extends JPanel implements Language {
 
     @Override
     public void changeLanguage() {
-
+        jNorthState.changeLanguage();
     }
 }

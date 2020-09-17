@@ -40,7 +40,7 @@ public class JPanelTable extends JPanel implements Language {
         jtElements.setModel(dtmElements);
         jtElements.setIntercellSpacing(new Dimension(0, 0));
         jtElements.getTableHeader().setReorderingAllowed(false);
-        jtElements.getTableHeader().setBackground(Constant.COLOR_RED_DARK);
+        jtElements.getTableHeader().setBackground(Constant.COLOR_BLUE_COVID);
         jtElements.getTableHeader().setForeground(Constant.COLOR_WHITE);
         jtElements.getTableHeader().setPreferredSize(new Dimension(0, 50));
         jtElements.getTableHeader().setFont(Constant.FONT_ARIAL_ROUNDER_17);

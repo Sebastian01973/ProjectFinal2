@@ -46,6 +46,19 @@ public class JModelLabel extends JLabel{
 		this.setForeground(fg);
 	}
 
+	public JModelLabel(String text,String imgPath,Font font,Color bg,Color fg,int width,int height){
+		super(text);
+		ImageIcon imagen = new ImageIcon(getClass().getResource(imgPath));
+		Icon icon = new ImageIcon(imagen.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
+		this.setIcon(icon);
+		this.setHorizontalTextPosition( SwingConstants.CENTER );
+		this.setVerticalTextPosition( SwingConstants.BOTTOM );
+		this.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
+		this.setFont(font);
+		this.setBackground(bg);
+		this.setForeground(fg);
+	}
+
 
 	public JModelLabel(String text, Color bg, Color fg) {
 		super(text);

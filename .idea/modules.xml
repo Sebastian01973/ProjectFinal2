@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../Programacion 2/BancoAgrarioPage/BancoAgrarioPage.iml" filepath="$PROJECT_DIR$/../Programacion 2/BancoAgrarioPage/BancoAgrarioPage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../AClases Virtuales/Programacion ll/DemoJson/DemoJson.iml" filepath="$PROJECT_DIR$/../AClases Virtuales/Programacion ll/DemoJson/DemoJson.iml" />
       <module fileurl="file://$PROJECT_DIR$/../InterfaceNomina/InterfaceNomina.iml" filepath="$PROJECT_DIR$/../InterfaceNomina/InterfaceNomina.iml" />
       <module fileurl="file://$PROJECT_DIR$/ProjectFinal2.iml" filepath="$PROJECT_DIR$/ProjectFinal2.iml" />
     </modules>

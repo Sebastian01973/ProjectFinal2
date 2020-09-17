@@ -22,17 +22,17 @@ public class JPNorthSta extends JPanel implements Language {
     }
 
     private void initComponents(ActionListener actionListener) {
-        buttonActiveCases = new JModelButton(Utilities.getKey(Constant.M_STA_REPORT_DIAGNOSTIC),Constant.FONT_NEW_ROMAN_13,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
+        buttonActiveCases = new JModelButton(Utilities.getKey(Constant.M_STA_REPORT_DIAGNOSTIC),Constant.FONT_HELVETICA_13,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
         buttonActiveCases.setActionCommand(Command.C_ACTIVE_CASES.toString());
         buttonActiveCases.addActionListener(actionListener);
         this.add(buttonActiveCases);
 
-        buttonRecuperated = new JModelButton(Utilities.getKey(Constant.M_STA_REPORT_RECOVERED),Constant.FONT_NEW_ROMAN_13,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
+        buttonRecuperated = new JModelButton(Utilities.getKey(Constant.M_STA_REPORT_RECOVERED),Constant.FONT_HELVETICA_13,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
         buttonRecuperated.setActionCommand(Command.C_RECOVERED_CASES.toString());
         buttonRecuperated.addActionListener(actionListener);
         this.add(buttonRecuperated);
 
-        buttonDeath = new JModelButton(Utilities.getKey(Constant.M_STA_REPORT_DEATH),Constant.FONT_NEW_ROMAN_13,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
+        buttonDeath = new JModelButton(Utilities.getKey(Constant.M_STA_REPORT_DEATH),Constant.FONT_HELVETICA_13,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
         buttonDeath.setActionCommand(Command.C_DEATH_CASES.toString());
         buttonDeath.addActionListener(actionListener);
         this.add(buttonDeath);

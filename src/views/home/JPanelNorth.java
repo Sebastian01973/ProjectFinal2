@@ -31,7 +31,7 @@ public class JPanelNorth extends JPanel{
 	}
 	
 	private void initComponents() {
-		lableBanner = new JModelLabel(Constant.IMG_H_BANNER,(int) JMainPanel.SCREEN_SIZE.getWidth()-100,400);
+		lableBanner = new JModelLabel(Constant.IMG_H_BANNER,(int) JMainPanel.SCREEN_SIZE.getWidth()-100,200);
 		this.add(lableBanner,grid.insertComponent(0, 0, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE));
 	}
 }
