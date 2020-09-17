@@ -1,22 +1,24 @@
 package views.statistic;
 
+import java.awt.CardLayout;
+import java.awt.Color;
+
+import javax.swing.JPanel;
+
 import controllers.Command;
 import views.Constant;
 import views.Language;
-import views.graphics.*;
-
-import javax.swing.*;
-
-
-import java.awt.*;
+import views.graphics.JPBarGraphic;
+import views.graphics.JPGraficPieChart;
+import views.graphics.JPanelGraphics;
 
 public class JPCardGraphics extends JPanel implements Language {
 
     
     private CardLayout cardLayout;
     private JPanelGraphics jPanelGraphics;
-    private JPBarGraphic jpBarGraphic;
     private JPGraficPieChart jpGraficPieChart;
+    private JPBarGraphic jpBarGraphic;
 
     public JPCardGraphics() {
         cardLayout = new CardLayout();
@@ -55,3 +57,4 @@ public class JPCardGraphics extends JPanel implements Language {
 
     }
 }
+
