@@ -5,11 +5,13 @@ import java.awt.GridBagConstraints;
 
 import javax.swing.JPanel;
 
+import utilities.Utilities;
 import views.Constant;
+import views.Language;
 import views.models.GridModel;
 import views.models.JModelLabel;
 
-public class JPFooter extends JPanel{
+public class JPFooter extends JPanel implements Language{
 
 	/**
 	 * 
@@ -29,10 +31,10 @@ public class JPFooter extends JPanel{
 	}
 	
 	private void initComponents() {
-		labelName1 = new JModelLabel(Constant.TEXT_H_LABEL_NAME1, Constant.COLOR_WHITE, Constant.FONT_ARIAL_ROUNDER_17);
+		labelName1 = new JModelLabel(Utilities.getKey(Constant.TEXT_H_LABEL_NAME1), Constant.COLOR_WHITE, Constant.FONT_ARIAL_ROUNDER_17);
 		this.add(labelName1, grid.insertComponent(0, 0, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE));
 		
-		labelName2 = new JModelLabel(Constant.TEXT_H_LABEL_NAME2,Constant.COLOR_WHITE, Constant.FONT_ARIAL_ROUNDER_17);
+		labelName2 = new JModelLabel(Utilities.getKey(Constant.TEXT_H_LABEL_NAME2),Constant.COLOR_WHITE, Constant.FONT_ARIAL_ROUNDER_17);
 		this.add(labelName2, grid.insertComponent(0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE));
 		
 		labelUptc = new JModelLabel(Constant.IMG_H_LABEL_UPTC, 300, 200);
@@ -43,6 +45,12 @@ public class JPFooter extends JPanel{
 		
 		labelemergency = new JModelLabel(Constant.IMG_COV_CALL_EMERGENCY);
 		this.add(labelemergency, grid.insertComponent(0, 4, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE));
+	}
+
+	@Override
+	public void changeLanguage() {
+		this.labelName1.setText(Utilities.getKey(Constant.TEXT_H_LABEL_NAME1));
+		this.labelName2.setText(Utilities.getKey(Constant.TEXT_H_LABEL_NAME2));
 	}
 
 }

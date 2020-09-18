@@ -41,12 +41,12 @@ public enum Departments {
         this.name = name;
     }
 
-    public String getName() {
+    public String getDepartment() {
         return name;
     }
 
     @Override
     public String toString() {
-        return getName();
+        return getDepartment();
     }
 }

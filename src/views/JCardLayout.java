@@ -28,11 +28,11 @@ public class JCardLayout extends JPanel implements Language {
 
     private void initComponents(ActionListener actionListener) {
         jContainerHome = new JContainerHome(actionListener);
-        JScrollPane jspPanel = new JScrollPane(jContainerHome);
-        jspPanel.setViewportView(jContainerHome);
-        jspPanel.setOpaque(false);
-        jspPanel.getVerticalScrollBar().setUnitIncrement(10);
-        this.add(jspPanel,Command.C_MENU_HOME.toString());
+        JScrollPane jspPanelHome = new JScrollPane(jContainerHome);
+        jspPanelHome.setViewportView(jContainerHome);
+        jspPanelHome.setOpaque(false);
+        jspPanelHome.getVerticalScrollBar().setUnitIncrement(10);
+        this.add(jspPanelHome,Command.C_MENU_HOME.toString());
 
         jContainerTable = new JContainerTable(actionListener);
         this.add(jContainerTable, Command.C_MENU_TABLE.toString());
@@ -41,7 +41,11 @@ public class JCardLayout extends JPanel implements Language {
         this.add(jContainerStatistic,Command.C_MENU_STATISTIC.toString());
 
         jContainerStates = new JContainerStates(actionListener);
-        this.add(jContainerStates,Command.C_MENU_ABOUT.toString());
+        JScrollPane jspPanelStates = new JScrollPane(jContainerStates);
+        jspPanelStates.setViewportView(jContainerStates);
+        jspPanelStates.setOpaque(false);
+        jspPanelStates.getVerticalScrollBar().setUnitIncrement(20);
+        this.add(jspPanelStates,Command.C_MENU_LOCATION.toString());
     }
 
     public void showPanels(String command){
@@ -65,5 +69,6 @@ public class JCardLayout extends JPanel implements Language {
         jContainerTable.changeLanguage();
         jContainerStatistic.changeLanguage();
         jContainerStates.changeLanguage();
+        jContainerHome.changeLanguage();
     }
 }

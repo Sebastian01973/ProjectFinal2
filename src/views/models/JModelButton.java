@@ -1,12 +1,6 @@
 package views.models;
 
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -65,6 +59,26 @@ public class JModelButton extends JButton{
 		this.setBackground(colors[0]);
 		this.setForeground(colors[1]);
 	}
+
+	public JModelButton(String text,String imagePath, int width,int height,Color bg,String command,ActionListener actionListener) {
+		super(text);
+		this.setFont( Constant.FONT_ARIAL_ROUNDER_25 );
+		this.setForeground(Constant.COLOR_WHITE);
+		ImageIcon imagen = new ImageIcon(getClass().getResource(imagePath));
+		Icon icon = new ImageIcon(imagen.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
+		this.setIcon(icon);
+		this.setMargin(new Insets(0,0,0,0));
+		this.setSize(width,height);
+		this.setSize(width,height);
+		this.setBorderPainted( false );
+		this.setFocusable( false );
+		this.setOpaque(false);
+		this.setHorizontalTextPosition( SwingConstants.CENTER );
+		this.setActionCommand(command);
+		this.addActionListener(actionListener);
+		this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		this.setBackground(bg);
+	}
 	
 	public JModelButton(String imagePath) {
 		this.setIcon( new ImageIcon(getClass().getResource( imagePath )) );
@@ -79,7 +93,7 @@ public class JModelButton extends JButton{
 		Icon icon = new ImageIcon(imagen.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
 		this.setIcon(icon);
 		this.setBorderPainted( false );
-		this.setFocusable( false );
+		this.setFocusable( true );
 		this.setOpaque(false);
 		this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	}

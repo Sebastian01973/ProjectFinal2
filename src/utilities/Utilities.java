@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import models.HealthCondition;
+
 public class Utilities {
 
     public static Properties generateProperties(String pathFile ) throws IOException {
@@ -33,5 +35,16 @@ public class Utilities {
 
     public static String getKey(String key) {
         return HandlerLanguage.languageProperties.getProperty(key);
+    }
+    
+    public static HealthCondition getHealthConsdition(String data) {
+    	switch (data) {
+		case "Asintomático": return HealthCondition.ASYMPTOMATIC;
+		case "Fallecido": return HealthCondition.DECEASED;
+		case "Leve": return HealthCondition.MILD;
+		default:
+			break;
+		}
+    	return null;
     }
 }

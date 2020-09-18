@@ -6,7 +6,6 @@ import utilities.UtilitiesViews;
 import views.Constant;
 import views.Language;
 import views.models.JModelButton;
-import views.models.JModelLabel;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -28,42 +27,42 @@ public class JPanelLeft extends JPanel implements Language {
 
         this.add(UtilitiesViews.spaceLabel(Constant.COLOR_BLUE_DARK,Constant.COLOR_BLUE_DARK));
 
-       reportedForLocation = new JModelButton(Utilities.getKey(Constant.M_STA_REPORT_LOCATION),Constant.IMG_LOC,Constant.FONT_NEW_ROMAN_13,25,25,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
+       reportedForLocation = new JModelButton(Utilities.getKey(Constant.M_STA_REPORT_LOCATION),Constant.IMG_LOC,Constant.FONT_HELVETICA_13,25,25,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
        reportedForLocation.setActionCommand(Command.C_CASES_LOCATION.toString());
        reportedForLocation.addActionListener(actionListener);
        this.add(reportedForLocation);
 
         this.add(UtilitiesViews.spaceLabel(Constant.COLOR_BLUE_DARK,Constant.COLOR_BLUE_DARK));
 
-        bgraphicsLine = new JModelButton(Utilities.getKey(Constant.M_GRAP_REPORT_LINE),Constant.IMG_STADITICS2,Constant.FONT_NEW_ROMAN_13,25,25,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
+        bgraphicsLine = new JModelButton(Utilities.getKey(Constant.M_GRAP_REPORT_LINE),Constant.IMG_STADITICS2,Constant.FONT_HELVETICA_13,25,25,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
         bgraphicsLine.setActionCommand(Command.C_GRAPHICS_LINE.toString());
         bgraphicsLine.addActionListener(actionListener);
         this.add(bgraphicsLine);
 
         this.add(UtilitiesViews.spaceLabel(Constant.COLOR_BLUE_DARK,Constant.COLOR_BLUE_DARK));
 
-        bgraphicsBar = new JModelButton(Utilities.getKey(Constant.M_GRAP_BAR_REPORT),Constant.IMG_STADITICS1,Constant.FONT_NEW_ROMAN_13,25,25,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
+        bgraphicsBar = new JModelButton(Utilities.getKey(Constant.M_GRAP_BAR_REPORT),Constant.IMG_STADITICS1,Constant.FONT_HELVETICA_13,25,25,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
         bgraphicsBar.setActionCommand(Command.C_GRAPHICS_BAR.toString());
         bgraphicsBar.addActionListener(actionListener);
         this.add(bgraphicsBar);
 
         this.add(UtilitiesViews.spaceLabel(Constant.COLOR_BLUE_DARK,Constant.COLOR_BLUE_DARK));
 
-        bgraphicsTorte = new JModelButton(Utilities.getKey(Constant.M_GRAP_TORTE_REPORT),Constant.IMG_STADITICSTORTE,Constant.FONT_NEW_ROMAN_13,25,25,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
+        bgraphicsTorte = new JModelButton(Utilities.getKey(Constant.M_GRAP_TORTE_REPORT),Constant.IMG_STADITICSTORTE,Constant.FONT_HELVETICA_13,25,25,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
         bgraphicsTorte.setActionCommand(Command.C_GRAPHICS_TORTE.toString());
         bgraphicsTorte.addActionListener(actionListener);
         this.add(bgraphicsTorte);
 
         this.add(UtilitiesViews.spaceLabel(Constant.COLOR_BLUE_DARK,Constant.COLOR_BLUE_DARK));
 
-        bReportLethality = new JModelButton(Utilities.getKey(Constant.M_PERCENTAGE_LETHALITY),Constant.IMG_COV_DEATH,Constant.FONT_NEW_ROMAN_13,25,25,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
+        bReportLethality = new JModelButton(Utilities.getKey(Constant.M_PERCENTAGE_LETHALITY),Constant.IMG_COV_DEATH,Constant.FONT_HELVETICA_13,25,25,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
         bReportLethality.setActionCommand(Command.C_REPORT_LETHAL.toString());
         bReportLethality.addActionListener(actionListener);
         this.add(bReportLethality);
 
         this.add(UtilitiesViews.spaceLabel(Constant.COLOR_BLUE_DARK,Constant.COLOR_BLUE_DARK));
 
-        bReportState = new JModelButton(Utilities.getKey(Constant.M_STATE_HEALTH),Constant.IMG_COV_HEALTHY,Constant.FONT_NEW_ROMAN_13,25,25,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
+        bReportState = new JModelButton(Utilities.getKey(Constant.M_STATE_HEALTH),Constant.IMG_COV_HEALTHY,Constant.FONT_HELVETICA_13,25,25,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
         bReportState.setActionCommand(Command.C_REPORT_HEALTH.toString());
         bReportState.addActionListener(actionListener);
         this.add(bReportState);

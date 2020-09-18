@@ -1,24 +1,23 @@
+
 package views.statistic;
-
-import java.awt.CardLayout;
-import java.awt.Color;
-
-import javax.swing.JPanel;
 
 import controllers.Command;
 import views.Constant;
 import views.Language;
-import views.graphics.JPBarGraphic;
-import views.graphics.JPGraficPieChart;
-import views.graphics.JPanelGraphics;
+import views.graphics.*;
+
+import javax.swing.*;
+
+
+import java.awt.*;
 
 public class JPCardGraphics extends JPanel implements Language {
 
     
     private CardLayout cardLayout;
     private JPanelGraphics jPanelGraphics;
-    private JPGraficPieChart jpGraficPieChart;
     private JPBarGraphic jpBarGraphic;
+    private JPGraficPieChart jpGraficPieChart;
 
     public JPCardGraphics() {
         cardLayout = new CardLayout();
@@ -29,17 +28,15 @@ public class JPCardGraphics extends JPanel implements Language {
 
     private void initComponents() {
 
+        jPanelGraphics = new JPanelGraphics(new int[] {3,4,5,6,7,8,9,},new int[]{100,200,200,400,500,580,200}
+        );
+        this.add(jPanelGraphics, Command.C_GRAPHICS_LINE.toString());
+
         jpBarGraphic = new JPBarGraphic(this,new String[] {"1","2","3","4","5","6","7","8"},new String[] {
                 "10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"
         },new int[] {22,33,45,88,70,40,80,90},new String[] {"Data1","Data","Data","Data","Data"
                 ,"Data","Data7","Data8"},new Color[] {Color.red});
         this.add(jpBarGraphic,Command.C_GRAPHICS_BAR.toString());
-
-        jPanelGraphics = new JPanelGraphics(new int[] {3,4,5,6,7,8,9,},new int[]{100,200,200,400,500,580,200}
-        );
-        this.add(jPanelGraphics, Command.C_GRAPHICS_LINE.toString());
-
-
 
         jpGraficPieChart = new JPGraficPieChart(this,new String[] {"Data1","Data2","Data3","Data4"},
                 new int[] {50,10,10,30},
@@ -57,4 +54,3 @@ public class JPCardGraphics extends JPanel implements Language {
 
     }
 }
-

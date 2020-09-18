@@ -27,6 +27,4 @@ public enum HealthCondition {
 		// TODO Auto-generated method stub
 		return getKey();
 	}
-	
-	
 }

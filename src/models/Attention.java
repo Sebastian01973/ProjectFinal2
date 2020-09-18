@@ -18,6 +18,4 @@ public enum Attention {
 	public String toString() {
 		return getKey();
 	}
-	
-	
 }

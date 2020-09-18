@@ -17,8 +17,9 @@ public class GridModel {
 		container.setLayout(new GridBagLayout());
 		constraints = new GridBagConstraints();
 	}
-	
-	/**
+
+
+    /**
 	 * 
 	 * @param row initial value is 1
 	 * @param column initial value is 0

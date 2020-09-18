@@ -9,11 +9,12 @@ import javax.swing.JPanel;
 
 import views.Constant;
 import views.JMainPanel;
+import views.Language;
 import views.models.GridModel;
 import views.models.JModelLabel;
 
 
-public class JPanelNorth extends JPanel{
+public class JPanelNorth extends JPanel implements Language{
 
 	/**
 	 * 
@@ -23,7 +24,7 @@ public class JPanelNorth extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
 	public JPanelNorth() {
-		this.setBackground(Color.decode(Constant.COLOR_BANNER));
+		this.setBackground(Constant.COLOR_WHITE);
 		grid = new GridModel(this);
 //		this.setBackground(Color.red);
 		this.setLayout(new GridBagLayout());
@@ -31,7 +32,12 @@ public class JPanelNorth extends JPanel{
 	}
 	
 	private void initComponents() {
-		lableBanner = new JModelLabel(Constant.IMG_H_BANNER,(int) JMainPanel.SCREEN_SIZE.getWidth()-100,400);
+		lableBanner = new JModelLabel(Constant.IMG_H_BANNER,(int) JMainPanel.SCREEN_SIZE.getWidth()-100,200);
 		this.add(lableBanner,grid.insertComponent(0, 0, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE));
+	}
+
+	@Override
+	public void changeLanguage() {
+		
 	}
 }
