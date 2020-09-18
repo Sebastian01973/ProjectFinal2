@@ -1,12 +1,17 @@
 package controllers;
 
+import models.Diagnostic;
 import models.ManagePatients;
+import utilities.Utilities;
+import views.Constant;
 import views.JFWindowsMain;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import static javax.swing.JOptionPane.showConfirmDialog;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 
 public class Controller implements ActionListener {
@@ -38,19 +43,39 @@ public class Controller implements ActionListener {
             case C_GRAPHICS_TORTE: showGraphics(Command.C_GRAPHICS_TORTE.toString()); break;
             case LOAD_FILE: this.loadFile(); break;
             case SAVE_FILE: this.saveFile(); break;
-            case ADD_PATIENT: this.addPatient(); break;
-            case SEARCH_PATIENT: this.searchPatient(); break;
-            case MODIFY_PATIENT: this.modifyPatient(); break;
-            case DELETE_PATIENT: this.deletePatient(); break;
+            case ADD_PATIENT: this.showDialogs(Command.ADD_PATIENT.toString()); break;
+            case SEARCH_PATIENT: this.showDialogs(Command.SEARCH_PATIENT.toString()); break;
+            case MODIFY_PATIENT: this.showDialogs(Command.MODIFY_PATIENT.toString()); break;
+            case DELETE_PATIENT:  break;
             case EXIT_APP: this.exitApp(); break;
             case REFRESH_DATA: this.refreshData(); break;
+            case C_CREATE_NEW_PATIENT: this.createDiagnostic(); break;
+            case C_CANCEL_NEW_PATIENT: jfWindowsMain.makeInvisibleDialogAddCost(); break;
+            case C_ACTIVE_CASES_ADD: break;
+            case C_RECOVERED_CASES_ADD:  break;
+            case C_DEATH_CASES_ADD:  break;
         }
+    }
+
+    private void createDiagnostic() {
+        Diagnostic auxDiagnostic = jfWindowsMain.createPatient(managePatients);
+        if (auxDiagnostic != null) {
+            managePatients.addDiagnostic(auxDiagnostic);
+            ArrayList<Object[]> ok = managePatients.getMatrixList();
+            jfWindowsMain.addElementToTable(auxDiagnostic.toObjectVector());
+        }else {
+            showMessageDialog(null, "Hay datos Vacios por favor llenarlos todos");
+            showDialogs(Command.ADD_PATIENT.toString());
+        }
+    }
+
+    private void showDialogs(String command){
+        jfWindowsMain.showDialogs(command);
     }
 
     private void showGraphics(String command){
         jfWindowsMain.showCardGraphics(command);
     }
-
 
     private void showPanels(String command) {
         jfWindowsMain.showPanels(command);
@@ -69,29 +94,12 @@ public class Controller implements ActionListener {
     }
 
     private void loadFile() {
-
     }
 
     private void saveFile(){
-
     }
 
-    private void addPatient(){
 
-
-    }
-
-    private void searchPatient(){
-
-    }
-
-    private void modifyPatient(){
-
-    }
-
-    private void deletePatient(){
-
-    }
 
     private void exitApp() {
         int option = showConfirmDialog(null, "Deseas salir");

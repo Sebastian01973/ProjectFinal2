@@ -1,11 +1,17 @@
 package utilities;
 
+import models.Attention;
+import models.Gender;
+import models.HealthCondition;
 import persistence.HandlerLanguage;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Properties;
 
 public class Utilities {
@@ -33,5 +39,53 @@ public class Utilities {
 
     public static String getKey(String key) {
         return HandlerLanguage.languageProperties.getProperty(key);
+    }
+
+    public static Attention getAttention(int index){
+        switch (index){
+            case 0: return Attention.RECOVERED;
+            case 1: return Attention.HOUSE;
+            case 2: return Attention.DECEASED;
+            case 3: return  Attention.HOSPITAL;
+            case 4: return  Attention.ICU_HOSPITAL;
+            default: return null;
+        }
+    }
+
+    public static Gender getGender(int index){
+        switch (index){
+            case 0: return Gender.MALE;
+            case 1: return Gender.FEMALE;
+            default: return null;
+        }
+    }
+
+    public static HealthCondition getHealthCondition(int index){
+        switch (index){
+            case 0: return HealthCondition.ASYMPTOMATIC;
+            case 1: return HealthCondition.MILD;
+            case 2: return HealthCondition.MODERATE;
+            case 3: return HealthCondition.SEVERE;
+            case 4: return HealthCondition.DECEASED;
+            case 5: return HealthCondition.IMPORTED;
+            default: return null;
+        }
+    }
+
+    public static LocalDate parseDateToLocalDate(Date date) {
+        if (date == null){
+            return LocalDate.of(1900,01,01);
+        }else{
+            return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        }
+    }
+
+    public static boolean isValidateDatasOfAdd(Date diagnostic,Date recovered,Date death){
+        if (diagnostic == null || (recovered != null && death != null)){
+            return true;
+        }else {
+            return false;
+        }
+
     }
 }

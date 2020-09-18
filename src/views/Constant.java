@@ -38,6 +38,9 @@ public class Constant {
     public static final Color COLOR_HOME_FOOTER = Color.decode("#363435");
     public static final Color COLOR_BLUE_RIGHT = Color.decode("#044a98");
     public static final Color COLOR_PURPLE = Color.decode("#851FA5");
+    public static final Color COLOR_BLUE_DIALOG = Color.decode("#0D3A62");
+    public static final Color COLOR_RED_LIGHT = Color.decode("#B90603");
+
 
 
 //    Fuentes
@@ -73,6 +76,11 @@ public class Constant {
     public static final String M_TABLE = "Table";
 
 //Menu Estadisticas
+
+    public static final String M_DEATH = "Death";
+    public static final String M_RECOVERED = "Recovered";
+    public static final String M_DIAGNOSTIC= "Diagnostic";
+
     public static final String M_STATISTICS = "Statistics";
     public static final String M_STA_REPORT_LOCATION = "Report_Location";
 
@@ -103,14 +111,31 @@ public class Constant {
     public static final String L_NUMBER_DEATH = "Number_Death";
     public static final String L_RESUME_CASES = "Resume_Cases";
     public static final String L_NUMBER_DIAGNOSTIC = "Number_Diagnostic";
+    public static final String L_DIALOG = "Dialog";
+
+
+    public static final String L_GENDER = "Gender";
+    public static final String L_AGE = "Age";
+    public static final String L_ATTENTION = "Attention";
+    public static final String L_LOCATION = "Location_City";
+    public static final String L_HEALTH = "Health_Condition";
+    public static final String L_DATE_DIAGNOSTIC = "Date_Diagnostic";
+    public static final String L_DATE_RECOVERED = "Date_Recovered";
+    public static final String L_DATE_DEATH = "Date_Death";
+    public static final String L_CANCEL = "Cancel";
+    public static final String L_CREATE = "Create";
+
 
 
 
     //    Titulos de la tabla
-    public static final Object[] HEADERDS_TABLEMAIN = {"Number_Case","Gender","Age","Attention", "Location_City",
-        "Health_Condition","Date_Diagnostic","Date_Recovered","Date_Death"};
+    public static final Object[] HEADERDS_TABLEMAIN = {"Number_Case",L_GENDER,L_AGE,L_ATTENTION,L_LOCATION,
+            L_HEALTH,L_DATE_DIAGNOSTIC,L_DATE_RECOVERED,L_DATE_DEATH};
 
     public static final String IMG_ICON_APP = "/images/covidIcon.png";
+    public static final String IMG_ARROW_DOWN = "/images/arrowDown.png";
+    public static final String IMG_ARROW_RIGHT = "/images/arrowRight.png";
+    public static final String IMG_DIALOG = "/images/dialog.png";
     public static final String IMG_ABOUT = "/images/about.jpg";
     public static final String IMG_ABOUT_US = "/images/aboutUs.png";
     public static final String IMG_ABOUT_APP = "/images/aboutApp.png";

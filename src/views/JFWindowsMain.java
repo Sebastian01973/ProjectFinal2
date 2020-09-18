@@ -1,19 +1,24 @@
 package views;
 
+import models.Diagnostic;
+import models.ManagePatients;
 import utilities.Utilities;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import com.toedter.calendar.JDateChooser;
+
+import views.dialogs.JContainerDialog;
 
 public class JFWindowsMain extends JFrame implements Language{
 
     private JMainPanel jMainPanel;
+    private JContainerDialog jContainerDialog;
 
 
     public JFWindowsMain (ActionListener actionListener){
+        jContainerDialog = new JContainerDialog(actionListener,this);
         this.getContentPane().setBackground(Constant.COLOR_WHITE);
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setTitle(Utilities.getKey(Constant.APP_TITLE));
@@ -38,6 +43,16 @@ public class JFWindowsMain extends JFrame implements Language{
         jMainPanel.showCardGraphics(command);
     }
 
+    public void showDialogs(String command){
+        jContainerDialog.showDialogs(command);
+        jContainerDialog.showDialogAdd();
+        jContainerDialog.setVisible(true);
+    }
+
+    public Diagnostic createPatient(ManagePatients managePatients) {
+        return jContainerDialog.createPatient(managePatients,this);
+    }
+
     public void addElementToTable(Object[] objects){
         jMainPanel.addElementToTable(objects);
     }
@@ -49,6 +64,11 @@ public class JFWindowsMain extends JFrame implements Language{
     @Override
     public void changeLanguage() {
         this.setTitle(Utilities.getKey(Constant.APP_TITLE));
+        jContainerDialog.changeLanguage();
         jMainPanel.changeLanguage();
+    }
+
+    public void makeInvisibleDialogAddCost() {
+        jContainerDialog.setVisible(false);
     }
 }

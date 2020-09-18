@@ -97,6 +97,31 @@ public class JModelButton extends JButton{
 		this.setOpaque(false);
 		this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	}
+
+	public JModelButton(String imagePath,int width,int height,String Command,ActionListener actionListener) {
+		ImageIcon imagen = new ImageIcon(getClass().getResource(imagePath));
+		Icon icon = new ImageIcon(imagen.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
+		this.setIcon(icon);
+		this.setBackground(Constant.COLOR_WHITE);
+		this.setBorderPainted( false );
+		this.setFocusable( true );
+		this.setOpaque(false);
+		this.setActionCommand(Command);
+		this.addActionListener(actionListener);
+		this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+	}
+
+	public JModelButton(String imagePath,int width,int height,Color bg,Color fg) {
+		ImageIcon imagen = new ImageIcon(getClass().getResource(imagePath));
+		Icon icon = new ImageIcon(imagen.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
+		this.setIcon(icon);
+		this.setBorderPainted( false );
+		this.setFocusable( true );
+		this.setOpaque(false);
+		this.setBackground(bg);
+		this.setForeground(fg);
+		this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+	}
 	
 	public JModelButton( int arcW, int arcH, String text, Color codeColorBackground, Color codeColorForeground, String command, ActionListener listener) {
 		super( text );
@@ -155,7 +180,7 @@ public class JModelButton extends JButton{
 		g2.setColor(getBackground());
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);           
-		g2.fillRoundRect(0, 0, getWidth()-1, getHeight()-1, arcW, arcH);
+		g2.fillRoundRect(0, 0, getWidth()-2, getHeight()-1, arcW, arcH);
 		super.paintComponent(g);
 	}
 
