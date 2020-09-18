@@ -40,6 +40,32 @@ public class UtilitiesViews {
         }
     }
 
+//  //2020-06-19T00:00:00.000
+  public static LocalDate toParseLocalDate(Object date){
+	  if(date != null) {
+		  	String subDate = date.toString();
+		  	String formatDate = "dd-MM-yyyy";
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern(formatDate);
+			LocalDate dateResult = LocalDate.parse((CharSequence) subDate.substring(0, 10));
+			dateResult.format(formatter);
+			return dateResult;  
+	  }
+	  return null;
+  }
+  
+  public static String trimDate(LocalDate date) {
+	  if(date != null) {
+		  String data = date.toString();
+		  String dateTrim = data.replace('-', '/');
+		  return dateTrim;
+	  }
+	  return null;
+  }
+  
+  public static String dateToString(Object date) {
+	  LocalDate auxDate = toParseLocalDate(date);
+	  return trimDate(auxDate);
+  }
     
     //Utilities GRAPHICS
     

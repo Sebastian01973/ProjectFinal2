@@ -57,11 +57,12 @@ public class FileManagerJson implements IFileManager{
 						array.get(14),
 						array.get(15),
 						UtilitiesViews.toCutHealthCondition(String.valueOf(array.get(17))),
-//						array.get(21), array.get(22),array.get(23)
+						array.get(21),array.get(20),array.get(22)
 					};
 				System.out.println(String.valueOf(array.get(12)));
 				listDatas.add(datas);
 			}
+			System.out.println(listDatas.size());
 		} catch (DeserializationException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

@@ -81,10 +81,7 @@ public class Utilities {
         }
     }
 
-//    //2020-06-19T00:00:00.000
-//    public static Object toParseLocalDate(Object date){
-//        DateTimeFormat dateTimeFormat = new
-//    }
+
 
 //    public static LocalDate parseDateToLocalDate(Object date) {
 //        if (date == null){
@@ -109,17 +106,19 @@ public class Utilities {
             Diagnostic auxDiagnostic = null;
             for (int j = 0; j < objects.length; j++) {
                 auxDiagnostic = new Diagnostic(i+1,
-                        new Patient(
-                                UtilitiesViews.getDepartament(UtilitiesViews.getDatasDepartaments(String.valueOf(objects[0]))),
-                                UtilitiesViews.getAttention(String.valueOf(objects[1])),
-                                Integer.parseInt(String.valueOf(objects[2])),
-                                UtilitiesViews.getGender(String.valueOf(objects[3])),
-                                UtilitiesViews.getHealthCondition(String.valueOf(objects[4]))),
-                        LocalDate.of(2020,8,13),
-                        null,
-                        null);
+                new Patient(
+                		UtilitiesViews.getDepartament(UtilitiesViews.getDatasDepartaments(String.valueOf(objects[0]))),
+                		UtilitiesViews.getAttention(String.valueOf(objects[1])),
+                		Integer.parseInt(String.valueOf(objects[2])),
+                		UtilitiesViews.getGender(String.valueOf(objects[3])),
+                		UtilitiesViews.getHealthCondition(String.valueOf(objects[4]))),
+                        UtilitiesViews.toParseLocalDate(objects[5]),
+                        UtilitiesViews.toParseLocalDate(objects[6]),
+                        UtilitiesViews.toParseLocalDate(objects[7])
+               );
             }
             managePatients.addDiagnostic(auxDiagnostic);
         }
     }
+  
 }

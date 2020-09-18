@@ -23,7 +23,7 @@ public class Controller implements ActionListener {
     JFWindowsMain jfWindowsMain;
     FileManagerJson fileManagerJson;
 
-    private static final String LOCAL_HOST = "http://localhost/Json/SurtidoMix.json";
+    private static final String LOCAL_HOST = "http://localhost/Uptc/Archivo%20json/SurtidoMix.json";
 
 
     public Controller() {
