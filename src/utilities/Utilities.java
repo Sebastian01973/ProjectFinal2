@@ -45,12 +45,33 @@ public class Utilities {
     
     public static HealthCondition getHealthConsdition(String data) {
     	switch (data) {
-		case "Asintomático": return HealthCondition.ASYMPTOMATIC;
+		case "AsintomÃ¡tico": return HealthCondition.ASYMPTOMATIC;
 		case "Fallecido": return HealthCondition.DECEASED;
 		case "Leve": return HealthCondition.MILD;
+		case "Moderado": return HealthCondition.MODERATE;
+		case "Grave": return HealthCondition.SEVERE;
 		default: return null;
 		}
 	}
+    
+    public static Attention getAttention(String data){
+        switch (data){
+            case "Recuperado": return Attention.RECOVERED;
+            case "En casa": return Attention.HOUSE;
+            case "Fallecido": return Attention.DECEASED;
+            case "Hospital": return  Attention.HOSPITAL;
+            case "Hospital UCI": return  Attention.ICU_HOSPITAL;
+            default: return null;
+        }
+    }
+    
+    public static Gender getGender(String data){
+        switch (data){
+            case "M": return Gender.MALE;
+            case "F": return Gender.FEMALE;
+            default: return null;
+        }
+    }
 
     public static Attention getAttention(int index){
         switch (index){

@@ -37,7 +37,7 @@ public class FileManagerJson implements IFileManager{
 		
 	}
 	
-	public ArrayList<Object> readWeb (String webService) {
+	public ArrayList<Object> readWebService(String webService) {
 		ArrayList<Object> listDatas = new ArrayList<>();
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(FilesManager.getInputStream(false, webService)));
 		System.out.println("--------------------Output------------------------");
@@ -48,9 +48,12 @@ public class FileManagerJson implements IFileManager{
 			JsonArray data = (JsonArray) jSonObj.get("data");
 			for (int i = 0; i < data.size(); i++) {
 				JsonArray array = (JsonArray) data.get(i);
-				String[] datas = new String[] {
-						array.get(12).toString()
+				Object[] datas = new Object[] {
+						array.get(12),array.get(13),array.get(14),
+						array.get(15),array.get(17),array.get(21),
+						array.get(22),array.get(23)
 					};
+				listDatas.add(datas);
 			}
 		} catch (DeserializationException e) {
 			e.printStackTrace();
@@ -59,6 +62,20 @@ public class FileManagerJson implements IFileManager{
 		}
 		
 		return listDatas;
+	}
+	
+	public static void main(String[] args) {
+		FileManagerJson j = new FileManagerJson();
+		ArrayList<Object> list = j.readWebService("http://localhost/Uptc/Archivo%20json/ArchivoPrueba.json");
+		for (int i = 0; i < list.size(); i++) {
+			Object[] o = (Object[]) list.get(i);
+			String data = "--";
+			for (int k = 0; k < o.length; k++) {
+				data += o[k] + "--";
+			}
+			System.out.println(data);
+		}
+		System.out.println(list.size());
 	}
 
 }
