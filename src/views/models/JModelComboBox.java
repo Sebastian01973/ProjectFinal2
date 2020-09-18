@@ -1,18 +1,9 @@
 package views.models;
 
-import java.awt.Component;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 
-import javax.swing.BorderFactory;
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JList;
-import javax.swing.ListCellRenderer;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 
 
@@ -28,9 +19,16 @@ public class JModelComboBox<A> extends JComboBox<Object>{
 	public JModelComboBox(Object[] objects,String title,Font font) {
 		super(objects);
 		this.setFont(font);
-		this.setBackground(Constant.COLOR_WHITE);
-		this.setBorder(BorderFactory.createTitledBorder(title));
+		this.setBackground(Constant.COLOR_BLUE_RIGHT);
+		this.setForeground(Constant.COLOR_WHITE);
+		this.setBorder(BorderFactory.createTitledBorder(new EmptyBorder(0,0,0,0),title,
+				0,0,Constant.FONT_HELVETICA_13,Constant.COLOR_WHITE));
 		setUI(propieties.createUI(getRootPane()));		
+	}
+
+	public void setTitleBor(String text){
+		this.setBorder(BorderFactory.createTitledBorder(new EmptyBorder(0,0,0,0),text,
+				0,0,Constant.FONT_HELVETICA_13,Constant.COLOR_WHITE));
 	}
 	
 	public void setItems(Object[] objects) {
@@ -46,13 +44,14 @@ public class JModelComboBox<A> extends JComboBox<Object>{
 			return new propieties();
 		}
 
-//		@Override
-//		protected JButton createArrowButton() {
-////			JModelButton jModelButton = new JModelButton(Constant.IMG_ARROW_DOWN);
-////			jModelButton.setBorder(BorderFactory.createLineBorder(Constant.COLOR_COMBO_BOX,2));
-////			jModelButton.setContentAreaFilled(false);
-////			return jModelButton;
-//		}
+		@Override
+		protected JButton createArrowButton() {
+			JModelButton jModelButton = new JModelButton(Constant.IMG_ARROW_DOWN,25,25,Constant.COLOR_BLUE_RIGHT,Constant.COLOR_BLACK);
+			jModelButton.setMargin(new Insets(0,0,0,0));
+//			jModelButton.setBorder(BorderFactory.createLineBorder(Constant.COLOR_WHITE,2,true));
+			jModelButton.setContentAreaFilled(false);
+			return jModelButton;
+		}
 
 		@Override
 		public void paintCurrentValueBackground(Graphics g, Rectangle bounds, boolean hasFocus) {
@@ -72,7 +71,9 @@ public class JModelComboBox<A> extends JComboBox<Object>{
 					 list.setSelectionBackground(null);
 					 
 					 if (index !=- 1) {
-						setIcon(new ImageIcon(getClass().getResource("")));
+						 ImageIcon imagen = new ImageIcon(getClass().getResource(Constant.IMG_ARROW_RIGHT));
+						 Icon icon = new ImageIcon(imagen.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH));
+						 setIcon(icon);
 					 }
 					 return this;
 				}

@@ -68,6 +68,14 @@ public class JModelLabel extends JLabel{
 		this.setBackground(bg);
 		this.setForeground(fg);
 	}
+
+	public JModelLabel(String text,Font font, Color bg, Color fg) {
+		super(text);
+		this.setFont(font);
+		this.setOpaque(false);
+		this.setBackground(bg);
+		this.setForeground(fg);
+	}
 	
 	public JModelLabel(String text, Color bg, Color fg, Font font,Border border) {
 		super(text);

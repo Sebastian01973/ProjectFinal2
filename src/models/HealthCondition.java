@@ -5,8 +5,7 @@ public enum HealthCondition {
     MILD("Mild"),
     MODERATE("Moderate"),
     SEVERE("Severe"),
-    DECEASED("Decesed"),
-    IMPORTED("Imported");
+    DECEASED("Decesed");
 	
 	private final String key;
 	

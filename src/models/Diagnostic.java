@@ -8,12 +8,12 @@ public class Diagnostic {
     private LocalDate dateOfDiagnostic;
     private LocalDate dateOfDeath;
     private LocalDate dateOfRecovered;
-    private int number;
+    private int idCases;
 
     public Diagnostic(int number,Patient patient, LocalDate dateOfDiagnostic, LocalDate dateOfDeath, LocalDate dateOfRecovered) {
         this.dateOfDiagnostic = dateOfDiagnostic;
         this.patient = patient;
-        this.number = number;
+        this.idCases = number;
         validateRecovered(dateOfRecovered);
         validateDeath(dateOfDeath);
     }
@@ -58,8 +58,17 @@ public class Diagnostic {
 		this.dateOfRecovered = dateOfRecovered;
 	}
 	
-	public int getNumber() {
-		return this.number;
+	public int getIdCases() {
+		return this.idCases;
+	}
+
+	public Object[] toObjectVector() {
+		return new Object[] {
+				getIdCases(),getPatient().getGender().getGender(),getPatient().getAge(),
+				getPatient().getStates().toString(),
+				getPatient().getLocation(),getPatient().getHealthCondition().toString(),
+				getDateOfDiagnostic(),getDateOfRecovered(),getDateOfDeath(),
+		};
 	}
 	
 }
