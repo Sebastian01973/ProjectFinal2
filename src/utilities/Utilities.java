@@ -109,7 +109,8 @@ public class Utilities {
             Diagnostic auxDiagnostic = null;
             for (int j = 0; j < objects.length; j++) {
                 auxDiagnostic = new Diagnostic(i+1,
-                        new Patient(Departments.AMAZONAS,
+                        new Patient(
+                                UtilitiesViews.getDepartament(UtilitiesViews.getDatasDepartaments(String.valueOf(objects[0]))),
                                 UtilitiesViews.getAttention(String.valueOf(objects[1])),
                                 Integer.parseInt(String.valueOf(objects[2])),
                                 UtilitiesViews.getGender(String.valueOf(objects[3])),

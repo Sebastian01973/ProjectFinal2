@@ -1,19 +1,25 @@
 package utilities;
 
 import models.Attention;
+import models.Departments;
 import models.Gender;
 import models.HealthCondition;
+import views.Constant;
 import views.models.JModelLabel;
 
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Graphics2D;
+import java.text.Collator;
 import java.text.DecimalFormat;
+import java.text.Normalizer;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.Locale;
 
 public class UtilitiesViews {
 
@@ -122,7 +128,65 @@ public class UtilitiesViews {
 		}
 	}
 
-	public static String getDatasDepartaments(String departaments){
-		return "";
+	public static boolean isValidate(String depar,String regex,int start,int end){
+		if (depar.length() >= end ){
+			if (depar.substring(start,end).equals(regex)){
+				return true;
+			}
+		}
+		return false;
 	}
+
+	public static String getDatasDepartaments(String depart){
+		String[] departments = Constant.KEYS_DEPARTMENTS;
+		int size = departments.length;
+		String cad1 = Normalizer.normalize(depart, Normalizer.Form.NFD);
+		String cad2 = cad1.replaceAll("[^\\p{ASCII}]", "");
+		for (int i = 0; i < size; i++) {
+			if (isValidate(cad2,"Carta",0,5)){
+				return departments[6];
+			}else if(isValidate(cad2,"Barra",0,5)){
+				return departments[4];
+			}else if(isValidate(cad2,"Marta",6,11)){
+				return departments[20];
+			}else if(isValidate(cad2,"Buena",0,5)){
+				return  departments[30];
+			}
+			if (isValidate(cad2,departments[i],0,4)){
+				return departments[i];
+			}
+		}
+		return "Mal";
+    }
+
+    public static Departments getDepartament(String data){
+    	String[] constant = Constant.KEYS_DEPARTMENTS;
+    	Departments[] departments = Departments.values();
+    	int size = constant.length;
+		for (int i = 0; i < size; i++) {
+			if (constant[i].equals(data)){
+				return departments[i];
+			}
+		}
+		return null;
+	}
+
+	public static void main(String[] args) {
+		System.out.println("Atlántico: "+getDatasDepartaments("Atlántico"));
+		System.out.println("Córdoba: "+getDatasDepartaments("Córdoba"));
+		System.out.println("Bolívar: "+getDatasDepartaments("Bolívar"));
+
+		System.out.println("--------------");
+		String cadenaNormalize = Normalizer.normalize("Atlántico", Normalizer.Form.NFD);
+		String cadenaSinAcentos = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
+		System.out.println(cadenaSinAcentos);
+		System.out.println("--------------------");
+		System.out.println(isValidate(cadenaSinAcentos,"AtlA",0,4));
+
+		System.out.println("-----------------");
+
+		Departments[] ob = Departments.values();
+		System.out.println(getDepartament(getDatasDepartaments("Atlántico")).getDepartment());
+
+    }
 }
