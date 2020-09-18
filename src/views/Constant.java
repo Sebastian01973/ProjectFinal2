@@ -264,4 +264,8 @@ public class Constant {
              IMG_MAGDALENA, IMG_META, IMG_NARIÑO, IMG_NORTE_SANTANDER,
             IMG_PUTUMAYO, IMG_QUINDIO, IMG_RISARALDAS, IMG_SANTANDER, IMG_SUCRE,
             IMG_TOLIMA, IMG_VALLE_CAUCA,IMG_VAUPES, IMG_VICHADA};
+
+    public static final String[] KEYS_DEPARTMENTS = new String[]{
+            "Ama","Ant","Arc","","","","","","","","","","","",
+    };
 }

@@ -1,5 +1,8 @@
 package utilities;
 
+import models.Attention;
+import models.Gender;
+import models.HealthCondition;
 import views.models.JModelLabel;
 
 import javax.swing.*;
@@ -30,6 +33,7 @@ public class UtilitiesViews {
             return "";
         }
     }
+
     
     //Utilities GRAPHICS
     
@@ -74,5 +78,51 @@ public class UtilitiesViews {
 	public static JLabel spaceLabel(Color bg, Color fg){
     	JLabel space = new JModelLabel("<html>s<p>s<p><html>",bg,fg);
     	return  space;
+	}
+
+	//Utilities Json
+
+	public static String toCutHealthCondition(String data){
+    	if (data.charAt(0) == 'A'){
+    		return "Asintomatico";
+		}else{
+    		return data;
+		}
+	}
+
+	public static Gender getGender(String data){
+		switch (data){
+			case "M": return Gender.MALE;
+			case "F": return Gender.FEMALE;
+			default: return null;
+		}
+	}
+
+	public static HealthCondition getHealthCondition(String data) {
+		switch (data) {
+			case "Asintomatico": return HealthCondition.ASYMPTOMATIC;
+			case "Fallecido": return HealthCondition.DECEASED;
+			case "Leve": return HealthCondition.MILD;
+			case "Moderado": return HealthCondition.MODERATE;
+			case "Grave": return HealthCondition.SEVERE;
+			case "N/A": return HealthCondition.N_A;
+			default: return null;
+		}
+	}
+
+	public static Attention getAttention(String data){
+		switch (data){
+			case "Recuperado": return Attention.RECOVERED;
+			case "Casa": return Attention.HOUSE;
+			case "Fallecido": return Attention.DECEASED;
+			case "Hospital": return  Attention.HOSPITAL;
+			case "Hospital UCI": return  Attention.ICU_HOSPITAL;
+			case "N/A": return Attention.N_A;
+			default: return null;
+		}
+	}
+
+	public static String getDatasDepartaments(String departaments){
+		return "";
 	}
 }
