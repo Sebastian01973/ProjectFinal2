@@ -59,6 +59,7 @@ public class FileManagerJson implements IFileManager{
 						UtilitiesViews.toCutHealthCondition(String.valueOf(array.get(17))),
 						array.get(21),array.get(20),array.get(22)
 					};
+				System.out.println(String.valueOf(array.get(12)));
 				listDatas.add(datas);
 			}
 			System.out.println(listDatas.size());

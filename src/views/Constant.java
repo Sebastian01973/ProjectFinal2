@@ -261,11 +261,13 @@ public class Constant {
     public static final String[] IMGS_DEPART = new String[]{IMG_AMAZONAS,IMG_ANTIOQUIA,IMG_ARAUCA, IMG_SAN_ANDRES,IMG_ATLANTICO,
             IMG_BOGOTA, IMG_BOLIVAR, IMG_BOYACA, IMG_CALDAS, IMG_CAQUETA,IMG_CASANARE,
             IMG_CAUCA, IMG_CESAR, IMG_CHOCO, IMG_CUNDINAMARCA,IMG_CORDOBA , IMG_GUIANIA, IMG_GUAVIARE,IMG_HUILA,IMG_GUAJIRA,
-             IMG_MAGDALENA, IMG_META, IMG_NARIÑO, IMG_NORTE_SANTANDER,
+            IMG_MAGDALENA, IMG_META, IMG_NARIÑO, IMG_NORTE_SANTANDER,
             IMG_PUTUMAYO, IMG_QUINDIO, IMG_RISARALDAS, IMG_SANTANDER, IMG_SUCRE,
             IMG_TOLIMA, IMG_VALLE_CAUCA,IMG_VAUPES, IMG_VICHADA};
 
     public static final String[] KEYS_DEPARTMENTS = new String[]{
-            "Ama","Ant","Arc","","","","","","","","","","","",
+            "Amaz","Anti","Arau","Arch","AtlA","Bogo","BolA","Boya","Cald","Caqu","Casa",
+            "Cauc", "Cesa","Choc", "Cund","CArd","Guai","Guav","Huil","La G","Magd","Meta",
+            "Nari", "Nort","Putu","Quin","Risa","Sant","Sucr", "Toli","Vall","Vaup","Vich",
     };
 }
