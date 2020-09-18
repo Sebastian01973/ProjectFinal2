@@ -55,6 +55,7 @@ public class FileManagerJson implements IFileManager{
 					};
 				listDatas.add(datas);
 			}
+			System.out.println(listDatas.size());
 		} catch (DeserializationException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -66,7 +67,7 @@ public class FileManagerJson implements IFileManager{
 	
 	public static void main(String[] args) {
 		FileManagerJson j = new FileManagerJson();
-		ArrayList<Object> list = j.readWebService("http://localhost/Uptc/Archivo%20json/ArchivoPrueba.json");
+		ArrayList<Object> list = j.readWebService("http://localhost/Uptc/Archivo%20json/Datas.json");
 		for (int i = 0; i < list.size(); i++) {
 			Object[] o = (Object[]) list.get(i);
 			String data = "--";
