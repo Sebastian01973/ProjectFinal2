@@ -1,8 +1,6 @@
 package utilities;
 
-import models.Attention;
-import models.Gender;
-import models.HealthCondition;
+import models.*;
 import persistence.HandlerLanguage;
 
 import java.io.FileInputStream;
@@ -11,6 +9,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 
@@ -41,36 +41,6 @@ public class Utilities {
 
     public static String getKey(String key) {
         return HandlerLanguage.languageProperties.getProperty(key);
-    }
-    
-    public static HealthCondition getHealthConsdition(String data) {
-    	switch (data) {
-		case "AsintomÃ¡tico": return HealthCondition.ASYMPTOMATIC;
-		case "Fallecido": return HealthCondition.DECEASED;
-		case "Leve": return HealthCondition.MILD;
-		case "Moderado": return HealthCondition.MODERATE;
-		case "Grave": return HealthCondition.SEVERE;
-		default: return null;
-		}
-	}
-    
-    public static Attention getAttention(String data){
-        switch (data){
-            case "Recuperado": return Attention.RECOVERED;
-            case "En casa": return Attention.HOUSE;
-            case "Fallecido": return Attention.DECEASED;
-            case "Hospital": return  Attention.HOSPITAL;
-            case "Hospital UCI": return  Attention.ICU_HOSPITAL;
-            default: return null;
-        }
-    }
-    
-    public static Gender getGender(String data){
-        switch (data){
-            case "M": return Gender.MALE;
-            case "F": return Gender.FEMALE;
-            default: return null;
-        }
     }
 
     public static Attention getAttention(int index){
@@ -111,6 +81,16 @@ public class Utilities {
         }
     }
 
+
+
+//    public static LocalDate parseDateToLocalDate(Object date) {
+//        if (date == null){
+//            return null;
+//        }else{
+//            return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//        }
+//    }
+
     public static boolean isValidateDatasOfAdd(Date diagnostic,Date recovered,Date death){
         if (diagnostic == null || (recovered != null && death != null)){
             return true;
@@ -118,4 +98,26 @@ public class Utilities {
             return false;
         }
     }
+
+    public static void readDatasJson(ArrayList<Object[]> arrayObjects, ManagePatients managePatients){
+        int size = arrayObjects.size();
+        for (int i = 0; i < size; i++) {
+            Object[] objects = arrayObjects.get(i);
+            Diagnostic auxDiagnostic = null;
+            for (int j = 0; j < objects.length; j++) {
+                auxDiagnostic = new Diagnostic(i+1,
+                new Patient(Departments.AMAZONAS,
+                		UtilitiesViews.getAttention(String.valueOf(objects[1])),
+                		Integer.parseInt(String.valueOf(objects[2])),
+                		UtilitiesViews.getGender(String.valueOf(objects[3])),
+                		UtilitiesViews.getHealthCondition(String.valueOf(objects[4]))),
+                        UtilitiesViews.toParseLocalDate(objects[5]),
+                        UtilitiesViews.toParseLocalDate(objects[6]),
+                        UtilitiesViews.toParseLocalDate(objects[7])
+               );
+            }
+            managePatients.addDiagnostic(auxDiagnostic);
+        }
+    }
+  
 }

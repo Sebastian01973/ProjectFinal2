@@ -1,13 +1,15 @@
 package controllers;
 
-import models.Diagnostic;
-import models.ManagePatients;
+import models.*;
+import persistence.FileManagerJson;
 import utilities.Utilities;
+import utilities.UtilitiesViews;
 import views.Constant;
 import views.JFWindowsMain;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static javax.swing.JOptionPane.showConfirmDialog;
@@ -19,6 +21,9 @@ public class Controller implements ActionListener {
     ManagePatients managePatients;
     ConfigLanguage configLanguage;
     JFWindowsMain jfWindowsMain;
+    FileManagerJson fileManagerJson;
+
+    private static final String LOCAL_HOST = "http://localhost/Uptc/Archivo%20json/SurtidoMix.json";
 
 
     public Controller() {
@@ -27,6 +32,8 @@ public class Controller implements ActionListener {
         managePatients = new ManagePatients();
         jfWindowsMain = new JFWindowsMain(this);
         configLanguage.setJfWindowsMain(jfWindowsMain);
+        fileManagerJson = new FileManagerJson();
+        readFileWebServicesJson();
     }
 
     @Override
@@ -67,6 +74,11 @@ public class Controller implements ActionListener {
             showMessageDialog(null, "Hay datos Vacios por favor llenarlos todos");
             showDialogs(Command.ADD_PATIENT.toString());
         }
+    }
+
+    public void readFileWebServicesJson(){
+        ArrayList<Object[]> arrayObjects = fileManagerJson.readWebService(LOCAL_HOST);
+        Utilities.readDatasJson(arrayObjects,managePatients);
     }
 
     private void showDialogs(String command){

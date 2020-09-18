@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 public class JTableEast extends JPanel implements Language {
 
     JModelButton addPatient,searchPatient,modifyPatient,deletePatient;
-    JModelButton load,save;
+    JModelButton load,save,refresh;
 
     public JTableEast(ActionListener actionListener) {
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
@@ -53,14 +53,21 @@ public class JTableEast extends JPanel implements Language {
 
         this.add(UtilitiesViews.spaceLabel(Constant.COLOR_BLUE_DARK,Constant.COLOR_BLUE_DARK));
 
-        load = new JModelButton(Utilities.getKey(Constant.M_LOAD),Constant.IMG_DOCUMENT,Constant.FONT_HELVETICA_13,30,30,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
+        refresh = new JModelButton(Utilities.getKey(Constant.M_REFRESH),Constant.IMG_REFRESH,Constant.FONT_HELVETICA_13,25,25,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
+        refresh.setActionCommand(Command.REFRESH_DATA.toString());
+        refresh.addActionListener(actionListener);
+        this.add(refresh);
+
+        this.add(UtilitiesViews.spaceLabel(Constant.COLOR_BLUE_DARK,Constant.COLOR_BLUE_DARK));
+
+        load = new JModelButton(Utilities.getKey(Constant.M_LOAD),Constant.IMG_DOCUMENT,Constant.FONT_HELVETICA_13,25,25,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
         load.setActionCommand(Command.LOAD_FILE.toString());
         load.addActionListener(actionListener);
         this.add(load);
 
         this.add(UtilitiesViews.spaceLabel(Constant.COLOR_BLUE_DARK,Constant.COLOR_BLUE_DARK));
 
-        save = new JModelButton(Utilities.getKey(Constant.M_SAVE),Constant.IMG_SAVE,Constant.FONT_HELVETICA_13,30,30,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
+        save = new JModelButton(Utilities.getKey(Constant.M_SAVE),Constant.IMG_SAVE,Constant.FONT_HELVETICA_13,25,25,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
         save.setActionCommand(Command.SAVE_FILE.toString());
         save.addActionListener(actionListener);
         this.add(save);
@@ -75,5 +82,6 @@ public class JTableEast extends JPanel implements Language {
 
         load.setText(Utilities.getKey(Constant.M_LOAD));
         save.setText(Utilities.getKey(Constant.M_SAVE));
+        refresh.setText(Utilities.getKey(Constant.M_REFRESH));
     }
 }

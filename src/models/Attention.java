@@ -1,8 +1,12 @@
 package models;
 
 public enum Attention {
-	RECOVERED("Recovered"),HOUSE("House"),DECEASED("Deceased"),
-	HOSPITAL("Hospital"),ICU_HOSPITAL("Icu_Hospital");
+	RECOVERED("Recovered"),
+	HOUSE("House"),
+	DECEASED("Deceased"),
+	HOSPITAL("Hospital"),
+	ICU_HOSPITAL("Icu_Hospital"),
+	N_A("N_A");
 	
 	private final String key;
 

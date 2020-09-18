@@ -5,6 +5,7 @@ public enum HealthCondition {
     MILD("Mild"),
     MODERATE("Moderate"),
     SEVERE("Severe"),
+	N_A("N_A"),
     DECEASED("Decesed");
 	
 	private final String key;
@@ -23,7 +24,6 @@ public enum HealthCondition {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return getKey();
 	}
 }

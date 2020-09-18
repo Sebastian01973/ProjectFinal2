@@ -24,10 +24,15 @@ public class ManagePatients {
 	public Object[] toObjectVector(int index) {
 		Diagnostic diagnostic = diagnosticList.get(index);
 		return new Object[] {
-				diagnostic.getIdCases(),diagnostic.getPatient().getGender().getGender(),diagnostic.getPatient().getAge(),
+				diagnostic.getIdCases(),
+				diagnostic.getPatient().getGender().getGender(),
+				diagnostic.getPatient().getAge(),
 				diagnostic.getPatient().getStates().toString(),
-				diagnostic.getPatient().getLocation(),diagnostic.getPatient().getHealthCondition().toString(),
-				diagnostic.getDateOfDiagnostic(),diagnostic.getDateOfRecovered(),diagnostic.getDateOfDeath()
+				diagnostic.getPatient().getLocation(),
+				diagnostic.getPatient().getHealthCondition().toString(),
+				diagnostic.getDateOfDiagnostic(),
+				diagnostic.getDateOfRecovered(),
+				diagnostic.getDateOfDeath()
 		};
 	}
 	
