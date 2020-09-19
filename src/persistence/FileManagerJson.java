@@ -59,6 +59,7 @@ public class FileManagerJson implements IFileManager{
 					};
 				listDatas.add(datas);
 			}
+			System.out.println(listDatas.size());
 		} catch (DeserializationException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
