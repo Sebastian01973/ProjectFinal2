@@ -8,7 +8,11 @@ import java.awt.event.ActionListener;
 
 public class JContainerStatistic extends JPanel implements Language {
 
-    private JPNorthSta jPanelNorth;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPNorthSta jPanelNorth;
     private JPanelLeft jPanelLeft;
     private JPanelRight jPanelRight;
     private JPCardGraphics jpCardGraphics;
@@ -21,6 +25,14 @@ public class JContainerStatistic extends JPanel implements Language {
         this.setLayout(new BorderLayout());
         this.setBackground(Color.WHITE);
         initComponents(actionListener);
+    }
+
+    public void setDatas(int[] datasx,int[] datasy){
+        jpCardGraphics.setDatas(datasx,datasy);
+    }
+    
+    public void setDatasPie(String[] labels,int[] datas) {
+    	jpCardGraphics.setDatasPie(labels, datas);
     }
 
     private void initComponents(ActionListener actionListener) {

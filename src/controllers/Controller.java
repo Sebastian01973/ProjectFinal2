@@ -23,8 +23,9 @@ public class Controller implements ActionListener {
     JFWindowsMain jfWindowsMain;
     FileManagerJson fileManagerJson;
 
-	//este es mio
-	private static final String LOCAL_HOST = "http://localhost/Uptc/Archivo%20json/SurtidoMix.json";
+    private static final String LOCAL_HOST_NAUSAN = "http://localhost/Uptc/Archivo%20json/SurtidoMix.json";
+    private static final String LOCAL_HOST_PACHO = "http://localhost/Json/SurtidoMix.json";
+
 
     public Controller() {
         configLanguage = new ConfigLanguage();
@@ -45,9 +46,13 @@ public class Controller implements ActionListener {
             case C_MENU_TABLE: showPanels(Command.C_MENU_TABLE.toString());break;
             case C_MENU_STATISTIC: showPanels(Command.C_MENU_STATISTIC.toString());break;
             case C_MENU_LOCATION: showPanels(Command.C_MENU_LOCATION.toString());break;
-            case C_GRAPHICS_LINE: showGraphics(Command.C_GRAPHICS_LINE.toString()); break;
+            case C_GRAPHICS_LINE:
+                this.setDatasLine();
+                showGraphics(Command.C_GRAPHICS_LINE.toString());
+                break;
             case C_GRAPHICS_BAR: showGraphics(Command.C_GRAPHICS_BAR.toString()); break;
-            case C_GRAPHICS_TORTE: showGraphics(Command.C_GRAPHICS_TORTE.toString()); break;
+            case C_GRAPHICS_TORTE: this.setDatasPie();
+            showGraphics(Command.C_GRAPHICS_TORTE.toString()); break;
             case LOAD_FILE: this.loadFile(); break;
             case SAVE_FILE: this.saveFile(); break;
             case ADD_PATIENT: this.showDialogs(Command.ADD_PATIENT.toString()); break;
@@ -77,10 +82,30 @@ public class Controller implements ActionListener {
     }
 
     public void readFileWebServicesJson(){
-        ArrayList<Object[]> arrayObjects = fileManagerJson.readWebService(LOCAL_HOST);
+        ArrayList<Object[]> arrayObjects = fileManagerJson.readWebService(LOCAL_HOST_NAUSAN);
         Utilities.readDatasJson(arrayObjects,managePatients);
         int[] datas = managePatients.getCasesMonth();
         int[] months = managePatients.getMonths();
+    }
+
+    public void setDatasLine(){
+    	int[] months = managePatients.getMonths();
+    	int[] cases = managePatients.getCasesMonth();
+        jfWindowsMain.setDatas(months,cases);
+    }
+    
+    public void setDatasPie() {
+    	int[] datas = managePatients.getPercentagesAges();
+    	String [] labels = new String[] {"1-12 Bebes"+datas[0],"13-30 Joven"+datas[1],"31-60 Adulto"+datas[2],
+    			"60 en ancianos"+datas[3]};
+    	for (int i = 0; i < datas.length; i++) {
+			System.out.println(datas[i]+"%");
+		}
+    	jfWindowsMain.setDatasPie(labels, datas);
+    }
+
+    public void setDatas(int[] datasX,int[] datasy){
+        jfWindowsMain.setDatas(datasX,datasy);
     }
 
     private void showDialogs(String command){

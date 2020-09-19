@@ -22,6 +22,14 @@ import java.util.Date;
 import java.util.Locale;
 
 public class UtilitiesViews {
+	
+	public static int[] parseDatas(int[] data) {
+		int[] value = new int[data.length];
+		for (int i = 0; i < value.length; i++) {
+			value[i] = data[i]/10;
+		}
+		return value;
+	}
 
     public static String toFloatFormatPercentage(float value) {
         DecimalFormat df = (DecimalFormat) NumberFormat.getInstance();
@@ -196,23 +204,4 @@ public class UtilitiesViews {
 		}
 		return null;
 	}
-
-	public static void main(String[] args) {
-		System.out.println("Atlántico: "+getDatasDepartaments("Atlántico"));
-		System.out.println("Córdoba: "+getDatasDepartaments("Córdoba"));
-		System.out.println("Bolívar: "+getDatasDepartaments("Bolívar"));
-
-		System.out.println("--------------");
-		String cadenaNormalize = Normalizer.normalize("Atlántico", Normalizer.Form.NFD);
-		String cadenaSinAcentos = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
-		System.out.println(cadenaSinAcentos);
-		System.out.println("--------------------");
-		System.out.println(isValidate(cadenaSinAcentos,"AtlA",0,4));
-
-		System.out.println("-----------------");
-
-		Departments[] ob = Departments.values();
-		System.out.println(getDepartament(getDatasDepartaments("Atlántico")).getDepartment());
-
-    }
 }

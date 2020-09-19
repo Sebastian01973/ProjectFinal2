@@ -81,16 +81,6 @@ public class Utilities {
         }
     }
 
-
-
-//    public static LocalDate parseDateToLocalDate(Object date) {
-//        if (date == null){
-//            return null;
-//        }else{
-//            return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//        }
-//    }
-
     public static boolean isValidateDatasOfAdd(Date diagnostic,Date recovered,Date death){
         if (diagnostic == null || (recovered != null && death != null)){
             return true;

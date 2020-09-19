@@ -43,11 +43,9 @@ public class FileManagerJson implements IFileManager{
 	public ArrayList<Object[]> readWebService(String webService) {
 		ArrayList<Object[]> listDatas = new ArrayList<>();
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(FilesManager.getInputStream(false, webService)));
-		System.out.println("--------------------Output------------------------");
+
 		try {
-			System.out.println("raiz");
 			JsonObject jSonObj = (JsonObject) Jsoner.deserialize(bufferedReader);
-			System.out.println("entro raiz");
 			JsonArray data = (JsonArray) jSonObj.get("data");
 			for (int i = 0; i < data.size(); i++) {
 				JsonArray array = (JsonArray) data.get(i);
@@ -59,7 +57,6 @@ public class FileManagerJson implements IFileManager{
 						UtilitiesViews.toCutHealthCondition(String.valueOf(array.get(17))),
 						array.get(21),array.get(20),array.get(22)
 					};
-				System.out.println(String.valueOf(array.get(12)));
 				listDatas.add(datas);
 			}
 			System.out.println(listDatas.size());

@@ -19,29 +19,27 @@ public class ManagePatients {
 	public void addDiagnostic(Diagnostic diagnostic) {
 		diagnosticList.add(diagnostic);
 	}
-	
 
-
-	public Object[] toObjectVector(int index) {
-		Diagnostic diagnostic = diagnosticList.get(index);
-		return new Object[] {
-				diagnostic.getIdCases(),
-				diagnostic.getPatient().getGender().getGender(),
-				diagnostic.getPatient().getAge(),
-				diagnostic.getPatient().getStates().toString(),
-				diagnostic.getPatient().getLocation(),
-				diagnostic.getPatient().getHealthCondition().toString(),
-				diagnostic.getDateOfDiagnostic(),
-				diagnostic.getDateOfRecovered(),
-				diagnostic.getDateOfDeath()
-		};
-	}
-	
-	public ArrayList<Object[]> getMatrixList(){
-		ArrayList<Object[]> matrix = new ArrayList<>();
+	public int[] countTotalCases(){
+		Departments[] deps = Departments.values();
+		int[] countCases = new int[Departments.values().length];
 		int size = diagnosticList.size();
 		for (int i = 0; i < size; i++) {
-			matrix.add(toObjectVector(i));
+			countCases[i] = diagnosticList.get(i).countTotalCases(deps[i]);
+		}
+		return countCases;
+	}
+
+
+	public Object[] getDatasDepartament(){
+		Object[] auxObject = new Object[3];
+		return auxObject;
+	}
+
+	public ArrayList<Object[]> getMatrixList(){
+		ArrayList<Object[]> matrix = new ArrayList<>();
+		for (Diagnostic diagnostic: diagnosticList) {
+			matrix.add(diagnostic.toObjectVector());
 		}
 		return matrix;
 	}
@@ -69,14 +67,6 @@ public class ManagePatients {
 		return data;
 	}
 	
-	public int countMonths() {
-		int count = 0;
-		for (int i = 1; i < 13; i++) {
-			count += isMonth(i)?1:0;
-		}
-		return count;
-	}
-	
 	public int[] getMonths() {
 		int[] data = new int[countMonths()];
 		int count = 0;
@@ -89,6 +79,15 @@ public class ManagePatients {
 		return data;
 	}
 	
+	public int countMonths() {
+		int count = 0;
+		for (int i = 1; i < 13; i++) {
+			count += isMonth(i)?1:0;
+		}
+		return count;
+	}
+	
+	
 	public boolean isMonth(int value) {
 		int size = diagnosticList.size();
 		for (int i = 1; i < size; i++) {
@@ -97,5 +96,25 @@ public class ManagePatients {
 			}
 		}
 		return false;
+	}
+	
+	public int calPercentageAge(int age1,int age2) {
+		int value=0;
+		int size = diagnosticList.size();
+		for (Diagnostic diagnostic : diagnosticList) {
+			int age = diagnostic.getPatient().getAge();
+			if(age >= age1 && age <= age2) {
+				value++;
+			}
+		}
+		return (value*100/size);
+	}
+	
+	public int[] getPercentagesAges() {
+		int[] ages = new int[] {
+				calPercentageAge(1, 12),calPercentageAge(13, 30),
+				calPercentageAge(31, 60),calPercentageAge(60, 100),
+		};
+		return ages;
 	}
 }

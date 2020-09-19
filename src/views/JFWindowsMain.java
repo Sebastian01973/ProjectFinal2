@@ -53,6 +53,14 @@ public class JFWindowsMain extends JFrame implements Language{
         return jContainerDialog.createPatient(managePatients,this);
     }
 
+    public void setDatas(int[] datasx,int[] datasy){
+        jMainPanel.setDatas(datasx,datasy);
+    }
+
+    public void setDatasPie(String[] labels,int[] datas) {
+    	jMainPanel.setDatasPie(labels, datas);
+    }
+
     public void addElementToTable(Object[] objects){
         jMainPanel.addElementToTable(objects);
     }

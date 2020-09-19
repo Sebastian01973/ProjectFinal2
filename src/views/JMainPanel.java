@@ -33,6 +33,14 @@ public class JMainPanel extends JPanel implements Language{
         this.add(jContainerFooter,BorderLayout.SOUTH);
     }
 
+    public void setDatas(int[] datasx,int[] datasy){
+        jcardLayout.setDatas(datasx,datasy);
+    }
+    
+    public void setDatasPie(String[] labels,int[] datas) {
+    	jcardLayout.setDatasPie(labels, datas);
+    }
+
     public void showPanels(String command){
         jcardLayout.showPanels(command);
     }

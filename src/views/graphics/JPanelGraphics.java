@@ -42,14 +42,14 @@ public class JPanelGraphics extends  JPanel{
 		int yAxisy2 = UtilitiesViews.getSeparationAxis('y',0.8f,this);
 		int lengthYAxis = yAxisy2-yAxisy1;
 		UtilitiesViews.drawAxis(yAxisx, yAxisy1, yAxisx,yAxisy2,graphics2D);
-		String[] labelsY = new String[] {"100K","200K","300K","400K","500K","600K","700K","800K","900K","1M"};
+		String[] labelsY = new String[] {"1K","2K","3K","4K","5K","6K","7K","8K","9K","10K"};
 		UtilitiesViews.drawYDivisions(graphics2D, lengthYAxis, labelsY,this);
 
 		int xAxisx1 = UtilitiesViews.getSeparationAxis('x',0.09f,this);
 		int xAxisx2 = UtilitiesViews.getSeparationAxis('x',0.9f,this);
 		int xAxisy = UtilitiesViews.getSeparationAxis('y',0.8f,this);
 		int lengthXAxis = xAxisx2-xAxisx1;
-		String[] labelsX = new String[] {"3","4","5","6","7","8","9","10","11","12"};
+		String[] labelsX = new String[] {"6","7","8","9"};
 		UtilitiesViews.drawAxis(xAxisx1, xAxisy, xAxisx2,xAxisy,graphics2D);
 		UtilitiesViews.drawXDivisions(graphics2D, lengthXAxis, labelsX, this);
 
@@ -61,9 +61,10 @@ public class JPanelGraphics extends  JPanel{
 
 	
 	private void drawFunction(Graphics2D g2d,int[] xPoints,int[] yPoints,int nPoints,int lengthX,int lengthY) {
-		int[] xPointsTransfrom = parsePointsX(xPoints, lengthX,10);
+		int[] xPointsTransfrom = parsePointsX(xPoints, lengthX,4);
 		int[] yPointsTransform = parsePointsY(yPoints, lengthY);
 		g2d.drawPolyline(xPointsTransfrom, yPointsTransform, nPoints);
+		drawPoint(xPointsTransfrom, yPointsTransform, g2d);
 	}
 
 	private int[] parsePointsX(int[] points,int length, int lengthLabelsX) {
@@ -76,6 +77,14 @@ public class JPanelGraphics extends  JPanel{
 		return transfrmedPoints;
 	}
 	
+	public void drawPoint(int[] parsePointsX,int[] parsePointsY,Graphics2D g2d) {
+		g2d.setColor(Color.red);
+		for (int i = 0; i < parsePointsY.length; i++) {
+			g2d.fillOval(parsePointsX[i]-5, parsePointsY[i]-5, 10, 10);
+		}
+		g2d.setColor(Color.black);
+	}
+	
 	private int[] parsePointsY(int[] points,int length) {
 		int sizeDivision = length/10;
 		int transformedPoints [] = new int[points.length];
@@ -86,6 +95,11 @@ public class JPanelGraphics extends  JPanel{
 			transformedPoints[i] = value;
 		}
 		return transformedPoints;
+	}
+
+	public void setDatas(int[] datasX,int[] datasY){
+		this.datasX = datasX;
+		this.datasY = datasY;
 	}
 
 	public void setDatasX(int[] datasX) {
