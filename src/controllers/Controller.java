@@ -23,8 +23,8 @@ public class Controller implements ActionListener {
     JFWindowsMain jfWindowsMain;
     FileManagerJson fileManagerJson;
 
-    private static final String LOCAL_HOST = "http://localhost/Uptc/Archivo%20json/SurtidoMix.json";
-
+	//este es mio
+	private static final String LOCAL_HOST = "http://localhost/Uptc/Archivo%20json/SurtidoMix.json";
 
     public Controller() {
         configLanguage = new ConfigLanguage();
@@ -79,6 +79,8 @@ public class Controller implements ActionListener {
     public void readFileWebServicesJson(){
         ArrayList<Object[]> arrayObjects = fileManagerJson.readWebService(LOCAL_HOST);
         Utilities.readDatasJson(arrayObjects,managePatients);
+        int[] datas = managePatients.getCasesMonth();
+        int[] months = managePatients.getMonths();
     }
 
     private void showDialogs(String command){

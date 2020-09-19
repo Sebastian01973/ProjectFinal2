@@ -1,6 +1,7 @@
 package models;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 
 public class ManagePatients {
@@ -43,5 +44,58 @@ public class ManagePatients {
 			matrix.add(toObjectVector(i));
 		}
 		return matrix;
+	}
+	
+	public int countCasesMonth(int numberMonth) {
+		int count = 0;
+		int size = diagnosticList.size();
+		for (int i = 0; i < size; i++) {
+			if(diagnosticList.get(i).getDateOfDiagnostic().getMonth().getValue() == numberMonth) {
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	public int[] getCasesMonth() {
+		int[] months = getMonths();
+		int[] data = new int[countMonths()];
+		for (int j = 0; j < months.length; j++) {
+			int count = countCasesMonth(months[j]); 
+			if(count > 0) {
+				data[j] = count;
+			}
+		}	
+		return data;
+	}
+	
+	public int countMonths() {
+		int count = 0;
+		for (int i = 1; i < 13; i++) {
+			count += isMonth(i)?1:0;
+		}
+		return count;
+	}
+	
+	public int[] getMonths() {
+		int[] data = new int[countMonths()];
+		int count = 0;
+		for (int i = 0; i < 12; i++) {
+			if(isMonth(i+1)) {
+				data[count] = i+1;
+				count++;
+			}
+		}
+		return data;
+	}
+	
+	public boolean isMonth(int value) {
+		int size = diagnosticList.size();
+		for (int i = 1; i < size; i++) {
+			if(diagnosticList.get(i).getDateOfDiagnostic().getMonth().getValue() == value) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
