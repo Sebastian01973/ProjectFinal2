@@ -19,7 +19,11 @@ public class JPCardGraphics extends JPanel implements Language {
     private JPBarGraphic jpBarGraphic;
     private JPGraficPieChart jpGraficPieChart;
 
+    private int[] datasx,datasy;
+
     public JPCardGraphics() {
+        datasx =new int[] {3,4,5,6,7,8,9};
+        datasy = new int[]{100,200,200,400,500,580,200};
         cardLayout = new CardLayout();
         this.setLayout(cardLayout);
         this.setBackground(Constant.COLOR_WHITE);
@@ -27,9 +31,8 @@ public class JPCardGraphics extends JPanel implements Language {
     }
 
     private void initComponents() {
-
-        jPanelGraphics = new JPanelGraphics(new int[] {3,4,5,6,7,8,9,},new int[]{100,200,200,400,500,580,200}
-        );
+        //new int[] {3,4,5,6,7,8,9},new int[]{100,200,200,400,500,580,200}
+        jPanelGraphics = new JPanelGraphics(datasx,datasy);
         this.add(jPanelGraphics, Command.C_GRAPHICS_LINE.toString());
 
         jpBarGraphic = new JPBarGraphic(this,new String[] {"1","2","3","4","5","6","7","8"},new String[] {
@@ -42,6 +45,12 @@ public class JPCardGraphics extends JPanel implements Language {
                 new int[] {50,10,10,30},
                 new Color[] {Color.red,Color.blue,Color.green,Color.orange});
         this.add(jpGraficPieChart,Command.C_GRAPHICS_TORTE.toString());
+    }
+
+    public void setDatas(int[] datasx,int[] datasy){
+        jPanelGraphics.removeAll();
+        jPanelGraphics = new JPanelGraphics(datasx,datasy);
+        this.add(jPanelGraphics, Command.C_GRAPHICS_LINE.toString());
     }
 
     public void showCardGraphics(String command){

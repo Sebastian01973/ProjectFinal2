@@ -48,6 +48,10 @@ public class JCardLayout extends JPanel implements Language {
         this.add(jspPanelStates,Command.C_MENU_LOCATION.toString());
     }
 
+    public void setDatas(int[] datasx,int[] datasy){
+        jContainerStatistic.setDatas(datasx,datasy);
+    }
+
     public void showPanels(String command){
         cardLayout.show(this,command);
     }

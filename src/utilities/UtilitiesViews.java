@@ -196,23 +196,4 @@ public class UtilitiesViews {
 		}
 		return null;
 	}
-
-	public static void main(String[] args) {
-		System.out.println("Atlántico: "+getDatasDepartaments("Atlántico"));
-		System.out.println("Córdoba: "+getDatasDepartaments("Córdoba"));
-		System.out.println("Bolívar: "+getDatasDepartaments("Bolívar"));
-
-		System.out.println("--------------");
-		String cadenaNormalize = Normalizer.normalize("Atlántico", Normalizer.Form.NFD);
-		String cadenaSinAcentos = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
-		System.out.println(cadenaSinAcentos);
-		System.out.println("--------------------");
-		System.out.println(isValidate(cadenaSinAcentos,"AtlA",0,4));
-
-		System.out.println("-----------------");
-
-		Departments[] ob = Departments.values();
-		System.out.println(getDepartament(getDatasDepartaments("Atlántico")).getDepartment());
-
-    }
 }

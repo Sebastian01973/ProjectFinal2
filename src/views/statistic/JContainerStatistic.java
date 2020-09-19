@@ -23,6 +23,10 @@ public class JContainerStatistic extends JPanel implements Language {
         initComponents(actionListener);
     }
 
+    public void setDatas(int[] datasx,int[] datasy){
+        jpCardGraphics.setDatas(datasx,datasy);
+    }
+
     private void initComponents(ActionListener actionListener) {
         jPanelNorth = new JPNorthSta(actionListener);
         this.add(jPanelNorth,BorderLayout.NORTH);

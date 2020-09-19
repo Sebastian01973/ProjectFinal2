@@ -23,7 +23,8 @@ public class Controller implements ActionListener {
     JFWindowsMain jfWindowsMain;
     FileManagerJson fileManagerJson;
 
-    private static final String LOCAL_HOST = "http://localhost/Uptc/Archivo%20json/SurtidoMix.json";
+    private static final String LOCAL_HOST_NAUSAN = "http://localhost/Uptc/Archivo%20json/SurtidoMix.json";
+    private static final String LOCAL_HOST_PACHO = "http://localhost/Json/SurtidoMix.json";
 
 
     public Controller() {
@@ -45,7 +46,10 @@ public class Controller implements ActionListener {
             case C_MENU_TABLE: showPanels(Command.C_MENU_TABLE.toString());break;
             case C_MENU_STATISTIC: showPanels(Command.C_MENU_STATISTIC.toString());break;
             case C_MENU_LOCATION: showPanels(Command.C_MENU_LOCATION.toString());break;
-            case C_GRAPHICS_LINE: showGraphics(Command.C_GRAPHICS_LINE.toString()); break;
+            case C_GRAPHICS_LINE:
+                this.setDatasLine();
+                showGraphics(Command.C_GRAPHICS_LINE.toString());
+                break;
             case C_GRAPHICS_BAR: showGraphics(Command.C_GRAPHICS_BAR.toString()); break;
             case C_GRAPHICS_TORTE: showGraphics(Command.C_GRAPHICS_TORTE.toString()); break;
             case LOAD_FILE: this.loadFile(); break;
@@ -77,8 +81,17 @@ public class Controller implements ActionListener {
     }
 
     public void readFileWebServicesJson(){
-        ArrayList<Object[]> arrayObjects = fileManagerJson.readWebService(LOCAL_HOST);
+        ArrayList<Object[]> arrayObjects = fileManagerJson.readWebService(LOCAL_HOST_PACHO);
         Utilities.readDatasJson(arrayObjects,managePatients);
+    }
+
+    public void setDatasLine(){
+        jfWindowsMain.setDatas(new int[] {1,2,3,4,5,6,7},
+                new int[]{210,500,800,110,900,500,200});
+    }
+
+    public void setDatas(int[] datasX,int[] datasy){
+        jfWindowsMain.setDatas(datasX,datasy);
     }
 
     private void showDialogs(String command){

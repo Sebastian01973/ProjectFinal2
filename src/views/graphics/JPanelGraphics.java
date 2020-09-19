@@ -88,6 +88,11 @@ public class JPanelGraphics extends  JPanel{
 		return transformedPoints;
 	}
 
+	public void setDatas(int[] datasX,int[] datasY){
+		this.datasX = datasX;
+		this.datasY = datasY;
+	}
+
 	public void setDatasX(int[] datasX) {
 		this.datasX = datasX;
 	}

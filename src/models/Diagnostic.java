@@ -34,6 +34,18 @@ public class Diagnostic {
 		this.patient = patient;
 	}
 
+	public int countTotalCases(Departments department){
+		Departments[] departments = Departments.values();
+		int count = 0;
+		int size = departments.length;
+		for (int i = 0; i < size; i++) {
+			if (department.equals(departments[i])){
+				count++;
+			}
+		}
+		return count++;
+	}
+
 	public LocalDate getDateOfDiagnostic() {
 		return dateOfDiagnostic;
 	}
@@ -70,5 +82,4 @@ public class Diagnostic {
 				getDateOfDiagnostic(),getDateOfRecovered(),getDateOfDeath(),
 		};
 	}
-	
 }

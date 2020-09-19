@@ -18,29 +18,28 @@ public class ManagePatients {
 	public void addDiagnostic(Diagnostic diagnostic) {
 		diagnosticList.add(diagnostic);
 	}
-	
 
-
-	public Object[] toObjectVector(int index) {
-		Diagnostic diagnostic = diagnosticList.get(index);
-		return new Object[] {
-				diagnostic.getIdCases(),
-				diagnostic.getPatient().getGender().getGender(),
-				diagnostic.getPatient().getAge(),
-				diagnostic.getPatient().getStates().toString(),
-				diagnostic.getPatient().getLocation(),
-				diagnostic.getPatient().getHealthCondition().toString(),
-				diagnostic.getDateOfDiagnostic(),
-				diagnostic.getDateOfRecovered(),
-				diagnostic.getDateOfDeath()
-		};
+	public int[] countTotalCases(){
+		Departments[] deps = Departments.values();
+		int[] countCases = new int[Departments.values().length];
+		int size = diagnosticList.size();
+		for (int i = 0; i < size; i++) {
+			countCases[i] = diagnosticList.get(i).countTotalCases(deps[i]);
+		}
+		return countCases;
 	}
-	
+
+
+	public Object[] getDatasDepartament(){
+		Object[] auxObject = new Object[3];
+		return auxObject;
+	}
+
 	public ArrayList<Object[]> getMatrixList(){
 		ArrayList<Object[]> matrix = new ArrayList<>();
 		int size = diagnosticList.size();
-		for (int i = 0; i < size; i++) {
-			matrix.add(toObjectVector(i));
+		for (Diagnostic diagnostic: diagnosticList) {
+			matrix.add(diagnostic.toObjectVector());
 		}
 		return matrix;
 	}
