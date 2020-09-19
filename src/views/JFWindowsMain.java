@@ -60,6 +60,9 @@ public class JFWindowsMain extends JFrame implements Language{
     public void setDatasPie(String[] labels,int[] datas) {
     	jMainPanel.setDatasPie(labels, datas);
     }
+    public void addElementToTable(ArrayList<Object[]> matrix,String[] header){
+        jMainPanel.addElementToTable(matrix,header);
+    }
 
     public void addElementToTable(Object[] objects){
         jMainPanel.addElementToTable(objects);

@@ -26,11 +26,15 @@ public class JContainerTable extends JPanel implements Language {
     }
 
     public void addElementToTable(Object[] objects){
-        jPanelTable.addElementToTable(objects);
+        jPanelTable.addElementToTable(objects,true);
     }
 
     public void addElementToTable(ArrayList<Object[]> matrix){
         jPanelTable.addElementToTable(matrix);
+    }
+
+    public void addElementToTable(ArrayList<Object[]> matrix,String[] header){
+        jPanelTable.addElementToTable(matrix,header);
     }
 
     @Override

@@ -75,7 +75,7 @@ public class Utilities {
 
     public static LocalDate parseDateToLocalDate(Date date) {
         if (date == null){
-            return LocalDate.of(1900,01,01);
+            return null;
         }else{
             return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         }

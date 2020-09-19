@@ -92,6 +92,9 @@ public class Constant {
     public static final String M_DEATH = "Death";
     public static final String M_RECOVERED = "Recovered";
     public static final String M_DIAGNOSTIC= "Diagnostic";
+    public static final String M_DEPARTMENT= "Department";
+
+    public static final String[] TABLE_DEPS= new String[]{M_DEPARTMENT,M_DIAGNOSTIC,M_RECOVERED,M_DEATH};
 
     public static final String M_STATISTICS = "Statistics";
     public static final String M_STA_REPORT_LOCATION = "Report_Location";

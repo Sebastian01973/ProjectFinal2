@@ -51,6 +51,8 @@ public class JPanelTable extends JPanel implements Language {
         jtElements.setRowHeight( 35 );
         jtElements.setBorder(null);
 
+        centerContent(dtmElements);
+
         jScrollPane = new JScrollPane(jtElements);
         jScrollPane.setForeground(Color.white);
         jScrollPane.setBorder(null);
@@ -71,26 +73,42 @@ public class JPanelTable extends JPanel implements Language {
         this.dtmElements = defaultTableModel;
     }
 
-    public void addElementToTable(Object[] vector){
-        vector[6] = UtilitiesViews.toFormatterDate((LocalDate) vector[6]);
-        vector[7] = UtilitiesViews.toFormatterDate((LocalDate) vector[7]);
-        vector[8] = UtilitiesViews.toFormatterDate((LocalDate) vector[8]);
-        dtmElements.addRow(vector);
+    public void addElementToTable(Object[] vector,boolean status){
+        if (status){
+            vector[1] = Utilities.getKey(String.valueOf(vector[1]));
+            vector[3] = Utilities.getKey(String.valueOf(vector[3]));
+            vector[5] = Utilities.getKey(String.valueOf(vector[5]));
+            vector[6] = UtilitiesViews.toFormatterDate((LocalDate) vector[6]);
+            vector[7] = UtilitiesViews.toFormatterDate((LocalDate) vector[7]);
+            vector[8] = UtilitiesViews.toFormatterDate((LocalDate) vector[8]);
+            dtmElements.addRow(vector);
+        }else{
+            dtmElements.addRow(vector);
+        }
+
     }
 
     public void addElementToTable(ArrayList<Object[]> matrix){
         cleanRowsTable();
         dtmElements.setColumnIdentifiers(Utilities.getKeys(Constant.HEADERDS_TABLEMAIN));
         for (Object[] objects : matrix) {
-            addElementToTable(objects);
+            addElementToTable(objects,true);
         }
     }
 
-    private void centerText() {
-        DefaultTableCellRenderer centeRenderer = new DefaultTableCellRenderer();
-        centeRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-        for (int i = 0; i < jtElements.getColumnCount(); i++) {
-            jtElements.getColumnModel().getColumn(i).setCellRenderer(centeRenderer);
+    public void addElementToTable(ArrayList<Object[]> matrix,String[] header){
+        cleanRowsTable();
+        dtmElements.setColumnIdentifiers(Utilities.getKeys(header));
+        for (Object[] objects : matrix) {
+            addElementToTable(objects,false);
+        }
+    }
+
+    public void centerContent(DefaultTableModel model) {
+        DefaultTableCellRenderer cellRender = new DefaultTableCellRenderer();
+        cellRender.setHorizontalAlignment(SwingConstants.CENTER);
+        for (int i = 0; i < model.getColumnCount(); i++) {
+            jtElements.getColumnModel().getColumn(i).setCellRenderer(cellRender);
         }
     }
 
@@ -101,5 +119,6 @@ public class JPanelTable extends JPanel implements Language {
     @Override
     public void changeLanguage() {
         dtmElements.setColumnIdentifiers(Utilities.getKeys(Constant.HEADERDS_TABLEMAIN));
+
     }
 }
