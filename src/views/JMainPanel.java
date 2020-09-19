@@ -33,6 +33,10 @@ public class JMainPanel extends JPanel implements Language{
         this.add(jContainerFooter,BorderLayout.SOUTH);
     }
 
+    public void addElementToTable(ArrayList<Object[]> matrix,String[] header){
+        jcardLayout.addElementToTable(matrix,header);
+    }
+
     public void setDatas(int[] datasx,int[] datasy){
         jcardLayout.setDatas(datasx,datasy);
     }

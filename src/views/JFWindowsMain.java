@@ -57,6 +57,10 @@ public class JFWindowsMain extends JFrame implements Language{
         jMainPanel.setDatas(datasx,datasy);
     }
 
+    public void addElementToTable(ArrayList<Object[]> matrix,String[] header){
+        jMainPanel.addElementToTable(matrix,header);
+    }
+
 
     public void addElementToTable(Object[] objects){
         jMainPanel.addElementToTable(objects);

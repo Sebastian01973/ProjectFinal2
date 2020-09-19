@@ -68,6 +68,10 @@ public class JCardLayout extends JPanel implements Language {
         jContainerStatistic.showCardGraphics(command);
     }
 
+    public void addElementToTable(ArrayList<Object[]> matrix,String[] header){
+        jContainerTable.addElementToTable(matrix,header);
+    }
+
     @Override
     public void changeLanguage() {
         jContainerTable.changeLanguage();

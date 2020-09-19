@@ -3,13 +3,11 @@ package controllers;
 import models.*;
 import persistence.FileManagerJson;
 import utilities.Utilities;
-import utilities.UtilitiesViews;
 import views.Constant;
 import views.JFWindowsMain;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static javax.swing.JOptionPane.showConfirmDialog;
@@ -52,7 +50,7 @@ public class Controller implements ActionListener {
                 break;
             case C_GRAPHICS_BAR: showGraphics(Command.C_GRAPHICS_BAR.toString()); break;
             case C_GRAPHICS_TORTE: showGraphics(Command.C_GRAPHICS_TORTE.toString()); break;
-            case LOAD_FILE: this.loadFile(); break;
+            case C_TABLE_LOCATION: this.tableLocation(); break;
             case SAVE_FILE: this.saveFile(); break;
             case ADD_PATIENT: this.showDialogs(Command.ADD_PATIENT.toString()); break;
             case SEARCH_PATIENT: this.showDialogs(Command.SEARCH_PATIENT.toString()); break;
@@ -83,6 +81,7 @@ public class Controller implements ActionListener {
     public void readFileWebServicesJson(){
         ArrayList<Object[]> arrayObjects = fileManagerJson.readWebService(LOCAL_HOST_PACHO);
         Utilities.readDatasJson(arrayObjects,managePatients);
+        refreshData();
     }
 
     public void setDatasLine(){
@@ -118,7 +117,9 @@ public class Controller implements ActionListener {
         configLanguage.manageChangeLanguageES();
     }
 
-    private void loadFile() {
+    private void tableLocation() {
+        ArrayList<Object[]> tableDepar = managePatients.getDatasDepartaments();
+       jfWindowsMain.addElementToTable(tableDepar, Constant.TABLE_DEPS);
     }
 
     private void saveFile(){
