@@ -1,7 +1,10 @@
 package controllers;
 
 import models.*;
+import persistence.BinaryFileManager;
+import persistence.ConstantsPersistence;
 import persistence.FileManagerJson;
+import persistence.TextFileManager;
 import utilities.Utilities;
 import views.Constant;
 import views.JFWindowsMain;
@@ -20,6 +23,8 @@ public class Controller implements ActionListener {
     ConfigLanguage configLanguage;
     JFWindowsMain jfWindowsMain;
     FileManagerJson fileManagerJson;
+    TextFileManager textFileManager;
+    BinaryFileManager binaryFileManager;
 
     private static final String LOCAL_HOST_NAUSAN = "http://localhost/Uptc/Archivo%20json/SurtidoMix.json";
     private static final String LOCAL_HOST_PACHO = "http://localhost/Json/SurtidoMix.json";
@@ -32,6 +37,8 @@ public class Controller implements ActionListener {
         jfWindowsMain = new JFWindowsMain(this);
         configLanguage.setJfWindowsMain(jfWindowsMain);
         fileManagerJson = new FileManagerJson();
+        textFileManager = new TextFileManager();
+        binaryFileManager = new BinaryFileManager();
         readFileWebServicesJson();
     }
 
@@ -60,10 +67,21 @@ public class Controller implements ActionListener {
             case EXIT_APP: this.exitApp(); break;
             case REFRESH_DATA: this.refreshData(); break;
             case C_CREATE_NEW_PATIENT: this.createDiagnostic(); break;
+            case C_FILTER_SEARCH: this.searchFilter(); break;
             case C_CANCEL_NEW_PATIENT: jfWindowsMain.makeInvisibleDialogAddCost(); break;
             case C_ACTIVE_CASES_ADD: break;
             case C_RECOVERED_CASES_ADD:  break;
             case C_DEATH_CASES_ADD:  break;
+        }
+    }
+
+    private void searchFilter() {
+        String auxString = Utilities.getKeyLanguage(jfWindowsMain.getSearchFilter());
+        System.out.println(auxString);
+        if (auxString != null){
+            jfWindowsMain.addElementToTable(managePatients.getMatrixSearchDeps(auxString));
+        }else{
+            showDialogs(Command.SEARCH_PATIENT.toString());
         }
     }
 
@@ -74,13 +92,12 @@ public class Controller implements ActionListener {
             ArrayList<Object[]> ok = managePatients.getMatrixList();
             jfWindowsMain.addElementToTable(auxDiagnostic.toObjectVector());
         }else {
-            showMessageDialog(null, "Hay datos Vacios por favor llenarlos todos");
             showDialogs(Command.ADD_PATIENT.toString());
         }
     }
 
     public void readFileWebServicesJson(){
-        ArrayList<Object[]> arrayObjects = fileManagerJson.readWebService(LOCAL_HOST_NAUSAN);
+        ArrayList<Object[]> arrayObjects = fileManagerJson.readWebService(LOCAL_HOST_PACHO);
         Utilities.readDatasJson(arrayObjects,managePatients);
         int[] datas = managePatients.getCasesMonth();
         int[] months = managePatients.getMonths();
@@ -137,6 +154,9 @@ public class Controller implements ActionListener {
     }
 
     private void saveFile(){
+        fileManagerJson.writeFile(ConstantsPersistence.PATH_OUT+"ArchivoJson."+ConstantsPersistence.E_JSON,managePatients);
+        textFileManager.writeFile(ConstantsPersistence.PATH_OUT+"ArchivoPlano."+ConstantsPersistence.E_TXT,managePatients);
+        binaryFileManager.writeFile(ConstantsPersistence.PATH_OUT+"ArchivoBynario."+ConstantsPersistence.E_BIN,managePatients);
     }
 
 

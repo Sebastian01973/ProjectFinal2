@@ -47,6 +47,10 @@ public class JContainerDialog extends JDialog implements Language {
         this.add(jPanel);
     }
 
+    public String getSearchFilter(){
+        return jCardDialogs.getSearchFilter();
+    }
+
     public void showDialogs(String command){
         jCardDialogs.showDialogs(command);
     }

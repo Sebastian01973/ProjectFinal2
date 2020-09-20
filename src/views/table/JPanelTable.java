@@ -18,6 +18,7 @@ public class JPanelTable extends JPanel implements Language {
     private DefaultTableModel dtmElements;
     private JTable jtElements;
     private JScrollPane jScrollPane;
+    private String[] headers;
 
     public JPanelTable(ActionListener actionListener){
         this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
@@ -44,14 +45,13 @@ public class JPanelTable extends JPanel implements Language {
         jtElements.getTableHeader().setForeground(Constant.COLOR_WHITE);
         jtElements.getTableHeader().setPreferredSize(new Dimension(0, 50));
         jtElements.getTableHeader().setFont(Constant.FONT_ARIAL_ROUNDER_17);
+        jtElements.getTableHeader().setResizingAllowed(false);
 
         jtElements.setFont(Constant.FONT_ARIAL_ROUNDER_15);
         jtElements.setBackground(Constant.COLOR_WHITE);
         jtElements.setFillsViewportHeight(false);
         jtElements.setRowHeight( 35 );
         jtElements.setBorder(null);
-
-        centerContent(dtmElements);
 
         jScrollPane = new JScrollPane(jtElements);
         jScrollPane.setForeground(Color.white);
@@ -91,6 +91,9 @@ public class JPanelTable extends JPanel implements Language {
     public void addElementToTable(ArrayList<Object[]> matrix){
         cleanRowsTable();
         dtmElements.setColumnIdentifiers(Utilities.getKeys(Constant.HEADERDS_TABLEMAIN));
+        UtilitiesViews.getModelColumn(jtElements, 0, 75, 75, 75);
+        UtilitiesViews.getModelColumn(jtElements, 2, 55, 55, 55);
+        this.centerText();
         for (Object[] objects : matrix) {
             addElementToTable(objects,true);
         }
@@ -98,17 +101,19 @@ public class JPanelTable extends JPanel implements Language {
 
     public void addElementToTable(ArrayList<Object[]> matrix,String[] header){
         cleanRowsTable();
-        dtmElements.setColumnIdentifiers(Utilities.getKeys(header));
+        this.headers = header;
+        dtmElements.setColumnIdentifiers(Utilities.getKeys(headers));
+        this.centerText();
         for (Object[] objects : matrix) {
             addElementToTable(objects,false);
         }
     }
 
-    public void centerContent(DefaultTableModel model) {
-        DefaultTableCellRenderer cellRender = new DefaultTableCellRenderer();
-        cellRender.setHorizontalAlignment(SwingConstants.CENTER);
-        for (int i = 0; i < model.getColumnCount(); i++) {
-            jtElements.getColumnModel().getColumn(i).setCellRenderer(cellRender);
+    private void centerText() {
+        DefaultTableCellRenderer centeRenderer = new DefaultTableCellRenderer();
+        centeRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        for (int i = 0; i < jtElements.getColumnCount(); i++) {
+            jtElements.getColumnModel().getColumn(i).setCellRenderer(centeRenderer);
         }
     }
 
@@ -118,7 +123,14 @@ public class JPanelTable extends JPanel implements Language {
 
     @Override
     public void changeLanguage() {
-        dtmElements.setColumnIdentifiers(Utilities.getKeys(Constant.HEADERDS_TABLEMAIN));
-
+        if (jtElements.getColumnCount() == Constant.HEADERDS_TABLEMAIN.length){
+            dtmElements.setColumnIdentifiers(Utilities.getKeys(Constant.HEADERDS_TABLEMAIN));
+            this.centerText();
+            UtilitiesViews.getModelColumn(jtElements, 0, 75, 75, 75);
+            UtilitiesViews.getModelColumn(jtElements, 2, 55, 55, 55);
+        }else{
+            dtmElements.setColumnIdentifiers(Utilities.getKeys(headers));
+            this.centerText();
+        }
     }
 }

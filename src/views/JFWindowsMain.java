@@ -35,6 +35,10 @@ public class JFWindowsMain extends JFrame implements Language{
         this.getContentPane().setForeground(Constant.COLOR_WHITE);
     }
 
+    public String getSearchFilter(){
+        return jContainerDialog.getSearchFilter();
+    }
+
     public void showPanels(String command){
         jMainPanel.showPanels(command);
     }

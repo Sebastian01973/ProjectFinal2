@@ -10,29 +10,30 @@ import java.util.ArrayList;
 
 public class TestContarCasos {
     public static void main(String[] args) {
-//        Patient patient = new Patient(Departments.AMAZONAS, Attention.DECEASED,14,Gender.FEMALE,HealthCondition.DECEASED);
-//        Diagnostic dg = new Diagnostic(2,patient, LocalDate.now(),null,null);
-//        System.out.println(dg.isValidateDepartments(Departments.AMAZONAS));
 
         String LOCAL_HOST_PACHO = "http://localhost/Json/SurtidoMix.json";
         ManagePatients managePatients = new ManagePatients();
         FileManagerJson file = new FileManagerJson();
         ArrayList<Object[]> ob = file.readWebService(LOCAL_HOST_PACHO);
         Utilities.readDatasJson(ob,managePatients);
-        int[] aux = managePatients.countTotalCases(Departments.AMAZONAS);
-        for (int i = 0; i < aux.length; i++) {
-            System.out.println(""+aux[i]);
-        }
-        System.out.println("------------------");
-//        Object[] auxObje = managePatients.getDatasDepartament();
+
+        Diagnostic dg = new Diagnostic(1,new Patient(Departments.BOYACA,Attention.DECEASED,34,Gender.FEMALE,HealthCondition.ASYMPTOMATIC),null,null,null);
+        System.out.println(dg.isValidateDepartments("12"));
+
+//        System.out.println("------------------");
+//        Object[] auxObje = managePatients.getIndexSearchEnum("Sucre",2);
+//        System.out.println(auxObje);
 //        for (int i = 0; i < auxObje.length; i++) {
 //            System.out.println("--"+auxObje[i]+"--");
 //        }
 
-        System.out.println("------------------");
-        ArrayList<Object[]> ok = managePatients.getDatasDepartaments();
-        for (int i = 0; i < ok.size(); i++) {
-            System.out.println(ok.get(i)[0]+ "-" + ok.get(i)[1]);
-        }
-    }
+//        System.out.println("------------------");
+//        ArrayList<Object[]> ok = managePatients.getMatrixSearchFilter("Boyaca");
+//        int size = managePatients.sizeForSearch((int)32);
+//        for (int i = 0; i < size; i++) {
+//            System.out.println(ok.get(i)[0] + "-" + ok.get(i)[1]);
+//        }
+//        System.out.println("Numero:" + managePatients.sizeForSearch((int)32));
+   }
+
 }

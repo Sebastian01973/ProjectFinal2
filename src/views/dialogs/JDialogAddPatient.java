@@ -4,7 +4,6 @@ import com.toedter.calendar.JDateChooser;
 import controllers.Command;
 import models.*;
 import utilities.Utilities;
-import utilities.UtilitiesViews;
 import views.Constant;
 import views.JFWindowsMain;
 import views.Language;
@@ -17,6 +16,8 @@ import javax.swing.text.DefaultFormatter;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 public class JDialogAddPatient extends JPanel implements Language {
     private JPanel jPSouth,jPCenter;
 
@@ -26,7 +27,7 @@ public class JDialogAddPatient extends JPanel implements Language {
     private JSpinner jsAge;
     private JModelComboBox<Attention> jCBAttention;
     private JModelComboBox<Departments> jCBDepartments;
-    private JModelComboBox<HealthCondition> JCBHealth;
+    private JModelComboBox<HealthCondition> jCBHEalth;
     private JDateChooser jDatediagnostic,jDateDeath,jDateRecovered;
     private JButton jBCreate,jBCancel;
 
@@ -43,6 +44,7 @@ public class JDialogAddPatient extends JPanel implements Language {
         GridLayout gridLayout = new GridLayout(10,1);
         jPCenter.setLayout(gridLayout);
         gridLayout.setVgap(15);
+        jPCenter.setBorder(new EmptyBorder(10,20,10,20));
         jPCenter.setBackground(Constant.COLOR_WHITE);
         initCenter(actionListener);
         jPSouth = new JPanel();
@@ -73,8 +75,8 @@ public class JDialogAddPatient extends JPanel implements Language {
         jCBDepartments = new JModelComboBox<Departments>(Departments.values(),Utilities.getKey(Constant.L_LOCATION),Constant.FONT_HELVETICA_17);
         jPCenter.add(jCBDepartments);
 
-        JCBHealth = new JModelComboBox<HealthCondition>(Utilities.getKeys(HealthCondition.values()),Utilities.getKey(Constant.L_HEALTH),Constant.FONT_HELVETICA_17);
-        jPCenter.add(JCBHealth);
+        jCBHEalth = new JModelComboBox<HealthCondition>(Utilities.getKeys(HealthCondition.values()),Utilities.getKey(Constant.L_HEALTH),Constant.FONT_HELVETICA_17);
+        jPCenter.add(jCBHEalth);
 
         jDatediagnostic = new JDateChooser();
         jDatediagnostic.setBorder(BorderFactory.createTitledBorder(Utilities.getKey(Constant.L_DATE_DIAGNOSTIC)));
@@ -99,17 +101,24 @@ public class JDialogAddPatient extends JPanel implements Language {
     }
 
     public Diagnostic createPatient(ManagePatients managePatients, JFWindowsMain jfWindowsMain) {
-        if(!Utilities.isValidateDatasOfAdd(jDatediagnostic.getDate(),jDateRecovered.getDate(),jDateDeath.getDate())){
-            return managePatients.createDiagnostic((Departments) jCBDepartments.getSelectedItem(),
-                    Utilities.getAttention(jCBAttention.getSelectedIndex()),
-                    (int) jsAge.getValue(),
-                    Utilities.getGender(jCBGender.getSelectedIndex()),
-                    Utilities.getHealthCondition(JCBHealth.getSelectedIndex()),
-                    Utilities.parseDateToLocalDate(jDatediagnostic.getDate()),
-                    Utilities.parseDateToLocalDate(jDateDeath.getDate()),
-                    Utilities.parseDateToLocalDate(jDateRecovered.getDate()));
-        }else{
+        if (jCBGender.getSelectedIndex() == 0 || jCBDepartments.getSelectedIndex() == 0 ||
+        jCBAttention.getSelectedIndex() == 0 || jCBHEalth.getSelectedIndex() == 0){
+            showMessageDialog(null, "Debes Selecionar todos los Espacios");
             return  null;
+        }else {
+            if (!Utilities.isValidateDatasOfAdd(jDatediagnostic.getDate(), jDateRecovered.getDate(), jDateDeath.getDate())) {
+                return managePatients.createDiagnostic((Departments) jCBDepartments.getSelectedItem(),
+                        Utilities.getAttention(jCBAttention.getSelectedIndex()),
+                        (int) jsAge.getValue(),
+                        Utilities.getGender(jCBGender.getSelectedIndex()),
+                        Utilities.getHealthCondition(jCBHEalth.getSelectedIndex()),
+                        Utilities.parseDateToLocalDate(jDatediagnostic.getDate()),
+                        Utilities.parseDateToLocalDate(jDateDeath.getDate()),
+                        Utilities.parseDateToLocalDate(jDateRecovered.getDate()));
+            } else {
+                showMessageDialog(null, "Debes Selecionar todos los Espacios");
+                return null;
+            }
         }
     }
 
@@ -139,14 +148,15 @@ public class JDialogAddPatient extends JPanel implements Language {
         diagnostic.setText(Utilities.getKey(Constant.M_DIAGNOSTIC));
         recovered.setText(Utilities.getKey(Constant.M_RECOVERED));
         death.setText(Utilities.getKey(Constant.M_DEATH));
+
         jCBGender.setTitleBor(Utilities.getKey(Constant.L_GENDER));
         jCBGender.setItems(Utilities.getKeys(Gender.values()));
         jsAge.setBorder(BorderFactory.createTitledBorder(Utilities.getKey(Constant.L_AGE)));
         jCBAttention.setItems(Utilities.getKeys(Attention.values()));
         jCBAttention.setTitleBor(Utilities.getKey(Constant.L_ATTENTION));
         jCBDepartments.setTitleBor(Utilities.getKey(Constant.L_LOCATION));
-        JCBHealth.setItems(Utilities.getKeys(HealthCondition.values()));
-        JCBHealth.setTitleBor(Utilities.getKey(Constant.L_HEALTH));
+        jCBHEalth.setItems(Utilities.getKeys(HealthCondition.values()));
+        jCBHEalth.setTitleBor(Utilities.getKey(Constant.L_HEALTH));
         jDatediagnostic.setBorder(BorderFactory.createTitledBorder(Utilities.getKey(Constant.L_DATE_DIAGNOSTIC)));
         jDateRecovered.setBorder(BorderFactory.createTitledBorder(Utilities.getKey(Constant.L_DATE_RECOVERED)));
         jDateDeath.setBorder(BorderFactory.createTitledBorder(Utilities.getKey(Constant.L_DATE_DEATH)));

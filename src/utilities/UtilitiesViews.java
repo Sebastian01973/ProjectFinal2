@@ -8,6 +8,7 @@ import views.Constant;
 import views.models.JModelLabel;
 
 import javax.swing.*;
+import javax.swing.table.TableColumn;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Graphics2D;
@@ -22,6 +23,14 @@ import java.util.Date;
 import java.util.Locale;
 
 public class UtilitiesViews {
+
+	public static void getModelColumn(JTable jTable,int numCol,int minWidth,int maxWidth,int preferWidth) {
+		TableColumn column;
+		column = jTable.getColumnModel().getColumn(numCol);
+		column.setPreferredWidth(preferWidth);
+		column.setMaxWidth(maxWidth);
+		column.setMinWidth(minWidth);
+	}
 	
 	public static int[] parseDatas(int[] data) {
 		int[] value = new int[data.length];

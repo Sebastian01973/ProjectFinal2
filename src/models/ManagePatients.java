@@ -1,7 +1,6 @@
 package models;
 
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 
 public class ManagePatients {
@@ -20,6 +19,33 @@ public class ManagePatients {
 		diagnosticList.add(diagnostic);
 	}
 
+	public Object[] getIndexSearchDeps(String object,int index){
+		if (Integer.parseInt(object) == diagnosticList.get(index).getPatient().getAge()){
+			return diagnosticList.get(index).toObjectVector();
+		}
+		return null;
+	}
+
+	public int sizeForSearch(Object object){
+		int size = size(),count = 0;
+		for (int i = 0; i < size(); i++) {
+			count += ((int)object == diagnosticList.get(i).getPatient().getAge()) ? 1:0;
+		}
+		return count;
+	}
+
+	public ArrayList<Object[]> getMatrixSearchDeps(String object){
+		String auxString = object;
+		ArrayList<Object[]> auxObjects = new ArrayList<>();
+		int size = size();
+		for (int i = 0; i < size; i++) {
+			if (getIndexSearchDeps(auxString,i) != null){
+				auxObjects.add(getIndexSearchDeps(auxString,i));
+			}
+		}
+		return auxObjects;
+	}
+
 	public int[] countTotalCases(Departments department){
 		int size = size();
 		int[] count = new int[3];
@@ -34,7 +60,7 @@ public class ManagePatients {
 	public Object[] getDatasDepartament(int index){
 		Departments[] dep = Departments.values();
 			return new Object[]{
-					dep[index].getDepartment(),
+					dep[index].getKeys(),
 					countTotalCases(dep[index])[0],
 					countTotalCases(dep[index])[1],
 					countTotalCases(dep[index])[2],
@@ -101,8 +127,8 @@ public class ManagePatients {
 		}
 		return count;
 	}
-	
-	
+
+
 	public boolean isMonth(int value) {
 		int size = diagnosticList.size();
 		for (int i = 1; i < size; i++) {
