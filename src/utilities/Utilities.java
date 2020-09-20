@@ -146,10 +146,17 @@ public class Utilities {
         }
     }
 
-//    public static Object[] getSearchDeps(String ob, int index, ArrayList<Diagnostic> patients){
-//
-//        return null;
-//    }
+    public static Object[] getSearchDeps(String ob, int index, ArrayList<Diagnostic> patients){
+        if (patients.get(index).isValidateDepartments(ob)){
+            return  patients.get(index).toObjectVector();
+        }
+        if (patients.get(index).isValidateHealth(ob)){
+            return patients.get(index).toObjectVector();
+        }else if (Integer.parseInt(ob) == patients.get(index).getPatient().getAge()){
+            return patients.get(index).toObjectVector();
+        }
+        return null;
+    }
 
     public static String getKeyLanguage(String key){
         if (key != null) {

@@ -39,6 +39,18 @@ public class JFWindowsMain extends JFrame implements Language{
         return jContainerDialog.getSearchFilter();
     }
 
+    public void deleteRowIndex(int index) {
+        jMainPanel.deleteRowIndex(index);
+    }
+
+    public int getSelectRow() {
+        return jMainPanel.getSelectRow();
+    }
+
+    public int getSelectedRow() {
+        return jMainPanel.getSelectedRow();
+    }
+
     public void showPanels(String command){
         jMainPanel.showPanels(command);
     }

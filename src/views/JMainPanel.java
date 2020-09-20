@@ -37,6 +37,18 @@ public class JMainPanel extends JPanel implements Language{
         jcardLayout.addElementToTable(matrix,header);
     }
 
+    public int getSelectRow() {
+        return jcardLayout.getSelectRow();
+    }
+
+    public void deleteRowIndex(int index) {
+        jcardLayout.deleteRowIndex(index);
+    }
+
+    public int getSelectedRow() {
+        return jcardLayout.getSelectedRow();
+    }
+
     public void setDatas(int[] datasx,int[] datasy){
         jcardLayout.setDatas(datasx,datasy);
     }

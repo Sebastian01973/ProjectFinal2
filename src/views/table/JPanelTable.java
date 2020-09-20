@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 public class JPanelTable extends JPanel implements Language {
 
     private DefaultTableModel dtmElements;
@@ -59,6 +61,20 @@ public class JPanelTable extends JPanel implements Language {
         jScrollPane.setAlignmentX(Component.LEFT_ALIGNMENT);
         this.add(jScrollPane, BorderLayout.PAGE_END);
         this.setBorder(null);
+    }
+
+    public int getSelectRow() {
+        return jtElements.getSelectedRow();
+    }
+
+    public int getSelectedRow() {
+        if (jtElements.getSelectedRow() ==-1) {
+            showMessageDialog(null,"No a seleccionado el objeto");
+            return -3;
+        }else {
+            dtmElements.getValueAt(jtElements.getSelectedRow(), 0);
+            return (int) dtmElements.getValueAt(jtElements.getSelectedRow(),0);
+        }
     }
 
     public void cleanRowsTable() {

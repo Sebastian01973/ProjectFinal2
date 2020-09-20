@@ -17,7 +17,11 @@ public class Diagnostic {
         validateRecovered(dateOfRecovered);
         validateDeath(dateOfDeath);
     }
-    
+
+    public boolean isValidateCases(int idCases){
+    	return (idCases == this.idCases) ? true:false;
+	}
+
     public void validateRecovered(LocalDate date) {
     	this.dateOfRecovered = (patient.getStates() == Attention.RECOVERED || date == null)?date:null;
     }
@@ -75,7 +79,12 @@ public class Diagnostic {
 	}
 
 	public boolean isValidateDepartments(String key){
-		return (key.equals(patient.getLocation().getKeys()));
+    	if (key !=  null){
+			if (key.equals(patient.getLocation().getKeys())){
+				return true;
+			}
+		}
+    	return false;
 	}
 
 	public boolean isValidateAttention(String key){

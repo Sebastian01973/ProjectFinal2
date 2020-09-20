@@ -48,6 +48,18 @@ public class JCardLayout extends JPanel implements Language {
         this.add(jspPanelStates,Command.C_MENU_LOCATION.toString());
     }
 
+    public int getSelectRow() {
+        return jContainerTable.getSelectRow();
+    }
+
+    public int getSelectedRow() {
+        return jContainerTable.getSelectedRow();
+    }
+
+    public void deleteRowIndex(int index) {
+        jContainerTable.deleteRowIndex(index);
+    }
+
     public void setDatas(int[] datasx,int[] datasy){
         jContainerStatistic.setDatas(datasx,datasy);
     }

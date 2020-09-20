@@ -1,5 +1,7 @@
 package models;
 
+import utilities.Utilities;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -19,11 +21,26 @@ public class ManagePatients {
 		diagnosticList.add(diagnostic);
 	}
 
-	public Object[] getIndexSearchDeps(String object,int index){
-		if (Integer.parseInt(object) == diagnosticList.get(index).getPatient().getAge()){
-			return diagnosticList.get(index).toObjectVector();
+	public boolean isValidateCode(int code) {
+		for (Diagnostic register : diagnosticList) {
+			if (register.isValidateCases(code)) {
+				return true;
+			}
 		}
-		return null;
+		return false;
+	}
+
+	public void deleteRegister(int numberAuto) {
+		int size = size();
+		for (int i = 0; i < size-1; i++) {
+			if (diagnosticList.get(i).isValidateCases(numberAuto)) {
+				this.diagnosticList.remove(i);
+			}
+		}
+	}
+
+	public Object[] getSearchFilter(String object, int index){
+		return Utilities.getSearchDeps(object,index,diagnosticList);
 	}
 
 	public int sizeForSearch(Object object){
@@ -34,13 +51,15 @@ public class ManagePatients {
 		return count;
 	}
 
-	public ArrayList<Object[]> getMatrixSearchDeps(String object){
+	public ArrayList<Object[]> getMatrixSearchFilter(String object){
 		String auxString = object;
 		ArrayList<Object[]> auxObjects = new ArrayList<>();
 		int size = size();
 		for (int i = 0; i < size; i++) {
-			if (getIndexSearchDeps(auxString,i) != null){
-				auxObjects.add(getIndexSearchDeps(auxString,i));
+			if (diagnosticList.get(i).isValidateDepartments(diagnosticList.get(i).getPatient().getDepar())){
+				if (getSearchFilter(auxString,i) != null){
+					auxObjects.add(getSearchFilter(auxString,i));
+				}
 			}
 		}
 		return auxObjects;

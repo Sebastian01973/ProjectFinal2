@@ -39,13 +39,6 @@ public class JTableEast extends JPanel implements Language {
 
         this.add(UtilitiesViews.spaceLabel(Constant.COLOR_BLUE_DARK,Constant.COLOR_BLUE_DARK));
 
-        modifyPatient = new JModelButton(Utilities.getKey(Constant.M_MODIFY_DIAGNOSTIC),Constant.IMG_MODIFY_USER,Constant.FONT_HELVETICA_13,25,25,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
-        modifyPatient.setActionCommand(Command.MODIFY_PATIENT.toString());
-        modifyPatient.addActionListener(actionListener);
-        this.add(modifyPatient);
-
-        this.add(UtilitiesViews.spaceLabel(Constant.COLOR_BLUE_DARK,Constant.COLOR_BLUE_DARK));
-
         deletePatient = new JModelButton(Utilities.getKey(Constant.M_DELETE_DIAGNOSTIC),Constant.IMG_DELETE_USER,Constant.FONT_HELVETICA_13,25,25,Constant.COLOR_BLUE_LIGHT_G,Constant.COLOR_WHITE);
         deletePatient.setActionCommand(Command.DELETE_PATIENT.toString());
         deletePatient.addActionListener(actionListener);
@@ -77,9 +70,7 @@ public class JTableEast extends JPanel implements Language {
     public void changeLanguage() {
         addPatient.setText(Utilities.getKey(Constant.M_ADD_DIAGNOSTIC));
         searchPatient.setText(Utilities.getKey(Constant.M_SEARCH_DIAGNOSTIC));
-        modifyPatient.setText(Utilities.getKey(Constant.M_MODIFY_DIAGNOSTIC));
         deletePatient.setText(Utilities.getKey(Constant.M_DELETE_DIAGNOSTIC));
-
         location.setText(Utilities.getKey(Constant.M_LOCATION));
         save.setText(Utilities.getKey(Constant.M_SAVE));
         refresh.setText(Utilities.getKey(Constant.M_REFRESH));
