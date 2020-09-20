@@ -2,6 +2,7 @@ package controllers;
 
 import models.*;
 import persistence.FileManagerJson;
+import persistence.XMLFileManager;
 import utilities.Utilities;
 import views.Constant;
 import views.JFWindowsMain;
@@ -20,6 +21,7 @@ public class Controller implements ActionListener {
     ConfigLanguage configLanguage;
     JFWindowsMain jfWindowsMain;
     FileManagerJson fileManagerJson;
+    XMLFileManager xmlFileManager;
 
     private static final String LOCAL_HOST_NAUSAN = "http://localhost/Uptc/Archivo%20json/SurtidoMix.json";
     private static final String LOCAL_HOST_PACHO = "http://localhost/Json/SurtidoMix.json";
@@ -32,6 +34,7 @@ public class Controller implements ActionListener {
         jfWindowsMain = new JFWindowsMain(this);
         configLanguage.setJfWindowsMain(jfWindowsMain);
         fileManagerJson = new FileManagerJson();
+        this.xmlFileManager = new XMLFileManager();
         readFileWebServicesJson();
     }
 
@@ -42,14 +45,15 @@ public class Controller implements ActionListener {
             case C_US_LANGUAGE: this.manageChangeLanguageUS(); break;
             case C_MENU_HOME: showPanels(Command.C_MENU_HOME.toString());break;
             case C_MENU_TABLE: showPanels(Command.C_MENU_TABLE.toString());break;
-            case C_MENU_STATISTIC: showPanels(Command.C_MENU_STATISTIC.toString());break;
+            case C_MENU_STATISTIC:showPanels(Command.C_MENU_STATISTIC.toString());
+            this.setDatasLine(); break;
             case C_MENU_LOCATION: showPanels(Command.C_MENU_LOCATION.toString());break;
             case C_GRAPHICS_LINE:
                 this.setDatasLine();
                 showGraphics(Command.C_GRAPHICS_LINE.toString());
                 break;
             case C_GRAPHICS_BAR: showGraphics(Command.C_GRAPHICS_BAR.toString()); break;
-            case C_GRAPHICS_TORTE: this.setDatasPie();
+            case C_GRAPHICS_TORTE: 
             showGraphics(Command.C_GRAPHICS_TORTE.toString()); break;
             case C_TABLE_LOCATION: this.tableLocation(); break;
             case SAVE_FILE: this.saveFile(); break;
@@ -82,9 +86,14 @@ public class Controller implements ActionListener {
     public void readFileWebServicesJson(){
         ArrayList<Object[]> arrayObjects = fileManagerJson.readWebService(LOCAL_HOST_NAUSAN);
         Utilities.readDatasJson(arrayObjects,managePatients);
-        int[] datas = managePatients.getCasesMonth();
-        int[] months = managePatients.getMonths();
         refreshData();
+        ArrayList<Object[]> list = managePatients.getMatrixList();
+        for (Object[] objects : list) {
+			for (int i = 0; i < objects.length; i++) {
+				System.out.println(objects[i]);
+			}
+		}
+        xmlFileManager.writeFile("OutXml", arrayObjects);
     }
 
     public void setDatasLine(){
@@ -95,12 +104,7 @@ public class Controller implements ActionListener {
     
     public void setDatasPie() {
     	int[] datas = managePatients.getPercentagesAges();
-    	String [] labels = new String[] {"1-12 Bebes"+datas[0],"13-30 Joven"+datas[1],"31-60 Adulto"+datas[2],
-    			"60 en ancianos"+datas[3]};
-    	for (int i = 0; i < datas.length; i++) {
-			System.out.println(datas[i]+"%");
-		}
-    	jfWindowsMain.setDatasPie(labels, datas);
+    	jfWindowsMain.setDatasPie( datas);
     }
 
     public void setDatas(int[] datasX,int[] datasy){
@@ -117,6 +121,7 @@ public class Controller implements ActionListener {
 
     private void showPanels(String command) {
         jfWindowsMain.showPanels(command);
+        setDatasLine();
     }
 
     private void refreshData() {

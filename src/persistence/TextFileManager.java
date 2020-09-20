@@ -12,7 +12,7 @@ public class TextFileManager implements IFileManager{
 	}
 
 	@Override
-	public void writeFile(String name, ArrayList<Object> list) {
+	public void writeFile(String name, ArrayList<Object[]> list) {
 		// TODO Auto-generated method stub
 		
 	}

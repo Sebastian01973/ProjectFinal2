@@ -6,6 +6,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import utilities.UtilitiesViews;
 
@@ -36,6 +37,7 @@ public class JPanelGraphics extends  JPanel{
 		graphics2D.setColor(Color.white);
 		graphics2D.fillRect(0, 0, this.getWidth(), this.getHeight());
 		graphics2D.setColor(Color.black);
+		graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		graphics2D.setStroke(new BasicStroke(2));
 		int yAxisx = UtilitiesViews.getSeparationAxis('x',0.09f,this);
 		int yAxisy1 = UtilitiesViews.getSeparationAxis('y',0.05f,this);

@@ -52,8 +52,8 @@ public class JCardLayout extends JPanel implements Language {
         jContainerStatistic.setDatas(datasx,datasy);
     }
 
-    public void setDatasPie(String[] labels,int[] datas) {
-    	jContainerStatistic.setDatasPie(labels, datas);
+    public void setDatasPie(int[] datas) {
+    	jContainerStatistic.setDatasPie(datas);
     }
     
     public void showPanels(String command){

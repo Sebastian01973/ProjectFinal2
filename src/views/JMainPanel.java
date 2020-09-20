@@ -41,8 +41,8 @@ public class JMainPanel extends JPanel implements Language{
         jcardLayout.setDatas(datasx,datasy);
     }
     
-    public void setDatasPie(String[] labels,int[] datas) {
-    	jcardLayout.setDatasPie(labels, datas);
+    public void setDatasPie(int[] datas) {
+    	jcardLayout.setDatasPie( datas);
     }
 
     public void showPanels(String command){

@@ -6,6 +6,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -40,6 +41,7 @@ public class JPBarGraphic extends JPanel{
 		Graphics2D graphics2d = (Graphics2D) g;
 		graphics2d.setColor(Color.white);
 		graphics2d.fillRect(0, 0, this.getWidth(), this.getHeight());
+		graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		graphics2d.setColor(Color.black);
 		graphics2d.setStroke(new BasicStroke(2));
 		//eje y

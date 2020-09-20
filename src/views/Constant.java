@@ -273,4 +273,7 @@ public class Constant {
             "Cauc", "Cesa","Choc", "Cund","CArd","Guai","Guav","Huil","La G","Magd","Meta",
             "Nari", "Nort","Putu","Quin","Risa","Sant","Sucr", "Toli","Vall","Vaup","Vich",
     };
+    
+    public static final String[] LABELS_PIE = new String[] {"1-12 Bebes","13-30 Joven","31-60 Adulto",
+			"60 en ancianos"};
 }

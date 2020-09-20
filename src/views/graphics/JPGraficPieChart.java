@@ -5,6 +5,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -46,6 +47,7 @@ public class JPGraficPieChart extends JPanel{
 		graphics2d.setColor(Color.white);
 		graphics2d.fillRect(0, 0, this.getWidth(), this.getHeight());
 		graphics2d.setColor(Color.black);
+		graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		drawDatas(graphics2d);
 	}
 	
@@ -76,7 +78,8 @@ public class JPGraficPieChart extends JPanel{
 		int width = UtilitiesViews.getSeparationAxis('x', 0.05f, container);
 		int height = UtilitiesViews.getSeparationAxis('x', 0.03f, container);
 		graphics2d.setColor(color);
-		graphics2d.fillRect(x, y, width, height);
+		graphics2d.fillRoundRect(x, y, width, height, 10, 10);
+//		graphics2d.fillRect(x, y, width, height);
 		graphics2d.drawString(label, x1, y1);
 	}
 	
@@ -90,7 +93,8 @@ public class JPGraficPieChart extends JPanel{
 		for (int i = 0; i < datas.length; i++) {
 			drawArc(datas[i], graphics2d, acumulatedAngle, (int)calculateDegree(datas[i]), colors[i]);
 			acumulatedAngle += calculateDegree(datas[i]);
-			drawLabels(labels[i], graphics2d, colors[i], x, y, x1, y1);
+			String label = labels[i]+" "+datas[i]+"%";
+			drawLabels(label, graphics2d, colors[i], x, y, x1, y1);
 			y += increase;
 			y1 += increase;
 		}

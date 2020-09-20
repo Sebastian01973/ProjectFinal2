@@ -15,7 +15,11 @@ import java.awt.*;
 public class JPCardGraphics extends JPanel implements Language {
 
     
-    private CardLayout cardLayout;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private CardLayout cardLayout;
     private JPanelGraphics jPanelGraphics;
     private JPBarGraphic jpBarGraphic;
     private JPGraficPieChart jpGraficPieChart;
@@ -23,8 +27,8 @@ public class JPCardGraphics extends JPanel implements Language {
     private int[] datasx,datasy;
 
     public JPCardGraphics() {
-        datasx =new int[] {3,4,5,6,7,8,9};
-        datasy = new int[]{100,200,200,400,500,580,1041};
+        datasx =new int[] {};
+        datasy = new int[]{};
         cardLayout = new CardLayout();
         this.setLayout(cardLayout);
         this.setBackground(Constant.COLOR_WHITE);
@@ -42,9 +46,9 @@ public class JPCardGraphics extends JPanel implements Language {
                 ,"Data","Data7","Data8"},new Color[] {Color.red});
         this.add(jpBarGraphic,Command.C_GRAPHICS_BAR.toString());
 
-        jpGraficPieChart = new JPGraficPieChart(this,new String[] {"Data1","Data2","Data3","Data4"},
-                new int[] {50,10,10,30},
-                new Color[] {Color.red,Color.blue,Color.green,Color.orange});
+        jpGraficPieChart = new JPGraficPieChart(this,Constant.LABELS_PIE,
+                new int[] {},
+                new Color[] {});
         this.add(jpGraficPieChart,Command.C_GRAPHICS_TORTE.toString());
     }
 
@@ -54,9 +58,9 @@ public class JPCardGraphics extends JPanel implements Language {
         this.add(jPanelGraphics, Command.C_GRAPHICS_LINE.toString());
     }
     
-    public void setDatasPie(String[] labels,int[] datas) {
+    public void setDatasPie(int[] datas) {
     	jpGraficPieChart.removeAll();
-    	jpGraficPieChart = new JPGraficPieChart(this, labels, datas, 
+    	jpGraficPieChart = new JPGraficPieChart(this, Constant.LABELS_PIE,datas, 
     			new Color[] {Color.red,Color.blue,Color.green,Color.orange});
     	this.add(jpGraficPieChart,Command.C_GRAPHICS_TORTE.toString());
     }
