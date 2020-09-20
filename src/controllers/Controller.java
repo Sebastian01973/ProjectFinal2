@@ -104,7 +104,10 @@ public class Controller implements ActionListener {
         ArrayList<Object[]> arrayObjects = fileManagerJson.readWebService(LOCAL_HOST_NAUSAN);
         Utilities.readDatasJson(arrayObjects,managePatients);
         refreshData();
-        xmlFileManager.writeFile("OutXml", managePatients);
+        Departments[] deps = managePatients.filterPercentages(managePatients.getPercentagesCases());
+        for (int i = 0; i < deps.length; i++) {
+			System.out.println(deps[i].getKeys() + managePatients.calCases(deps[i]));
+		}
     }
 
     public void setDatasLine(){

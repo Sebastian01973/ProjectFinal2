@@ -184,20 +184,22 @@ public class ManagePatients {
 		return values;
 	}
 	
-	public int[] filterPercentages(int[] values) {
+	public Departments[] filterPercentages(int[] values) {
 		Departments[] departments = Departments.values();
 		int size = values.length;
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
 				if(values[i] > values[j]) {
 					int aux = values[j];
+					Departments auxDepartment = departments[i];
 					values[j] = values[i];
+					departments[j] = departments[i];
 					values[i] = aux;
-					System.out.println("i: "+values[i] + "j: "+values[j]);
+					departments[j] = auxDepartment;
 				}
 			}
 		}
-		return values;
+		return departments;
 	}
 	
 	public int[] ordenateArray() {
