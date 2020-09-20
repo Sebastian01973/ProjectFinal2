@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 
 
+import utilities.Utilities;
 import views.Constant;
 
 public class JModelComboBox<A> extends JComboBox<Object>{
@@ -17,7 +18,8 @@ public class JModelComboBox<A> extends JComboBox<Object>{
 	private static final long serialVersionUID = 1L;
 
 	public JModelComboBox(Object[] objects,String title,Font font) {
-		super(objects);
+
+		addItems(objects);
 		this.setFont(font);
 		this.setBackground(Constant.COLOR_BLUE_RIGHT);
 		this.setForeground(Constant.COLOR_WHITE);
@@ -26,13 +28,22 @@ public class JModelComboBox<A> extends JComboBox<Object>{
 		setUI(propieties.createUI(getRootPane()));		
 	}
 
+
 	public void setTitleBor(String text){
 		this.setBorder(BorderFactory.createTitledBorder(new EmptyBorder(0,0,0,0),text,
 				0,0,Constant.FONT_HELVETICA_13,Constant.COLOR_WHITE));
 	}
+
+	public void addItems(Object[] objects){
+		this.addItem(Utilities.getKey(Constant.M_SELECT_OPTION));
+		for (int i = 0; i < objects.length; i++) {
+			this.addItem(objects[i]);
+		}
+	}
 	
 	public void setItems(Object[] objects) {
 		this.removeAllItems();
+		this.addItem(Utilities.getKey(Constant.M_SELECT_OPTION));
 		for (int i = 0; i < objects.length; i++) {
 			this.addItem(objects[i]);
 		}

@@ -5,7 +5,6 @@ import models.Departments;
 import views.Constant;
 import views.models.GridModel;
 import views.models.JModelButton;
-import views.models.JModelLabel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,7 +34,7 @@ public class JCenterState extends JPanel {
 
         for (int i = 0; i < 11; i++) {
             for (int j = 1; j < 4; j++) {
-                createButton(i,j,departmens[count].getDepartment(),Constant.IMGS_DEPART[count],commands[count].toString(),actionListener);
+                createButton(i,j,departmens[count].getKeys(),Constant.IMGS_DEPART[count],commands[count].toString(),actionListener);
                 count++;
             }
         }

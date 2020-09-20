@@ -2,7 +2,7 @@ package models;
 
 public class Patient {
 
-	private Departments location;
+	private Departments dep;
 	private Attention atention;
 	private int age;
 	private Gender gender;
@@ -13,16 +13,13 @@ public class Patient {
 		this.age = age;
 		this.gender = gender;
 		this.healthCondition = healthCondition;
-		this.location = location;
+		this.dep = location;
 	}
 
 	public Attention getStates() {
 		return atention;
 	}
 
-	public void setStates(Attention states) {
-		this.atention = states;
-	}
 
 	public int getAge() {
 		return age;
@@ -35,12 +32,11 @@ public class Patient {
 	public HealthCondition getHealthCondition() {
 		return healthCondition;
 	}
-
-	public void setHealthCondition(HealthCondition healthCondition) {
-		this.healthCondition = healthCondition;
-	}
 	
 	public Departments getLocation() {
-		return this.location;
+		return this.dep;
+	}
+	public String getDepar(){
+		return this.dep.getKeys();
 	}
 }

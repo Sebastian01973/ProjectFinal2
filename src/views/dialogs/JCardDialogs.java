@@ -4,7 +4,6 @@ import controllers.Command;
 import models.Diagnostic;
 import models.ManagePatients;
 import views.Constant;
-import views.JCardLayout;
 import views.JFWindowsMain;
 import views.Language;
 
@@ -16,7 +15,7 @@ public class JCardDialogs extends JPanel implements Language {
 
     private CardLayout cardLayout;
     private JDialogAddPatient jDialogAddPatient;
-    private JDialogModifyPatient jDialogModifyPatient;
+    private JDialogSearchPatient jDialogSearchPatient;
 
     public JCardDialogs(ActionListener actionListener) {
         cardLayout = new CardLayout();
@@ -29,8 +28,8 @@ public class JCardDialogs extends JPanel implements Language {
         jDialogAddPatient = new JDialogAddPatient(actionListener);
         this.add(jDialogAddPatient, Command.ADD_PATIENT.toString());
 
-        jDialogModifyPatient = new JDialogModifyPatient(actionListener);
-        this.add(jDialogModifyPatient,Command.MODIFY_PATIENT.toString());
+        jDialogSearchPatient = new JDialogSearchPatient(actionListener);
+        this.add(jDialogSearchPatient,Command.SEARCH_PATIENT.toString());
     }
 
     public void showDialogs(String command){
@@ -45,9 +44,13 @@ public class JCardDialogs extends JPanel implements Language {
         return jDialogAddPatient.createPatient(managePatients,jfWindowsMain);
     }
 
+    public String getSearchFilter(){
+        return jDialogSearchPatient.getSearchFilter();
+    }
+
     @Override
     public void changeLanguage() {
         jDialogAddPatient.changeLanguage();
-        jDialogModifyPatient.changeLanguage();
+        jDialogSearchPatient.changeLanguage();
     }
 }

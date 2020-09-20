@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../Programacion 2/BancoAgrarioPage/BancoAgrarioPage.iml" filepath="$PROJECT_DIR$/../Programacion 2/BancoAgrarioPage/BancoAgrarioPage.iml" />
       <module fileurl="file://$PROJECT_DIR$/../InterfaceNomina/InterfaceNomina.iml" filepath="$PROJECT_DIR$/../InterfaceNomina/InterfaceNomina.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../Parcial3Json/Parcial3Json.iml" filepath="$PROJECT_DIR$/../../Parcial3Json/Parcial3Json.iml" />
       <module fileurl="file://$PROJECT_DIR$/ProjectFinal2.iml" filepath="$PROJECT_DIR$/ProjectFinal2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Programacion 2/TallerBinarios/TallerBinarios.iml" filepath="$PROJECT_DIR$/../Programacion 2/TallerBinarios/TallerBinarios.iml" />
     </modules>
   </component>
 </project>

@@ -30,49 +30,60 @@ public class Diagnostic {
 		return patient;
 	}
 
-	public void setPatient(Patient patient) {
-		this.patient = patient;
-	}
-
 	public LocalDate getDateOfDiagnostic() {
 		return dateOfDiagnostic;
-	}
-
-	public void setDateOfDiagnostic(LocalDate dateOfDiagnostic) {
-		this.dateOfDiagnostic = dateOfDiagnostic;
 	}
 
 	public LocalDate getDateOfDeath() {
 		return dateOfDeath;
 	}
 
-	public void setDateOfDeath(LocalDate dateOfDeath) {
-		this.dateOfDeath = dateOfDeath;
-	}
-
 	public LocalDate getDateOfRecovered() {
 		return dateOfRecovered;
 	}
 
-	public void setDateOfRecovered(LocalDate dateOfRecovered) {
-		this.dateOfRecovered = dateOfRecovered;
-	}
-	
 	public int getIdCases() {
 		return this.idCases;
 	}
 
 	public Object[] toObjectVector() {
 		return new Object[] {
-				getIdCases(),getPatient().getGender().getGender(),getPatient().getAge(),
-				getPatient().getStates().toString(),
-				getPatient().getLocation(),getPatient().getHealthCondition().toString(),
-				getDateOfDiagnostic(),getDateOfRecovered(),getDateOfDeath()
+				idCases
+				,getPatient().getGender()
+				,getPatient().getAge(),
+				getPatient().getStates(),
+				getPatient().getLocation(),
+				getPatient().getHealthCondition(),
+				dateOfDiagnostic,dateOfRecovered,dateOfDeath
 		};
 	}
 
 	public boolean isValidateDepartments(Departments department){
-    	return (department.equals(patient.getLocation())) ? true:false;
+    	return (department.equals(patient.getLocation()));
+	}
+
+	public boolean isValidateAttention(Attention attention){
+    	return (attention.equals(patient.getStates()));
+	}
+
+	public boolean isValidateHealth(HealthCondition condition){
+    	return (condition.equals(patient.getHealthCondition()));
+	}
+
+	public boolean isValidateGender(Gender gender){
+    	return  (gender.equals(patient.getGender()));
+	}
+
+	public boolean isValidateDepartments(String key){
+		return (key.equals(patient.getLocation().getKeys()));
+	}
+
+	public boolean isValidateAttention(String key){
+		return (key.equals(patient.getStates().getKey()));
+	}
+
+	public boolean isValidateHealth(String key){
+		return (key.equals(patient.getHealthCondition().getKey()));
 	}
 
 }

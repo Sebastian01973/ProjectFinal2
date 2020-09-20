@@ -1,6 +1,7 @@
 package models;
 
 public enum Departments {
+
     AMAZONAS("Amazonas"),
     ANTIOQUIA("Antioquia"),
     ARAUCA("Arauca"),
@@ -23,7 +24,7 @@ public enum Departments {
     GUAJIRA("Guajira"),
     MAGDALENA("Magdalena"),
     META("Meta"),
-    NARINO("Nariño"),
+    NARINO("Narino"),
     NORTE_SANTANDER("Norte de Santander"),
     PUTUMAYO("Putumayo"),
     QUINDIO("Quindio"),
@@ -35,18 +36,18 @@ public enum Departments {
     VAUPES("Vaupes"),
     VICHADA("Vichada");
 
-    private final String name;
+    private final String key;
 
     private Departments(String name){
-        this.name = name;
+        this.key = name;
     }
 
-    public String getDepartment() {
-        return name;
+    public String getKeys() {
+        return this.key;
     }
 
     @Override
     public String toString() {
-        return getDepartment();
+        return getKeys();
     }
 }

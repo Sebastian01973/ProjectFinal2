@@ -52,6 +52,7 @@ public class Constant {
     public static final String T_INFO_PREVENT= "T_Info_Prevent";
     public static final Color COLOR_BLUE_DIALOG = Color.decode("#0D3A62");
     public static final Color COLOR_RED_LIGHT = Color.decode("#B90603");
+    public static final Color COLOR_GREEN_LIGHT = Color.decode("#27B903");
 
 
 
@@ -93,6 +94,7 @@ public class Constant {
     public static final String M_RECOVERED = "Recovered";
     public static final String M_DIAGNOSTIC= "Diagnostic";
     public static final String M_DEPARTMENT= "Department";
+    public static final String M_SELECT_OPTION= "Selection_Option";
 
     public static final String[] TABLE_DEPS= new String[]{M_DEPARTMENT,M_DIAGNOSTIC,M_RECOVERED,M_DEATH};
 
@@ -119,6 +121,7 @@ public class Constant {
     public static final String M_APPLICATION = "About_App";
     public static final String M_TITLTE_STATES = "Title_States";
     public static final String M_DIALOG_STATES = "Dialog_States";
+    public static final String M_DIALOG_SEARCH_GUIDE = "Search_Guide";
 
     //Dialogos y labels
 
@@ -139,6 +142,7 @@ public class Constant {
     public static final String L_DATE_DEATH = "Date_Death";
     public static final String L_CANCEL = "Cancel";
     public static final String L_CREATE = "Create";
+    public static final String L_SEARCH = "Search";
 
 
 
