@@ -23,8 +23,6 @@ import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import com.sun.xml.internal.ws.org.objectweb.asm.Attribute;
-
 public class XMLFileManager implements IFileManager{
 
 	@Override
@@ -32,36 +30,6 @@ public class XMLFileManager implements IFileManager{
 		return null;
 	}
 
-	@Override
-//	public void writeFile(String name,ArrayList<Object[]> list) {
-//		String rootName = "Meta";
-//		DocumentBuilderFactory docBFactory = DocumentBuilderFactory.newInstance();
-//		DocumentBuilder docBuilder = null;
-//		Document document = null;
-//		TransformerFactory transFormerFactory = null;
-//		Transformer transformer = null;
-//		DOMSource domSource = null;
-//		try {
-//			docBuilder = docBFactory.newDocumentBuilder();
-//			document = docBuilder.newDocument();
-//			Element root = (Element) document.createElement(rootName);
-//			document.appendChild(root);
-//			transFormerFactory = TransformerFactory.newInstance();
-//			transformer = transFormerFactory.newTransformer();
-//			domSource = new DOMSource(document);
-//			StreamResult result = new StreamResult(new File(ConstantsPersistence.PATH_OUT+name+ConstantsPersistence.E_XML));
-//			transformer.transform(domSource, result);
-//			System.out.println("saved");
-//		} catch (ParserConfigurationException e) {
-//			e.printStackTrace();
-//		}catch (TransformerConfigurationException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}catch (TransformerException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
 	public void writeFile(String name, ManagePatients managePatients) {
 		String rootName = "Meta";
 		DocumentBuilderFactory docBFactory = DocumentBuilderFactory.newInstance();
@@ -95,7 +63,7 @@ public class XMLFileManager implements IFileManager{
 				Element element4 = document.createElement("Genero");
 				element4.setTextContent(String.valueOf(diagnostic.getPatient().getGender()));
 				Element element5 = document.createElement("Departamanento");
-				element5.setTextContent(String.valueOf(diagnostic.getPatient().getLocation().getKeys()));
+				element5.setTextContent(String.valueOf(diagnostic.getPatient().getLocation()));
 				Element element6 = document.createElement("Atencion");
 				element6.setTextContent(String.valueOf(diagnostic.getPatient().getStates().getKey()));
 				Element element7 = document.createElement("Estado_de_salud");

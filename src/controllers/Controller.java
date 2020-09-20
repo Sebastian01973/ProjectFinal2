@@ -14,8 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import static javax.swing.JOptionPane.showConfirmDialog;
-import static javax.swing.JOptionPane.showMessageDialog;
+import static javax.swing.JOptionPane.*;
 
 
 public class Controller implements ActionListener {
@@ -59,15 +58,19 @@ public class Controller implements ActionListener {
                 this.setDatasLine();
                 showGraphics(Command.C_GRAPHICS_LINE.toString());
                 break;
-            case C_GRAPHICS_BAR: showGraphics(Command.C_GRAPHICS_BAR.toString()); break;
-            case C_GRAPHICS_TORTE: 
-            showGraphics(Command.C_GRAPHICS_TORTE.toString()); break;
+            case C_GRAPHICS_BAR: 
+            	this.setDatasBar();
+            	showGraphics(Command.C_GRAPHICS_BAR.toString()); break;
+            case C_GRAPHICS_TORTE: this.setDatasBar();
+                this.setDatasPie();
+                this.showGraphics(Command.C_GRAPHICS_TORTE.toString());
+                break;
             case C_TABLE_LOCATION: this.tableLocation(); break;
             case SAVE_FILE: this.saveFile(); break;
             case ADD_PATIENT: this.showDialogs(Command.ADD_PATIENT.toString()); break;
             case SEARCH_PATIENT: this.showDialogs(Command.SEARCH_PATIENT.toString()); break;
             case MODIFY_PATIENT: this.showDialogs(Command.MODIFY_PATIENT.toString()); break;
-            case DELETE_PATIENT:  break;
+            case DELETE_PATIENT: this.deletePatient(); break;
             case EXIT_APP: this.exitApp(); break;
             case REFRESH_DATA: this.refreshData(); break;
             case C_CREATE_NEW_PATIENT: this.createDiagnostic(); break;
@@ -79,11 +82,25 @@ public class Controller implements ActionListener {
         }
     }
 
+    public void deletePatient() {
+        int select = jfWindowsMain.getSelectedRow();
+        if (select == -3){
+            refreshData();
+        }else{
+            int option = showConfirmDialog(jfWindowsMain,"Seguro que lo quieres Eliminar");
+            if (option == YES_OPTION){
+                jfWindowsMain.deleteRowIndex(jfWindowsMain.getSelectRow());
+                managePatients.deleteRegister(select);
+            }
+        }
+
+    }
+
     private void searchFilter() {
         String auxString = Utilities.getKeyLanguage(jfWindowsMain.getSearchFilter());
         System.out.println(auxString);
         if (auxString != null){
-            jfWindowsMain.addElementToTable(managePatients.getMatrixSearchDeps(auxString));
+            jfWindowsMain.addElementToTable(managePatients.getMatrixSearchFilter(auxString));
         }else{
             showDialogs(Command.SEARCH_PATIENT.toString());
         }
@@ -104,10 +121,7 @@ public class Controller implements ActionListener {
         ArrayList<Object[]> arrayObjects = fileManagerJson.readWebService(LOCAL_HOST_NAUSAN);
         Utilities.readDatasJson(arrayObjects,managePatients);
         refreshData();
-        Departments[] deps = managePatients.filterPercentages(managePatients.getPercentagesCases());
-        for (int i = 0; i < deps.length; i++) {
-			System.out.println(deps[i].getKeys() + managePatients.calCases(deps[i]));
-		}
+        
     }
 
     public void setDatasLine(){
@@ -119,6 +133,13 @@ public class Controller implements ActionListener {
     public void setDatasPie() {
     	int[] datas = managePatients.getPercentagesAges();
     	jfWindowsMain.setDatasPie( datas);
+    }
+    
+    public void setDatasBar() {
+    	int[] datas = managePatients.filterPercentages(managePatients.getPercentagesCases());
+    	String[] departments = managePatients.ordenateArray(datas);
+    	int[] filterdatas = managePatients.getLimitDatas(datas, 8); 
+    	jfWindowsMain.setDatasBar(filterdatas, departments);
     }
 
     public void setDatas(int[] datasX,int[] datasy){
@@ -159,6 +180,7 @@ public class Controller implements ActionListener {
         fileManagerJson.writeFile(ConstantsPersistence.PATH_OUT+"ArchivoJson."+ConstantsPersistence.E_JSON,managePatients);
         textFileManager.writeFile(ConstantsPersistence.PATH_OUT+"ArchivoPlano."+ConstantsPersistence.E_TXT,managePatients);
         binaryFileManager.writeFile(ConstantsPersistence.PATH_OUT+"ArchivoBynario."+ConstantsPersistence.E_BIN,managePatients);
+        xmlFileManager.writeFile("OutXml", managePatients);
     }
 
 

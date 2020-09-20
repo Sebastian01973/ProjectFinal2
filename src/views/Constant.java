@@ -280,4 +280,9 @@ public class Constant {
     
     public static final String[] LABELS_PIE = new String[] {"1-12 Bebes","13-30 Joven","31-60 Adulto",
 			"60 en ancianos"};
+    public static final String[] LABELS_X_BAR = new String[] {"1","2","3","4","5","6","7","8"};
+    public static final String[] LABELS_Y_BAR =new String[] {"10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"};
+    public static final Color[] COLORS_BAR = new Color[] {Color.decode("#483AF0"),Color.decode("#487278"),
+    		Color.decode("#F0783A"),Color.decode("#331312"),Color.decode("#7A98FA"),Color.decode("#2F0073")
+    		,Color.decode("#F03A56"),Color.decode("#000000"),Color.decode("#82001D"),Color.decode("#4F426C"),Color.red};
 }

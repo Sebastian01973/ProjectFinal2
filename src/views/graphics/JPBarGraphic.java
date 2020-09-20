@@ -80,8 +80,9 @@ public class JPBarGraphic extends JPanel{
 		int y1 = UtilitiesViews.getSeparationAxis('y', 0.17f, container);
 		int increase = (int) (container.getHeight()*0.075f);
 		for (int i = 0; i < datasY.length; i++) {
+			graphics2d.setColor(colors[i]);
 			drawBar(graphics2d, datasY[i], lengthXAxis, i, lengthYAxis, yAxisy1);
-			drawLabels(labelsData[i], graphics2d, Color.black, x, y, x1, y1);
+			drawLabels(labelsData[i], graphics2d, colors[i], x, y-50, x1, y1-50);
 			y += increase;
 			y1 += increase;
 		}
@@ -93,5 +94,10 @@ public class JPBarGraphic extends JPanel{
 		graphics2d.setColor(color);
 		graphics2d.fillRect(x, y, width, height);
 		graphics2d.drawString(label, x1, y1);
+	}
+	
+	public void setDatas(String[] labelsy,String[] labelsData) {
+		this.labelsY = labelsy;
+		this.labelsData = labelsData;
 	}
 }

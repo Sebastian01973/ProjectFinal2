@@ -40,10 +40,9 @@ public class JPCardGraphics extends JPanel implements Language {
         jPanelGraphics = new JPanelGraphics(datasx,datasy);
         this.add(jPanelGraphics, Command.C_GRAPHICS_LINE.toString());
 
-        jpBarGraphic = new JPBarGraphic(this,new String[] {"1","2","3","4","5","6","7","8"},new String[] {
-                "10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"
-        },new int[] {22,33,45,88,70,40,80,90},new String[] {"Data1","Data","Data","Data","Data"
-                ,"Data","Data7","Data8"},new Color[] {Color.red});
+        jpBarGraphic = new JPBarGraphic(this,Constant.LABELS_X_BAR,Constant.LABELS_Y_BAR
+        ,new int[] {22,33,45,88,70,40,80,90,10,100},new String[] {"Data1","Data","Data","Data","Data","D","d","d","d","d"
+                ,"Data","Data7","Data8"},Constant.COLORS_BAR);
         this.add(jpBarGraphic,Command.C_GRAPHICS_BAR.toString());
 
         jpGraficPieChart = new JPGraficPieChart(this,Constant.LABELS_PIE,
@@ -63,6 +62,13 @@ public class JPCardGraphics extends JPanel implements Language {
     	jpGraficPieChart = new JPGraficPieChart(this, Constant.LABELS_PIE,datas, 
     			new Color[] {Color.red,Color.blue,Color.green,Color.orange});
     	this.add(jpGraficPieChart,Command.C_GRAPHICS_TORTE.toString());
+    }
+    
+    public void setDatasBar(int[] datas,String[] labelsDt) {
+    	jpBarGraphic.removeAll();
+    	jpBarGraphic = new JPBarGraphic(this, Constant.LABELS_X_BAR, Constant.LABELS_Y_BAR,
+    			datas, labelsDt,Constant.COLORS_BAR);
+    	this.add(jpBarGraphic,Command.C_GRAPHICS_BAR.toString());
     }
 
     public void showCardGraphics(String command){

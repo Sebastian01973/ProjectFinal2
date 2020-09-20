@@ -39,6 +39,18 @@ public class JFWindowsMain extends JFrame implements Language{
         return jContainerDialog.getSearchFilter();
     }
 
+    public void deleteRowIndex(int index) {
+        jMainPanel.deleteRowIndex(index);
+    }
+
+    public int getSelectRow() {
+        return jMainPanel.getSelectRow();
+    }
+
+    public int getSelectedRow() {
+        return jMainPanel.getSelectedRow();
+    }
+
     public void showPanels(String command){
         jMainPanel.showPanels(command);
     }
@@ -63,6 +75,10 @@ public class JFWindowsMain extends JFrame implements Language{
 
     public void setDatasPie(int[] datas) {
     	jMainPanel.setDatasPie( datas);
+    }
+    
+    public void setDatasBar(int[] datas,String[] labelsDt) {
+    	jMainPanel.setDatasBar(datas, labelsDt);
     }
     public void addElementToTable(ArrayList<Object[]> matrix,String[] header){
         jMainPanel.addElementToTable(matrix,header);

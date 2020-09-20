@@ -1,5 +1,7 @@
 package models;
 
+import utilities.Utilities;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -19,11 +21,26 @@ public class ManagePatients {
 		diagnosticList.add(diagnostic);
 	}
 
-	public Object[] getIndexSearchDeps(String object,int index){
-		if (Integer.parseInt(object) == diagnosticList.get(index).getPatient().getAge()){
-			return diagnosticList.get(index).toObjectVector();
+	public boolean isValidateCode(int code) {
+		for (Diagnostic register : diagnosticList) {
+			if (register.isValidateCases(code)) {
+				return true;
+			}
 		}
-		return null;
+		return false;
+	}
+
+	public void deleteRegister(int numberAuto) {
+		int size = size();
+		for (int i = 0; i < size-1; i++) {
+			if (diagnosticList.get(i).isValidateCases(numberAuto)) {
+				this.diagnosticList.remove(i);
+			}
+		}
+	}
+
+	public Object[] getSearchFilter(String object, int index){
+		return Utilities.getSearchDeps(object,index,diagnosticList);
 	}
 
 	public int sizeForSearch(Object object){
@@ -34,13 +51,15 @@ public class ManagePatients {
 		return count;
 	}
 
-	public ArrayList<Object[]> getMatrixSearchDeps(String object){
+	public ArrayList<Object[]> getMatrixSearchFilter(String object){
 		String auxString = object;
 		ArrayList<Object[]> auxObjects = new ArrayList<>();
 		int size = size();
 		for (int i = 0; i < size; i++) {
-			if (getIndexSearchDeps(auxString,i) != null){
-				auxObjects.add(getIndexSearchDeps(auxString,i));
+			if (diagnosticList.get(i).isValidateDepartments(diagnosticList.get(i).getPatient().getDepar())){
+				if (getSearchFilter(auxString,i) != null){
+					auxObjects.add(getSearchFilter(auxString,i));
+				}
 			}
 		}
 		return auxObjects;
@@ -184,112 +203,46 @@ public class ManagePatients {
 		return values;
 	}
 	
-	public Departments[] filterPercentages(int[] values) {
-		Departments[] departments = Departments.values();
+	public int[] filterPercentages(int[] values) {
 		int size = values.length;
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
 				if(values[i] > values[j]) {
 					int aux = values[j];
-					Departments auxDepartment = departments[i];
 					values[j] = values[i];
-					departments[j] = departments[i];
 					values[i] = aux;
-					departments[j] = auxDepartment;
 				}
 			}
 		}
-		return departments;
+		return values;
 	}
 	
-	public int[] ordenateArray() {
+	public int[] getLimitDatas(int[] values,int limit) {
+		int[] result = new int[limit];
+		int size = size();
+		for (int i = 0; i < limit; i++) {
+			result[i] = (values[i]*100/size);
+		}
+		return result;
+	}
+	
+	public String[] ordenateArray(int[] values) {
+		Departments[] departments = Departments.values();
+		String[] results = new String[departments.length];
+		int size = size();
+		for (int i = 0; i < values.length; i++) {
+			results[i] = searchDepartment(values[i], departments).getKeys()+(values[i]*100/size)+"%";
+		}
+		return results;
+	}
+	
+	public Departments searchDepartment(int value, Departments[] deps) {
+		int size = deps.length;
+		for (int i = 0; i < size; i++) {
+			if(calCases(deps[i]) == value) {
+				return deps[i];
+			}
+		}
 		return null;
 	}
-	
-//	public int[] filterValues(int[] datas) {
-//		int[] result = new int[10];
-//		for (int i = 0; i < result.length; i++) {
-//			int value = travelArray(datas, 0);
-//			result[i] = value;
-//			datas = resizeArray(datas, value);
-//		}
-//		return result;
-//	}
-
-//	public Object[][] filterValues2(Object[][] datas) {
-//		Object[][] result = new Object[10][2];
-//		String[] names = new String[datas.length];
-//		Object[][] numbers = getValues(datas);
-//		for (int i = 0; i < result.length; i++) {
-//			Object[][] value = travelArray(datas, 0);
-//			result[i][1] = value;
-//			int number = (int) value[0][1];
-//			numbers = resizeArray(numbers, number);
-//		}
-//		return result;
-//	}
-//	
-////	public String[] getFilterPercentages(){
-////		Object[][] datas = getPercentagesCases();
-////		int[] percentages = filterValues(datas);
-////		String[] departments = new String[percentages.length];
-////		int count = 0;
-////		for (int i = 0; i < datas.length; i++) {
-////			int value = (int) datas[i][1];
-////			if(value == percentages[count]) {
-////				departments[i] = (String) datas[i][0];	
-////				count++;
-////			}
-////		}
-////		return departments;
-////	}
-//	
-//	public Object[][] getValues(Object[][] datas) {
-//		Object[][] values = new Object[datas.length][2];
-//		for (int i = 0; i < datas.length; i++) {
-//			values[i][1] = datas[i][1];
-//			values[i][0] = datas[i][0];
-//		}
-//		return values;
-//	}
-//	
-//	public String getDepNames(int value,Object[] array) {
-//		String deps = "";
-//		for (int i = 0; i < array.length; i++) {
-//			
-//		}
-//		return deps;
-//	}
-//	
-//	public Object[][] travelArray(Object[][] datas,int value) {
-//		String department = "";
-//		Object[][] matrix = new Object[1][2];
-//		for (int j = 0; j < datas.length; j++) {
-//			int num = (int) datas[j][1];
-//			if(value < num) {
-//				department = (String) datas[j][0];
-//				value = (int) datas[j][1];
-//				matrix[0][1] = value;
-//				matrix[0][0] = department;
-//			}
-//		}
-//		return matrix;
-//	}
-//	
-//	public Object[][] resizeArray(Object[][] numbers,int value) {
-//		Object[][] result = new Object[numbers.length][2];
-//		boolean find = false;
-//		for (int i = 0; i < result.length; i++) {
-//			int number = (int) numbers[i][1];
-//			if(!find && value == number) {
-//				find = true;
-//				result[i][1] = 0;
-//				result[i][0] = numbers[i][0];
-//				continue;
-//			}
-//			result[i][1] = numbers[i][1];
-//			result[i][0] = numbers[i][0];
-//		}
-//		return result;
-//	}
 }

@@ -28,18 +28,10 @@ public class JPanelCenter extends JPanel implements Language{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private JModelLabel lbImgRecovered;
-	private JModelLabel lbImgCases;
-	private JModelLabel lbImgDeceased;
-	private JModelLabel lbTextRevcovered;
-	private JModelLabel lbTextDeceased;
-	private JModelLabel lbTextCases;
-	private JModelLabel lbTitleInformation;
-	private JModelLabel lbTitleInformation1;
-	private JModelLabel lbTitleformation2;
-	private JModelLabel lbInformation;
-	private JModelLabel lbInformation1;
-	private JModelLabel lbInformation2;
+	private JModelLabel lbImgRecovered,lbImgCases,lbImgDeceased,lbTextRevcovered
+	,lbTextDeceased,lbTextCases,lbTitleInformation,lbTitleInformation1 ,lbTitleformation2 
+	,lbInformation,lbInformation1,lbInformation2;
+	private int cases,casesRecuperated,casesDeath;
 	JModelLabel labelDiv ;
 	private GridModel grid;
 
@@ -47,6 +39,9 @@ public class JPanelCenter extends JPanel implements Language{
 		grid = new GridModel(this);
 		this.setLayout(new GridBagLayout());
 		this.setBackground(Constant.COLOR_WHITE);
+		cases = 0;
+	    casesRecuperated = 0;
+	    casesDeath = 0;
 		initComponents();
 	}
 	
@@ -94,15 +89,15 @@ public class JPanelCenter extends JPanel implements Language{
 		
 		grid.setExternalBorder();
 		
-		lbTextCases = new JModelLabel(Utilities.getKey(Constant.TEXT_H_LABEL_CASOS), Constant.IMG_H_LABEL_CASES, Constant.FONT_ARIAL_ROUNDER_17
+		lbTextCases = new JModelLabel(Utilities.getKey(Constant.TEXT_H_LABEL_CASOS)+cases, Constant.IMG_H_LABEL_CASES, Constant.FONT_ARIAL_ROUNDER_17
 				,Color.black);
 		addLabel(lbTextCases, 4, 0, 1, 1, 1, GridBagConstraints.PAGE_START, GridBagConstraints.SOUTHWEST);
 		
-		lbTextRevcovered = new JModelLabel(Utilities.getKey(Constant.TEXT_H_LABEL_RECOVERED), Constant.IMG_H_LABEL_RECOVERED,
+		lbTextRevcovered = new JModelLabel(Utilities.getKey(Constant.TEXT_H_LABEL_RECOVERED)+casesRecuperated, Constant.IMG_H_LABEL_RECOVERED,
 				Constant.FONT_ARIAL_ROUNDER_17, Constant.COLOR_BLACK);
 		addLabel(lbTextRevcovered,4, 1, 1, 1, 1, GridBagConstraints.PAGE_START, GridBagConstraints.SOUTHWEST);
 		
-		lbTextDeceased = new JModelLabel(Utilities.getKey(Constant.TEXT_H_LABEL_DECEASED), Constant.IMG_H_LABEL_DECEASED, 
+		lbTextDeceased = new JModelLabel(Utilities.getKey(Constant.TEXT_H_LABEL_DECEASED)+casesDeath, Constant.IMG_H_LABEL_DECEASED, 
 				Constant.FONT_ARIAL_ROUNDER_17, Constant.COLOR_BLACK);
 		addLabel(lbTextDeceased, 4, 2, 1, 1, 1, GridBagConstraints.PAGE_START, GridBagConstraints.SOUTHWEST);
 		
@@ -128,5 +123,11 @@ public class JPanelCenter extends JPanel implements Language{
 		this.lbTextDeceased.setText(Utilities.getKey(Constant.TEXT_H_LABEL_DECEASED));
 	}
 	
-	
+	public void uptadeValues(int cases,int casesDeath,int casesRecuperated) {
+		this.cases = cases;
+		this.casesRecuperated = casesRecuperated;
+		this.casesDeath = casesDeath;
+		this.removeAll();
+		initComponents();
+	}
 }

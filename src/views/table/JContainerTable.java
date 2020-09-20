@@ -25,6 +25,17 @@ public class JContainerTable extends JPanel implements Language {
         this.add(jTableEast,BorderLayout.EAST);
     }
 
+    public int getSelectedRow() {
+        return jPanelTable.getSelectedRow();
+    }
+    public void deleteRowIndex(int index) {
+        jPanelTable.deleteRowIndex(index);
+    }
+
+    public int getSelectRow() {
+        return jPanelTable.getSelectRow();
+    }
+
     public void addElementToTable(Object[] objects){
         jPanelTable.addElementToTable(objects,true);
     }

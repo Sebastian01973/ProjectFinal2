@@ -2,9 +2,11 @@ package views.states;
 
 import controllers.Command;
 import models.Departments;
+import utilities.Utilities;
 import views.Constant;
 import views.models.GridModel;
 import views.models.JModelButton;
+import views.models.JModelLabel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +15,6 @@ import java.awt.event.ActionListener;
 public class JCenterState extends JPanel {
 
     private GridModel gridModel;
-
 
     public JCenterState(ActionListener actionListener) {
         gridModel = new GridModel(this);
@@ -31,13 +32,11 @@ public class JCenterState extends JPanel {
         Departments[] departmens = Departments.values();
         Command[] commands = Command.values();
         int count = 0;
-
         for (int i = 0; i < 11; i++) {
-            for (int j = 1; j < 4; j++) {
+            for (int j = 0; j < 3; j++) {
                 createButton(i,j,departmens[count].getKeys(),Constant.IMGS_DEPART[count],commands[count].toString(),actionListener);
                 count++;
             }
         }
-
     }
 }

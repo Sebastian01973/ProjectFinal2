@@ -17,6 +17,7 @@ public class JContainerHome extends JPanel implements Language{
 	private JPanelCenter jPCenter;
 	private JPFooter jPfooter;
 	private GridModel grid;
+	
 	/**Creates a new <code>JPanel</code> with a double buffer
      * and a flow layout.
      */
@@ -45,5 +46,9 @@ public class JContainerHome extends JPanel implements Language{
 	public void changeLanguage() {
 		this.jPCenter.changeLanguage();
 		this.jPfooter.changeLanguage();
+	}
+	
+	public void setValues(int cases,int casesDeath,int casesRecuperated) {
+		jPCenter.uptadeValues(cases, casesDeath, casesRecuperated);
 	}
 }

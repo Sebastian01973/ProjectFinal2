@@ -48,12 +48,28 @@ public class JCardLayout extends JPanel implements Language {
         this.add(jspPanelStates,Command.C_MENU_LOCATION.toString());
     }
 
+    public int getSelectRow() {
+        return jContainerTable.getSelectRow();
+    }
+
+    public int getSelectedRow() {
+        return jContainerTable.getSelectedRow();
+    }
+
+    public void deleteRowIndex(int index) {
+        jContainerTable.deleteRowIndex(index);
+    }
+
     public void setDatas(int[] datasx,int[] datasy){
         jContainerStatistic.setDatas(datasx,datasy);
     }
 
     public void setDatasPie(int[] datas) {
     	jContainerStatistic.setDatasPie(datas);
+    }
+    
+    public void setDatasBar(int[] datas,String[] labelsDt) {
+    	jContainerStatistic.setDatasBar(datas, labelsDt);
     }
     
     public void showPanels(String command){
@@ -74,6 +90,10 @@ public class JCardLayout extends JPanel implements Language {
 
     public void addElementToTable(ArrayList<Object[]> matrix,String[] header){
         jContainerTable.addElementToTable(matrix,header);
+    }
+    
+    public void setValues(int cases,int casesDeath,int casesRecuperated) {
+    	jContainerHome.setValues(cases, casesDeath, casesRecuperated);
     }
 
     @Override

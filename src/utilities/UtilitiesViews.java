@@ -99,7 +99,7 @@ public class UtilitiesViews {
     
     public static void drawXDivisions(Graphics2D g2D,int length,String[] labels,Container c) {
     	int x = getSeparationAxis('x',0.15f,c);
-		int y1 = getSeparationAxis('y',0.79f,c);
+		int y1 = getSeparationAxis('y',0.8f,c);
 		int y2 = getSeparationAxis('y',0.81f,c);
 		int increase = length/labels.length;
 		for (int i = 0; i < labels.length; i++) {

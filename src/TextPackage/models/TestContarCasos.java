@@ -27,13 +27,13 @@ public class TestContarCasos {
 //            System.out.println("--"+auxObje[i]+"--");
 //        }
 
-//        System.out.println("------------------");
-//        ArrayList<Object[]> ok = managePatients.getMatrixSearchFilter("Boyaca");
-//        int size = managePatients.sizeForSearch((int)32);
-//        for (int i = 0; i < size; i++) {
-//            System.out.println(ok.get(i)[0] + "-" + ok.get(i)[1]);
-//        }
-//        System.out.println("Numero:" + managePatients.sizeForSearch((int)32));
+        System.out.println("------------------");
+        ArrayList<Object[]> ok = managePatients.getMatrixSearchFilter("Moderate");
+        int size = managePatients.sizeForSearch((String.valueOf("Moderate")));
+        for (int i = 0; i < size; i++) {
+            System.out.println(ok.get(i)[0] + "-" + ok.get(i)[1]);
+        }
+        System.out.println("Numero:" + managePatients.sizeForSearch((int)12));
    }
 
 }

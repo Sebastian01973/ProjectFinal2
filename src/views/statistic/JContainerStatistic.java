@@ -34,6 +34,10 @@ public class JContainerStatistic extends JPanel implements Language {
     public void setDatasPie(int[] datas) {
     	jpCardGraphics.setDatasPie( datas);
     }
+    
+    public void setDatasBar(int[] datas,String[] labelsDt) {
+    	jpCardGraphics.setDatasBar(datas, labelsDt);;
+    }
 
     private void initComponents(ActionListener actionListener) {
         jPanelNorth = new JPNorthSta(actionListener);
