@@ -38,6 +38,7 @@ public class JDFileChooser extends JDialog{
 		FileNameExtensionFilter filterFile = new FileNameExtensionFilter("XML,json,txt,bin",extensions);
 		jFChooser.setFileFilter(filterFile);
 		jFChooser.setApproveButtonText("Guardar");
+		jFChooser.updateUI();
 		this.add(jFChooser);
 	}
 	
