@@ -1,7 +1,5 @@
 package controllers;
 
-import models.Attention;
-
 public enum Command {
 
     AMAZONAS, ANTIOQUIA, ARAUCA, SAN_ANDRES, ATLANTICO, BOGOTA, BOLIVAR,
@@ -20,5 +18,5 @@ public enum Command {
 
     C_ACTIVE_CASES,C_DEATH_CASES,C_RECOVERED_CASES,C_CASES_LOCATION,
     C_REPORT_LETHAL,C_REPORT_HEALTH,
-    C_GRAPHICS_LINE,C_GRAPHICS_BAR,C_GRAPHICS_TORTE;
+    C_GRAPHICS_LINE,C_GRAPHICS_BAR,C_GRAPHICS_TORTE,CancelSelection,ApproveSelection;
 }

@@ -21,7 +21,7 @@ public class BinaryFileManager implements IFileManager{
 		FileOutputStream fileOutputStream = null;
 		DataOutputStream dataOutputStream = null;
 		try {
-			fileOutputStream = new FileOutputStream(name,false);
+			fileOutputStream = new FileOutputStream(ConstantsPersistence.PATH_OUT+"/bin/"+name,false);
 			dataOutputStream = new DataOutputStream(fileOutputStream);
 			ArrayList<Diagnostic> diagnostics = managePatients.getDiagnosticList();
 			ArrayList<Object[]> reports = managePatients.getDatasDepartaments();

@@ -10,6 +10,9 @@ import views.models.JModelLabel;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import models.Departments;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -17,7 +20,8 @@ public class JNorthState extends JPanel implements Language {
 
     private JModelLabel title,content;
     private JModelLabel jMLbanderCol;
-    private int location,casesActive,casesRecuperated,casesDeath;
+    private int casesActive,casesRecuperated,casesDeath;
+    String location;
     private JModelLabel dateResume,dateRecuperated,dateDiagnostic,dateDeath;
     private GridModel grid;
 
@@ -25,10 +29,10 @@ public class JNorthState extends JPanel implements Language {
     	this.grid = new GridModel(this);
         this.setLayout(new GridBagLayout());
         this.setBackground(Constant.COLOR_BLUE_LIGHT_G);
-        location = 0;
         casesActive = 0;
         casesRecuperated = 0;
         casesDeath = 0;
+        location = "";
         initComponents(actionListener);
     }
 
@@ -60,5 +64,20 @@ public class JNorthState extends JPanel implements Language {
     public void changeLanguage() {
         title.setText(Utilities.getKey(Constant.M_TITLTE_STATES));
         content.setText(Utilities.getKey(Constant.M_DIALOG_STATES));
+        dateResume.setText(Utilities.getKey(Constant.L_RESUME_CASES)+location);
+        dateDiagnostic.setText(Utilities.getKey(Constant.L_NUMBER_CASES)+casesActive);
+        dateRecuperated.setText(Utilities.getKey(Constant.L_NUMBER_DIAGNOSTIC)+casesRecuperated);
+        dateDeath.setText(Utilities.getKey(Constant.L_NUMBER_DEATH)+casesDeath);
+    }
+  
+    public void setValues(String location,int...values) {
+    	this.location = location;
+    	dateResume.setText(Utilities.getKey(Constant.L_RESUME_CASES)+location);
+    	this.casesActive = values[0];
+    	this.casesRecuperated = values[1];
+    	this.casesDeath = values[2];
+    	dateDiagnostic.setText(Utilities.getKey(Constant.L_NUMBER_CASES)+casesActive);
+    	dateRecuperated.setText(Utilities.getKey(Constant.L_NUMBER_DIAGNOSTIC)+casesRecuperated);
+    	dateDeath.setText(Utilities.getKey(Constant.L_NUMBER_DEATH)+casesDeath);
     }
 }

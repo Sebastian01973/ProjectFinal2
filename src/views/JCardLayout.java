@@ -9,24 +9,30 @@ import views.table.JContainerTable;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 public class JCardLayout extends JPanel implements Language {
 
-    private JContainerHome jContainerHome;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JContainerHome jContainerHome;
     private JContainerTable jContainerTable;
     private JContainerStatistic jContainerStatistic;
     private JContainerStates jContainerStates;
     private CardLayout cardLayout;
 
-    public JCardLayout(ActionListener actionListener) {
+    public JCardLayout(ActionListener actionListener,MouseListener mouseL) {
         cardLayout = new CardLayout();
         this.setLayout(cardLayout);
         this.setBackground(Constant.COLOR_WHITE);
-        initComponents(actionListener);
+        initComponents(actionListener,mouseL);
     }
 
-    private void initComponents(ActionListener actionListener) {
+    private void initComponents(ActionListener actionListener,MouseListener mouseL) {
         jContainerHome = new JContainerHome(actionListener);
         JScrollPane jspPanelHome = new JScrollPane(jContainerHome);
         jspPanelHome.setViewportView(jContainerHome);
@@ -40,7 +46,7 @@ public class JCardLayout extends JPanel implements Language {
         jContainerStatistic = new JContainerStatistic(actionListener);
         this.add(jContainerStatistic,Command.C_MENU_STATISTIC.toString());
 
-        jContainerStates = new JContainerStates(actionListener);
+        jContainerStates = new JContainerStates(actionListener,mouseL);
         JScrollPane jspPanelStates = new JScrollPane(jContainerStates);
         jspPanelStates.setViewportView(jContainerStates);
         jspPanelStates.setOpaque(false);
@@ -94,6 +100,14 @@ public class JCardLayout extends JPanel implements Language {
     
     public void setValues(int cases,int casesDeath,int casesRecuperated) {
     	jContainerHome.setValues(cases, casesDeath, casesRecuperated);
+    }
+    
+    public void setCounts(int...cases) {
+    	jContainerStatistic.setCounts( cases);
+    }
+    
+    public void setCountsDpt(String location,int...values) {
+    	this.jContainerStates.setCountsDep(location,values);
     }
 
     @Override

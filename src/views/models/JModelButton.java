@@ -3,6 +3,7 @@ package views.models;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -60,7 +61,8 @@ public class JModelButton extends JButton{
 		this.setForeground(colors[1]);
 	}
 
-	public JModelButton(String text,String imagePath, int width,int height,Color bg,String command,ActionListener actionListener) {
+	public JModelButton(String text,String imagePath, int width,int height,Color bg,String command,
+			ActionListener actionListener ,MouseListener mouseL) {
 		super(text);
 		this.setFont( Constant.FONT_ARIAL_ROUNDER_25 );
 		this.setForeground(Constant.COLOR_WHITE);
@@ -76,6 +78,7 @@ public class JModelButton extends JButton{
 		this.setHorizontalTextPosition( SwingConstants.CENTER );
 		this.setActionCommand(command);
 		this.addActionListener(actionListener);
+		this.addMouseListener(mouseL);
 		this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		this.setBackground(bg);
 	}

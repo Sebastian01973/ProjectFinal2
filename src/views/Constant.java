@@ -285,4 +285,5 @@ public class Constant {
     public static final Color[] COLORS_BAR = new Color[] {Color.decode("#483AF0"),Color.decode("#487278"),
     		Color.decode("#F0783A"),Color.decode("#331312"),Color.decode("#7A98FA"),Color.decode("#2F0073")
     		,Color.decode("#F03A56"),Color.decode("#000000"),Color.decode("#82001D"),Color.decode("#4F426C"),Color.red};
+    public static final String EQUALS_TO = "= ";
 }

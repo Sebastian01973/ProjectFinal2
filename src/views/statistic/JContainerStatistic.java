@@ -63,4 +63,8 @@ public class JContainerStatistic extends JPanel implements Language {
         jPanelLeft.changeLanguage();
         jPanelRight.changeLanguage();
     }
+    
+    public void setCounts(int...cases) {
+    	jPanelRight.setDatesTotals( cases);
+    }
 }

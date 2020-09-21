@@ -7,6 +7,8 @@ import utilities.Utilities;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import views.dialogs.JContainerDialog;
@@ -17,20 +19,26 @@ public class JFWindowsMain extends JFrame implements Language{
     private JContainerDialog jContainerDialog;
 
 
-    public JFWindowsMain (ActionListener actionListener){
+    public JFWindowsMain (ActionListener actionListener,MouseListener mouseL){
         jContainerDialog = new JContainerDialog(actionListener,this);
         this.getContentPane().setBackground(Constant.COLOR_WHITE);
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setTitle(Utilities.getKey(Constant.APP_TITLE));
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setIconImage(new ImageIcon(getClass().getResource(Constant.IMG_ICON_APP)).getImage());
-        initComponents(actionListener);
+        initComponents(actionListener,mouseL);
         this.setVisible(true);
     }
+    
+    public void paintP(int x,int y) {
+    	 Graphics g=getGraphics();
+    	 g.setColor(Color.yellow);
+    	 g.fillOval(x, y, 10, 10);
+    }
 
-    private void initComponents(ActionListener actionListener) {
+    private void initComponents(ActionListener actionListener,MouseListener mouseL) {
 
-        jMainPanel = new JMainPanel(actionListener);
+        jMainPanel = new JMainPanel(actionListener,mouseL);
         this.getContentPane().add(jMainPanel,BorderLayout.CENTER);
         this.getContentPane().setForeground(Constant.COLOR_WHITE);
     }
@@ -64,6 +72,14 @@ public class JFWindowsMain extends JFrame implements Language{
         jContainerDialog.showDialogAdd();
         jContainerDialog.setVisible(true);
     }
+    
+    public void showDialogFiles(boolean isVisible) {
+    	this.jMainPanel.showFileChooser(isVisible);
+    }
+    
+    public String getFileName() {
+    	return jMainPanel.getFileName();
+    }
 
     public Diagnostic createPatient(ManagePatients managePatients) {
         return jContainerDialog.createPatient(managePatients,this);
@@ -80,6 +96,10 @@ public class JFWindowsMain extends JFrame implements Language{
     public void setDatasBar(int[] datas,String[] labelsDt) {
     	jMainPanel.setDatasBar(datas, labelsDt);
     }
+    
+    public void setValues(int cases, int casesDeath,int casesRecuperated) {
+    	jMainPanel.setValues(cases, casesDeath, casesRecuperated);
+    }
     public void addElementToTable(ArrayList<Object[]> matrix,String[] header){
         jMainPanel.addElementToTable(matrix,header);
     }
@@ -90,6 +110,14 @@ public class JFWindowsMain extends JFrame implements Language{
 
     public void addElementToTable(ArrayList<Object[]> matrix){
         jMainPanel.addElementToTable(matrix);
+    }
+    
+    public void setCounts(int...cases) {
+    	jMainPanel.setCounts(cases);
+    }
+    
+    public void setCountsDpt(String location,int...values) {
+    	this.jMainPanel.setCountsDpt(location,values);
     }
 
     @Override

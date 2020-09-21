@@ -43,18 +43,20 @@ public class JPanelRight extends JPanel implements Language {
         this.add(dateDeath,gridModel.insertComponent(3,0,1,1,new Insets(10,5,5,5)));
     }
 
-    public void setDatesTotals(String location,int...cases){
-        this.location = location;
+    public void setDatesTotals(int...cases){
         this.casesActive = cases[0];
+        dateDiagnostic.setText(Utilities.getKey(Constant.L_NUMBER_CASES)+casesActive);
         this.casesRecuperated = cases[1];
-        this.casesRecuperated = cases[2];
+        dateRecuperated.setText(Utilities.getKey(Constant.L_NUMBER_DIAGNOSTIC)+casesRecuperated);
+        this.casesDeath = cases[2];
+        dateDeath.setText(Utilities.getKey(Constant.L_NUMBER_DEATH)+casesDeath);
     }
 
 
     @Override
     public void changeLanguage() {
         dateResume.setText(Utilities.getKey(Constant.L_RESUME_CASES)+location);
-        dateDiagnostic.setText(Utilities.getKey(Constant.L_NUMBER_DIAGNOSTIC)+casesActive);
+        dateDiagnostic.setText(Utilities.getKey(Constant.L_NUMBER_CASES)+casesActive);
         dateRecuperated.setText(Utilities.getKey(Constant.L_NUMBER_DIAGNOSTIC)+casesRecuperated);
         dateDeath.setText(Utilities.getKey(Constant.L_NUMBER_DEATH)+casesDeath);
     }

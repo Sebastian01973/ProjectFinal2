@@ -76,6 +76,18 @@ public class ManagePatients {
 		}
 		return count;
 	}
+	
+	public int[] countTotal() {
+		int[] count = new int[3];
+		Departments deps[] = Departments.values();
+		int size = deps.length;
+		for (int i = 0; i < size; i++) {
+			count[0] += countTotalCases(deps[i])[0];
+			count[1] += countTotalCases(deps[i])[1];
+			count[2] += countTotalCases(deps[i])[2];
+		}
+		return count;
+	}
 
 	public Object[] getDatasDepartament(int index){
 		Departments[] dep = Departments.values();

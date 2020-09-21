@@ -41,4 +41,19 @@ public class FilesManager {
 		}
 		return inputStream;
 	}
+	
+	
+	public static IFileManager createTypeFile(String fileName){
+		if(fileName.toLowerCase().endsWith(ConstantsPersistence.E_XML)){
+			return new XMLFileManager();
+		}else if(fileName.toLowerCase().endsWith(ConstantsPersistence.E_TXT)){
+			return new TextFileManager();
+		}else if(fileName.toLowerCase().endsWith(ConstantsPersistence.E_BIN)){
+			return new BinaryFileManager();
+		}else if(fileName.toLowerCase().endsWith(ConstantsPersistence.E_JSON)){
+			return new FileManagerJson();
+		}{
+			return null;
+		}
+	}
 }

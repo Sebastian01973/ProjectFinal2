@@ -22,7 +22,7 @@ public class TextFileManager implements IFileManager{
 		ArrayList<Diagnostic> diagnostics = managePatients.getDiagnosticList();
 		ArrayList<Object[]> reports = managePatients.getDatasDepartaments();
 		try {
-			fileWriter = new FileWriter(name);
+			fileWriter = new FileWriter(ConstantsPersistence.PATH_OUT+"/txt/"+name);
 			ArrayList<String> auxString = new ArrayList<>();
 			for (Diagnostic diagnostic : diagnostics) {
 				auxString.add(String.valueOf(diagnostic.getIdCases())+"#"+diagnostic.getPatient().getGender().getGender()+
@@ -53,23 +53,4 @@ public class TextFileManager implements IFileManager{
 			}
 		}
 	}
-
-	public void writeFile(String nameList,ArrayList<String> datas) {
-		FileWriter fileWriter = null;
-		try {
-			fileWriter = new FileWriter(nameList);
-			for (String data : datas) {
-				fileWriter.write(data + "\n");
-			}
-		}catch(IOException e){
-			e.printStackTrace();
-		} finally {
-			try {
-				fileWriter.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
 }

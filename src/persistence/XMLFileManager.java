@@ -105,9 +105,8 @@ public class XMLFileManager implements IFileManager{
 			transFormerFactory = TransformerFactory.newInstance();
 			transformer = transFormerFactory.newTransformer();
 			domSource = new DOMSource(document);
-			StreamResult result = new StreamResult(new File(ConstantsPersistence.PATH_OUT+"/xml/"+name+"."+ConstantsPersistence.E_XML));
+			StreamResult result = new StreamResult(new File(ConstantsPersistence.PATH_OUT+"/xml/"+name));
 			transformer.transform(domSource, result);
-			System.out.println("saved");
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
 		}catch (TransformerConfigurationException e) {

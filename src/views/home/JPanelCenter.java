@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import com.sun.org.apache.bcel.internal.Const;
+
 import utilities.Utilities;
 import views.Constant;
 import views.Language;
@@ -118,16 +120,17 @@ public class JPanelCenter extends JPanel implements Language{
 		this.lbTitleInformation.setText(Utilities.getKey(Constant.T_INFO_COVID));
 		this.lbTitleInformation1.setText(Utilities.getKey(Constant.T_INFO_SYMPTOMS));
 		this.lbTitleformation2.setText(Utilities.getKey(Constant.T_INFO_PREVENT));
-		this.lbTextCases.setText(Utilities.getKey(Constant.TEXT_H_LABEL_CASOS));
-		this.lbTextRevcovered.setText(Utilities.getKey(Constant.TEXT_H_LABEL_RECOVERED));
-		this.lbTextDeceased.setText(Utilities.getKey(Constant.TEXT_H_LABEL_DECEASED));
+		this.lbTextCases.setText(Utilities.getKey(Constant.TEXT_H_LABEL_CASOS)+Constant.EQUALS_TO+cases);
+		this.lbTextRevcovered.setText(Utilities.getKey(Constant.TEXT_H_LABEL_RECOVERED)+Constant.EQUALS_TO+casesRecuperated);
+		this.lbTextDeceased.setText(Utilities.getKey(Constant.TEXT_H_LABEL_DECEASED)+Constant.EQUALS_TO+casesDeath);
 	}
 	
 	public void uptadeValues(int cases,int casesDeath,int casesRecuperated) {
 		this.cases = cases;
+		lbTextCases.setText(Constant.TEXT_H_LABEL_CASOS+Constant.EQUALS_TO+cases);
 		this.casesRecuperated = casesRecuperated;
+		lbTextRevcovered.setText(Constant.TEXT_H_LABEL_RECOVERED+Constant.EQUALS_TO+casesRecuperated);
 		this.casesDeath = casesDeath;
-		this.removeAll();
-		initComponents();
+		lbTextDeceased.setText(Constant.TEXT_H_LABEL_DECEASED+Constant.EQUALS_TO+casesDeath);
 	}
 }

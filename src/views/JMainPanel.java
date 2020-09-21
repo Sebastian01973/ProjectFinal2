@@ -1,11 +1,14 @@
 package views;
 
+import views.dialogs.JDFileChooser;
 import views.footer.JContainerFooter;
 import views.header.JContainerHeader;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 public class JMainPanel extends JPanel implements Language{
@@ -13,24 +16,34 @@ public class JMainPanel extends JPanel implements Language{
     private JContainerHeader jContainerHeater;
     private JCardLayout jcardLayout;
     private JContainerFooter jContainerFooter;
+    private JDFileChooser jDFileChooser;
 
     public static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 
-    public JMainPanel(ActionListener actionListener) {
+    public JMainPanel(ActionListener actionListener,MouseListener mouseL) {
         this.setLayout(new BorderLayout(0,0));
         this.setBackground(Constant.COLOR_WHITE);
-        initComponents(actionListener);
+        initComponents(actionListener,mouseL);
     }
 
-    private void initComponents(ActionListener actionListener) {
+    private void initComponents(ActionListener actionListener,MouseListener mouseL) {
+    	this.jDFileChooser = new JDFileChooser(actionListener);
         jContainerHeater = new JContainerHeader(actionListener);
         this.add(jContainerHeater,BorderLayout.NORTH);
 
-        jcardLayout = new JCardLayout(actionListener);
+        jcardLayout = new JCardLayout(actionListener,mouseL);
         this.add(jcardLayout,BorderLayout.CENTER);
 
         jContainerFooter = new JContainerFooter(actionListener);
         this.add(jContainerFooter,BorderLayout.SOUTH);
+    }
+    
+    public void showFileChooser(boolean value) {
+    	this.jDFileChooser.showDialog(value);
+    }
+    
+    public String getFileName() {
+    	return jDFileChooser.getPath();
     }
 
     public void addElementToTable(ArrayList<Object[]> matrix,String[] header){
@@ -60,6 +73,10 @@ public class JMainPanel extends JPanel implements Language{
     public void setDatasBar(int[] datas,String[] labelsDt) {
     	jcardLayout.setDatasBar(datas, labelsDt);
     }
+    
+    public void setValues(int cases,int casesDeath,int casesRecuperated) {
+    	jcardLayout.setValues(cases, casesDeath, casesRecuperated);
+    }
     public void showPanels(String command){
         jcardLayout.showPanels(command);
     }
@@ -77,7 +94,13 @@ public class JMainPanel extends JPanel implements Language{
         jcardLayout.addElementToTable(matrix);
     }
 
-
+    public void setCounts(int...cases) {
+    	jcardLayout.setCounts( cases);
+    }
+    
+    public void setCountsDpt(String location,int...values) {
+    	this.jcardLayout.setCountsDpt(location,values);
+    }
     @Override
     public void changeLanguage() {
         jContainerHeater.changeLanguage();

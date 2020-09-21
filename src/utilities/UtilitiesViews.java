@@ -9,6 +9,9 @@ import views.models.JModelLabel;
 
 import javax.swing.*;
 import javax.swing.table.TableColumn;
+
+import controllers.Command;
+
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Graphics2D;
@@ -38,6 +41,54 @@ public class UtilitiesViews {
 			value[i] = data[i]/10;
 		}
 		return value;
+	}
+	
+	public static String toFormatNumber(int number) {
+		DecimalFormat df = (DecimalFormat) NumberFormat.getInstance();
+		df.applyPattern( "####,##" );
+		String strValue = df.format(number);
+		return strValue;
+	}
+	
+	public static Departments getDptClicked(JButton jButton) {
+		switch (Command.valueOf(jButton.getActionCommand())) {
+		case AMAZONAS: return Departments.AMAZONAS;			
+		case ANTIOQUIA: return Departments.ANTIOQUIA;
+		case ARAUCA: return Departments.ARAUCA;
+		case SAN_ANDRES: return Departments.SAN_ANDRES;
+		case ATLANTICO: return Departments.ATLANTICO;
+		case  BOGOTA: return Departments.BOGOTA;
+		case  BOLIVAR:return Departments.BOLIVAR;
+		case BOYACA: return Departments.BOYACA;
+		case CALDAS: return Departments.CALDAS;
+		case CAQUETA: return Departments.CAQUETA;
+		case CASANARE: return Departments.CASANARE;
+		case CAUCA: return Departments.CAUCA;
+		case CESAR:return Departments.CESAR;
+		case CHOCO:return Departments.CHOCO;
+		case CUNDINAMARCA: return Departments.CUNDINAMARCA;
+		case CORDOBA:return Departments.CORDOBA;
+		case GUAINIA:return Departments.GUAINIA;
+		case GUAVIARE: return Departments.GUAVIARE;
+		case HUILA:return Departments.HUILA;
+		case GUAJIRA:return Departments.GUAJIRA;
+		case  MAGDALENA: return Departments.MAGDALENA;
+		case META:return Departments.META;
+		case NARINO:return Departments.NARINO;
+		case NORTE_SANTANDER:return Departments.NORTE_SANTANDER;
+		case PUTUMAYO:return Departments.PUTUMAYO;
+		case QUINDIO:return Departments.QUINDIO;
+		case RISARALDA:return Departments.RISARALDA;
+		case SANTANDER:return Departments.SANTANDER;
+		case SUCRE:return Departments.SUCRE;
+		case TOLIMA:return Departments.TOLIMA;
+		case VALLE_CAUCA: return Departments.VALLE_CAUCA;
+		case VAUPES: return Departments.VAUPES;
+		case VICHADA: return Departments.VICHADA;
+		default:
+			break;
+		}
+		return null;
 	}
 
     public static String toFloatFormatPercentage(float value) {

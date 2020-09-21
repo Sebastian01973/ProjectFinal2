@@ -1,31 +1,30 @@
 package controllers;
 
 import models.*;
-import persistence.BinaryFileManager;
-import persistence.ConstantsPersistence;
 import persistence.FileManagerJson;
-import persistence.XMLFileManager;
-import persistence.TextFileManager;
+import persistence.FilesManager;
 import utilities.Utilities;
 import views.Constant;
 import views.JFWindowsMain;
+import utilities.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
+
+import javax.swing.JButton;
 
 import static javax.swing.JOptionPane.*;
 
 
-public class Controller implements ActionListener {
+public class Controller implements ActionListener,MouseListener{
 
     ManagePatients managePatients;
     ConfigLanguage configLanguage;
     JFWindowsMain jfWindowsMain;
     FileManagerJson fileManagerJson;
-    XMLFileManager xmlFileManager;
-    TextFileManager textFileManager;
-    BinaryFileManager binaryFileManager;
 
     private static final String LOCAL_HOST_NAUSAN = "http://localhost/Uptc/Archivo%20json/SurtidoMix.json";
     private static final String LOCAL_HOST_PACHO = "http://localhost/Json/SurtidoMix.json";
@@ -35,12 +34,9 @@ public class Controller implements ActionListener {
         configLanguage = new ConfigLanguage();
         configLanguage.loadConfiguration();
         managePatients = new ManagePatients();
-        jfWindowsMain = new JFWindowsMain(this);
+        jfWindowsMain = new JFWindowsMain(this,this);
         configLanguage.setJfWindowsMain(jfWindowsMain);
         fileManagerJson = new FileManagerJson();
-        this.xmlFileManager = new XMLFileManager();
-        textFileManager = new TextFileManager();
-        binaryFileManager = new BinaryFileManager();
         readFileWebServicesJson();
     }
 
@@ -66,7 +62,7 @@ public class Controller implements ActionListener {
                 this.showGraphics(Command.C_GRAPHICS_TORTE.toString());
                 break;
             case C_TABLE_LOCATION: this.tableLocation(); break;
-            case SAVE_FILE: this.saveFile(); break;
+            case SAVE_FILE: this.showDialogFile(true);; break;
             case ADD_PATIENT: this.showDialogs(Command.ADD_PATIENT.toString()); break;
             case SEARCH_PATIENT: this.showDialogs(Command.SEARCH_PATIENT.toString()); break;
             case MODIFY_PATIENT: this.showDialogs(Command.MODIFY_PATIENT.toString()); break;
@@ -79,9 +75,43 @@ public class Controller implements ActionListener {
             case C_ACTIVE_CASES_ADD: break;
             case C_RECOVERED_CASES_ADD:  break;
             case C_DEATH_CASES_ADD:  break;
+            case CancelSelection: showDialogFile(false); break;
+            case ApproveSelection: saveFile(); break;
         }
     }
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
+    	JButton buttonClicked = (JButton) e.getComponent();
+    	Departments department = UtilitiesViews.getDptClicked(buttonClicked);
+    	int[] count = managePatients.countTotalCases(department);
+    	jfWindowsMain.setCountsDpt(department.getKeys(),count);
+    }
+    
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    	// TODO Auto-generated method stub
+    	
+    }
+    
+    @Override
+    public void mouseExited(MouseEvent e) {
+    	// TODO Auto-generated method stub
+    	
+    }
+    
+    @Override
+    public void mousePressed(MouseEvent e) {
+    	// TODO Auto-generated method stub
+    	
+    }
+    
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    	// TODO Auto-generated method stub
+    	
+    }
+    
     public void deletePatient() {
         int select = jfWindowsMain.getSelectedRow();
         if (select == -3){
@@ -121,7 +151,6 @@ public class Controller implements ActionListener {
         ArrayList<Object[]> arrayObjects = fileManagerJson.readWebService(LOCAL_HOST_NAUSAN);
         Utilities.readDatasJson(arrayObjects,managePatients);
         refreshData();
-        
     }
 
     public void setDatasLine(){
@@ -161,6 +190,12 @@ public class Controller implements ActionListener {
 
     private void refreshData() {
         jfWindowsMain.addElementToTable(managePatients.getMatrixList());
+        int[] values = managePatients.countTotal();
+        int cases = values[0];
+        int casesRecuperated = values[1];
+        int casesDeath = values[2];
+        jfWindowsMain.setValues(cases, casesDeath, casesRecuperated);
+        jfWindowsMain.setCounts(values);
     }
 
     private void manageChangeLanguageUS() {
@@ -175,12 +210,15 @@ public class Controller implements ActionListener {
         ArrayList<Object[]> tableDepar = managePatients.getDatasDepartaments();
        jfWindowsMain.addElementToTable(tableDepar, Constant.TABLE_DEPS);
     }
+    
+    private void showDialogFile(boolean value) {
+    	jfWindowsMain.showDialogFiles(value);
+    }
 
     private void saveFile(){
-        fileManagerJson.writeFile(ConstantsPersistence.PATH_OUT+"ArchivoJson."+ConstantsPersistence.E_JSON,managePatients);
-        textFileManager.writeFile(ConstantsPersistence.PATH_OUT+"ArchivoPlano."+ConstantsPersistence.E_TXT,managePatients);
-        binaryFileManager.writeFile(ConstantsPersistence.PATH_OUT+"ArchivoBynario."+ConstantsPersistence.E_BIN,managePatients);
-        xmlFileManager.writeFile("OutXml", managePatients);
+    	showDialogFile(false);
+    	String fileName = jfWindowsMain.getFileName();
+    	FilesManager.createTypeFile(fileName).writeFile(fileName, managePatients);
     }
 
 
@@ -191,5 +229,7 @@ public class Controller implements ActionListener {
             System.exit(0);
         }
     }
+
+
 
 }

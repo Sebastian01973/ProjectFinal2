@@ -6,6 +6,9 @@ import views.models.GridModel;
 
 import javax.swing.*;
 
+import utilities.Utilities;
+import utilities.UtilitiesViews;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;

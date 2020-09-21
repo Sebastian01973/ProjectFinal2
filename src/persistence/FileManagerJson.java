@@ -36,7 +36,7 @@ public class FileManagerJson implements IFileManager{
 	}
 
 	public void writeFile(String name, ManagePatients managePatients) {
-		File file = new File(name);
+		File file = new File(ConstantsPersistence.PATH_OUT+"/json/"+name);
 		try {
 			file.createNewFile();
 			FileWriter fileWriter = new FileWriter(file);
@@ -98,7 +98,6 @@ public class FileManagerJson implements IFileManager{
 					};
 				listDatas.add(datas);
 			}
-			System.out.println(listDatas.size());
 		} catch (DeserializationException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
