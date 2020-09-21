@@ -216,6 +216,7 @@ public class ManagePatients {
 	}
 	
 	public int[] filterPercentages(int[] values) {
+		Departments[] departments = Departments.values();
 		int size = values.length;
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
@@ -223,12 +224,13 @@ public class ManagePatients {
 					int aux = values[j];
 					values[j] = values[i];
 					values[i] = aux;
+					System.out.println("i: "+values[i] + "j: "+values[j]);
 				}
 			}
 		}
 		return values;
 	}
-	
+
 	public int[] getLimitDatas(int[] values,int limit) {
 		int[] result = new int[limit];
 		int size = size();
@@ -237,7 +239,7 @@ public class ManagePatients {
 		}
 		return result;
 	}
-	
+
 	public String[] ordenateArray(int[] values) {
 		Departments[] departments = Departments.values();
 		String[] results = new String[departments.length];
@@ -247,7 +249,7 @@ public class ManagePatients {
 		}
 		return results;
 	}
-	
+
 	public Departments searchDepartment(int value, Departments[] deps) {
 		int size = deps.length;
 		for (int i = 0; i < size; i++) {
@@ -257,4 +259,6 @@ public class ManagePatients {
 		}
 		return null;
 	}
+	
+
 }

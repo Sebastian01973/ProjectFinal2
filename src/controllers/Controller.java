@@ -148,7 +148,7 @@ public class Controller implements ActionListener,MouseListener{
     }
 
     public void readFileWebServicesJson(){
-        ArrayList<Object[]> arrayObjects = fileManagerJson.readWebService(LOCAL_HOST_NAUSAN);
+        ArrayList<Object[]> arrayObjects = fileManagerJson.readWebService(LOCAL_HOST_PACHO);
         Utilities.readDatasJson(arrayObjects,managePatients);
         refreshData();
     }

@@ -174,7 +174,6 @@ public class Constant {
     public static final String IMG_WORLD = "/images/world.png";
     public static final String IMG_BANNER = "/images/bannerCovid.jpg";
     public static final String IMG_HOME = "/images/Home.png";
-    public static final String IMG_RANGE_AGE = "/images/rangeAge.png";
     public static final String IMG_AGE = "/images/age.png";
     public static final String IMG_LOC = "/images/loc.png";
     public static final String IMG_COl = "/images/col.png";
