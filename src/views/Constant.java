@@ -2,6 +2,9 @@ package views;
 
 import java.awt.*;
 
+import models.HealthCondition;
+import utilities.Utilities;
+
 public class Constant {
 
 //    Urls
@@ -152,6 +155,7 @@ public class Constant {
             L_HEALTH,L_DATE_DIAGNOSTIC,L_DATE_RECOVERED,L_DATE_DEATH};
 
     public static final String IMG_ICON_APP = "/images/covidIcon.png";
+    public static final String IMG_ICON_DIALOG_SAVE = "/images/save_file.png";
     public static final String IMG_ARROW_DOWN = "/images/arrowDown.png";
     public static final String IMG_ARROW_RIGHT = "/images/arrowRight.png";
     public static final String IMG_DIALOG = "/images/dialog.png";
@@ -174,7 +178,6 @@ public class Constant {
     public static final String IMG_WORLD = "/images/world.png";
     public static final String IMG_BANNER = "/images/bannerCovid.jpg";
     public static final String IMG_HOME = "/images/Home.png";
-    public static final String IMG_RANGE_AGE = "/images/rangeAge.png";
     public static final String IMG_AGE = "/images/age.png";
     public static final String IMG_LOC = "/images/loc.png";
     public static final String IMG_COl = "/images/col.png";
@@ -278,12 +281,23 @@ public class Constant {
             "Nari", "Nort","Putu","Quin","Risa","Sant","Sucr", "Toli","Vall","Vaup","Vich",
     };
     
-    public static final String[] LABELS_PIE = new String[] {"1-12 Bebes","13-30 Joven","31-60 Adulto",
+    public static final String[] LABELS_PIE_AGE = new String[] {"1-12 Bebes","13-30 Joven","31-60 Adulto",
 			"60 en ancianos"};
+    public static final String[] LABELS_PIE_COND = new String[] {
+    		Utilities.getKey(HealthCondition.ASYMPTOMATIC.getKey()),
+    		Utilities.getKey(HealthCondition.MILD.getKey()),
+    		Utilities.getKey(HealthCondition.MODERATE.getKey()),
+    		Utilities.getKey(HealthCondition.SEVERE.getKey()),
+    		Utilities.getKey(HealthCondition.N_A.getKey()),
+    		Utilities.getKey(HealthCondition.DECEASED.getKey()),
+    };
     public static final String[] LABELS_X_BAR = new String[] {"1","2","3","4","5","6","7","8"};
     public static final String[] LABELS_Y_BAR =new String[] {"10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"};
     public static final Color[] COLORS_BAR = new Color[] {Color.decode("#483AF0"),Color.decode("#487278"),
     		Color.decode("#F0783A"),Color.decode("#331312"),Color.decode("#7A98FA"),Color.decode("#2F0073")
     		,Color.decode("#F03A56"),Color.decode("#000000"),Color.decode("#82001D"),Color.decode("#4F426C"),Color.red};
     public static final String EQUALS_TO = "= ";
+    
+    public static final String SAVE = "Saved";
+    public static final String NOT_SAVED = "Not saved";
 }

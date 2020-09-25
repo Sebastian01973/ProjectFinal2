@@ -85,7 +85,9 @@ public class FileManagerJson implements IFileManager{
 
 		try {
 			JsonObject jSonObj = (JsonObject) Jsoner.deserialize(bufferedReader);
+			System.out.println("enter file");
 			JsonArray data = (JsonArray) jSonObj.get("data");
+			System.out.println("enter dta");
 			for (int i = 0; i < data.size(); i++) {
 				JsonArray array = (JsonArray) data.get(i);
 				Object[] datas = new Object[] {

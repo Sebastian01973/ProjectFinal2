@@ -25,6 +25,7 @@ public class JDialogSearchPatient extends JPanel implements Language {
 
     private GridLayout gridLayout;
     private JSpinner jsAge;
+    private JModelComboBox<Gender> jCBGender;
     private JModelComboBox<Attention> jCBAttention;
     private JModelComboBox<Departments> jCBDepartments;
     private JModelComboBox<HealthCondition> JCBHealth;
@@ -50,6 +51,9 @@ public class JDialogSearchPatient extends JPanel implements Language {
         jsAge.setBorder(BorderFactory.createTitledBorder(Utilities.getKey(Constant.L_AGE)));
         jsAge.setBackground(Constant.COLOR_WHITE);
         this.add(jsAge);
+        
+        jCBGender = new JModelComboBox<Gender>(Utilities.getKeys(Gender.values()),Utilities.getKey(Constant.L_GENDER),Constant.FONT_HELVETICA_17);
+//        this.add(jCBGender);
 
         jCBAttention = new JModelComboBox<Attention>(Utilities.getKeys(Attention.values()),Utilities.getKey(Constant.L_ATTENTION),Constant.FONT_HELVETICA_17);
         this.add(jCBAttention);
@@ -67,7 +71,6 @@ public class JDialogSearchPatient extends JPanel implements Language {
         jBCancel = new JModelButton( 5, 5,Utilities.getKey(Constant.L_CANCEL), Constant.COLOR_RED_LIGHT, Constant.COLOR_WHITE,
                 Constant.FONT_ARIAL_ROUNDER_25, Command.C_CANCEL_NEW_PATIENT.toString(), actionListener );
         this.add( jBCancel);
-
     }
 
     public String getSearchFilter(){
@@ -87,7 +90,6 @@ public class JDialogSearchPatient extends JPanel implements Language {
                return jCBDepartments.getSelectedItem().toString();
            }else if (Utilities.isValidateDatasSearch(JCBHealth.getSelectedIndex(),(int)jsAge.getValue()
                    ,jCBAttention.getSelectedIndex(),jCBDepartments.getSelectedIndex())){
-
                 return JCBHealth.getSelectedItem().toString();
            }else{
                showMessageDialog(null, "No puedes seleccionr mas de una opcion");
@@ -95,7 +97,6 @@ public class JDialogSearchPatient extends JPanel implements Language {
            }
         }
     }
-
 
     @Override
     public void changeLanguage() {

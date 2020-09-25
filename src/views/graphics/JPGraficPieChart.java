@@ -22,7 +22,7 @@ public class JPGraficPieChart extends JPanel{
 
 	private Container container;
 	private String[] labels;
-	private int[] datas;
+	private double[] datas;
 	private int total;
 	private Color[] colors;
 	
@@ -33,7 +33,7 @@ public class JPGraficPieChart extends JPanel{
 	 * @param datas
 	 * @param colors
 	 */
-	public JPGraficPieChart(Container container,String[] labels,int[] datas,Color[] colors) {
+	public JPGraficPieChart(Container container,String[] labels,double[] datas,Color[] colors) {
 		this.container = container;
 		this.labels = labels;
 		this.datas = datas;
@@ -62,11 +62,11 @@ public class JPGraficPieChart extends JPanel{
 		graphics2d.fillOval(x, y, radius, radius);
 	}
 	
-	private double calculateDegree(int value) {
-		return Math.round((value*360.0/total));
+	private double calculateDegree(double datas2) {
+		return Math.round((datas2*360.0/total));
 	}
 	
-	private void drawArc(int value,Graphics2D graphics2d,int initialAngle,int finalAngle,Color color) {
+	private void drawArc(double datas2,Graphics2D graphics2d,int initialAngle,int finalAngle,Color color) {
 		graphics2d.setColor(color);
 		int x = UtilitiesViews.getSeparationAxis('x', 0.1f, container);
 		int y = UtilitiesViews.getSeparationAxis('y', 0.1f, container);
@@ -93,7 +93,7 @@ public class JPGraficPieChart extends JPanel{
 		for (int i = 0; i < datas.length; i++) {
 			drawArc(datas[i], graphics2d, acumulatedAngle, (int)calculateDegree(datas[i]), colors[i]);
 			acumulatedAngle += calculateDegree(datas[i]);
-			String label = labels[i]+" "+datas[i]+"%";
+			String label = labels[i]+" "+UtilitiesViews.toFloatFormatPercentage((float) datas[i])+"%";
 			drawLabels(label, graphics2d, colors[i], x, y, x1, y1);
 			y += increase;
 			y1 += increase;

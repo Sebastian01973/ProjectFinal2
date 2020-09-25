@@ -3,6 +3,7 @@ package controllers;
 import models.*;
 import persistence.FileManagerJson;
 import persistence.FilesManager;
+import persistence.IFileManager;
 import utilities.Utilities;
 import views.Constant;
 import views.JFWindowsMain;
@@ -15,6 +16,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import static javax.swing.JOptionPane.*;
 
@@ -26,8 +28,11 @@ public class Controller implements ActionListener,MouseListener{
     JFWindowsMain jfWindowsMain;
     FileManagerJson fileManagerJson;
 
+    //Xampp
     private static final String LOCAL_HOST_NAUSAN = "http://localhost/Uptc/Archivo%20json/SurtidoMix.json";
     private static final String LOCAL_HOST_PACHO = "http://localhost/Json/SurtidoMix.json";
+    // Host
+    private static final String WEB_HOST = "https://serviciosweb1.000webhostapp.com/SurtidoMix.json";
 
 
     public Controller() {
@@ -58,9 +63,11 @@ public class Controller implements ActionListener,MouseListener{
             	this.setDatasBar();
             	showGraphics(Command.C_GRAPHICS_BAR.toString()); break;
             case C_GRAPHICS_TORTE: this.setDatasBar();
-                this.setDatasPie();
+                this.setDatasPie(managePatients.getPercentagesAges(),Constant.LABELS_PIE_AGE);
                 this.showGraphics(Command.C_GRAPHICS_TORTE.toString());
                 break;
+            case C_REPORT_HEALTH: this.setDatasPie(managePatients.getConditions(),Constant.LABELS_PIE_COND);
+            this.showGraphics(Command.C_GRAPHICS_TORTE.toString());break;
             case C_TABLE_LOCATION: this.tableLocation(); break;
             case SAVE_FILE: this.showDialogFile(true);; break;
             case ADD_PATIENT: this.showDialogs(Command.ADD_PATIENT.toString()); break;
@@ -148,9 +155,17 @@ public class Controller implements ActionListener,MouseListener{
     }
 
     public void readFileWebServicesJson(){
-        ArrayList<Object[]> arrayObjects = fileManagerJson.readWebService(LOCAL_HOST_NAUSAN);
-        Utilities.readDatasJson(arrayObjects,managePatients);
-        refreshData();
+    	boolean value = false;
+    	while(!value) {
+    		showMessageDialog(null, "Leyendo Datos Web, espere hasta que salga un dialogo de Leido");
+    		ArrayList<Object[]> arrayObjects = fileManagerJson.readWebService(LOCAL_HOST_PACHO);
+    		Utilities.readDatasJson(arrayObjects,managePatients);
+    		value = true;
+    	}
+       showMessageDialog(null, "Datos Leidos Exitosamente");
+       setDatasLine();
+       showGraphics(Command.C_GRAPHICS_LINE.toString());
+       refreshData();
     }
 
     public void setDatasLine(){
@@ -159,9 +174,8 @@ public class Controller implements ActionListener,MouseListener{
         jfWindowsMain.setDatas(months,cases);
     }
     
-    public void setDatasPie() {
-    	int[] datas = managePatients.getPercentagesAges();
-    	jfWindowsMain.setDatasPie( datas);
+    public void setDatasPie(double[] datas,String[] labels) {
+    	jfWindowsMain.setDatasPie( datas,labels);
     }
     
     public void setDatasBar() {
@@ -218,7 +232,13 @@ public class Controller implements ActionListener,MouseListener{
     private void saveFile(){
     	showDialogFile(false);
     	String fileName = jfWindowsMain.getFileName();
-    	FilesManager.createTypeFile(fileName).writeFile(fileName, managePatients);
+    	IFileManager iFileManager = FilesManager.createTypeFile(fileName);
+    	if(iFileManager != null) {
+    		iFileManager.writeFile(fileName, managePatients);
+    		showMessageDialog(null, Constant.SAVE);
+    	}else {
+    		showMessageDialog(null, Constant.NOT_SAVED);
+    	}
     }
 
 
@@ -229,7 +249,4 @@ public class Controller implements ActionListener,MouseListener{
             System.exit(0);
         }
     }
-
-
-
 }

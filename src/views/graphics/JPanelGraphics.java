@@ -51,6 +51,7 @@ public class JPanelGraphics extends  JPanel{
 		int xAxisx2 = UtilitiesViews.getSeparationAxis('x',0.9f,this);
 		int xAxisy = UtilitiesViews.getSeparationAxis('y',0.8f,this);
 		int lengthXAxis = xAxisx2-xAxisx1;
+		graphics2D.drawString("Gráfico de casos reportados por mes", xAxisx2/2, yAxisy1);
 		String[] labelsX = new String[] {"6","7","8","9"};
 		UtilitiesViews.drawAxis(xAxisx1, xAxisy, xAxisx2,xAxisy,graphics2D);
 		UtilitiesViews.drawXDivisions(graphics2D, lengthXAxis, labelsX, this);

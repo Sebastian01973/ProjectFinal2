@@ -86,6 +86,10 @@ public class Diagnostic {
 		}
     	return false;
 	}
+	
+	public boolean isValidateGender(String key){
+		return (key.equals(patient.getGender().getGender()));
+	}
 
 	public boolean isValidateAttention(String key){
 		return (key.equals(patient.getStates().getKey()));

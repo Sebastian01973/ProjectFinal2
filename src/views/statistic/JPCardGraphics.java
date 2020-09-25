@@ -45,8 +45,8 @@ public class JPCardGraphics extends JPanel implements Language {
                 ,"Data","Data7","Data8"},Constant.COLORS_BAR);
         this.add(jpBarGraphic,Command.C_GRAPHICS_BAR.toString());
 
-        jpGraficPieChart = new JPGraficPieChart(this,Constant.LABELS_PIE,
-                new int[] {},
+        jpGraficPieChart = new JPGraficPieChart(this,Constant.LABELS_PIE_AGE,
+                new double[] {},
                 new Color[] {});
         this.add(jpGraficPieChart,Command.C_GRAPHICS_TORTE.toString());
     }
@@ -57,10 +57,10 @@ public class JPCardGraphics extends JPanel implements Language {
         this.add(jPanelGraphics, Command.C_GRAPHICS_LINE.toString());
     }
     
-    public void setDatasPie(int[] datas) {
+    public void setDatasPie(double[] datas,String[] labels) {
     	jpGraficPieChart.removeAll();
-    	jpGraficPieChart = new JPGraficPieChart(this, Constant.LABELS_PIE,datas, 
-    			new Color[] {Color.red,Color.blue,Color.green,Color.orange});
+    	jpGraficPieChart = new JPGraficPieChart(this, labels,datas, 
+    			new Color[] {Color.red,Color.blue,Color.green,Color.orange,Color.gray,Color.black,Color.pink});
     	this.add(jpGraficPieChart,Command.C_GRAPHICS_TORTE.toString());
     }
     

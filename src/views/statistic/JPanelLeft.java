@@ -66,8 +66,6 @@ public class JPanelLeft extends JPanel implements Language {
         bReportState.setActionCommand(Command.C_REPORT_HEALTH.toString());
         bReportState.addActionListener(actionListener);
         this.add(bReportState);
-
-
     }
 
     @Override

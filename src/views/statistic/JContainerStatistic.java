@@ -31,8 +31,8 @@ public class JContainerStatistic extends JPanel implements Language {
         jpCardGraphics.setDatas(datasx,datasy);
     }
     
-    public void setDatasPie(int[] datas) {
-    	jpCardGraphics.setDatasPie( datas);
+    public void setDatasPie(double[] datas,String[] labels) {
+    	jpCardGraphics.setDatasPie( datas,labels);
     }
     
     public void setDatasBar(int[] datas,String[] labelsDt) {

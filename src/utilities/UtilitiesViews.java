@@ -93,7 +93,7 @@ public class UtilitiesViews {
 
     public static String toFloatFormatPercentage(float value) {
         DecimalFormat df = (DecimalFormat) NumberFormat.getInstance();
-        df.applyPattern( "% ####,##" );
+        df.applyPattern( "###.##" );
         String strValue = df.format(value);
         return strValue;
     }

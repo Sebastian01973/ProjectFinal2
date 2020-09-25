@@ -42,25 +42,15 @@ public class ManagePatients {
 	public Object[] getSearchFilter(String object, int index){
 		return Utilities.getSearchDeps(object,index,diagnosticList);
 	}
-
-	public int sizeForSearch(Object object){
-		int size = size(),count = 0;
-		for (int i = 0; i < size(); i++) {
-			count += ((int)object == diagnosticList.get(i).getPatient().getAge()) ? 1:0;
-		}
-		return count;
-	}
-
+	
 	public ArrayList<Object[]> getMatrixSearchFilter(String object){
 		String auxString = object;
 		ArrayList<Object[]> auxObjects = new ArrayList<>();
 		int size = size();
 		for (int i = 0; i < size; i++) {
-			if (diagnosticList.get(i).isValidateDepartments(diagnosticList.get(i).getPatient().getDepar())){
 				if (getSearchFilter(auxString,i) != null){
 					auxObjects.add(getSearchFilter(auxString,i));
 				}
-			}
 		}
 		return auxObjects;
 	}
@@ -183,8 +173,8 @@ public class ManagePatients {
 		return (value*100/size);
 	}
 	
-	public int[] getPercentagesAges() {
-		int[] ages = new int[] {
+	public double[] getPercentagesAges() {
+		double[] ages = new double[] {
 				calPercentageAge(1, 12),calPercentageAge(13, 30),
 				calPercentageAge(31, 60),calPercentageAge(60, 100),
 		};
@@ -216,6 +206,7 @@ public class ManagePatients {
 	}
 	
 	public int[] filterPercentages(int[] values) {
+		Departments[] departments = Departments.values();
 		int size = values.length;
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
@@ -228,7 +219,7 @@ public class ManagePatients {
 		}
 		return values;
 	}
-	
+
 	public int[] getLimitDatas(int[] values,int limit) {
 		int[] result = new int[limit];
 		int size = size();
@@ -237,7 +228,7 @@ public class ManagePatients {
 		}
 		return result;
 	}
-	
+
 	public String[] ordenateArray(int[] values) {
 		Departments[] departments = Departments.values();
 		String[] results = new String[departments.length];
@@ -247,7 +238,7 @@ public class ManagePatients {
 		}
 		return results;
 	}
-	
+
 	public Departments searchDepartment(int value, Departments[] deps) {
 		int size = deps.length;
 		for (int i = 0; i < size; i++) {
@@ -256,5 +247,25 @@ public class ManagePatients {
 			}
 		}
 		return null;
+	}
+	
+	public int countPerCondition(HealthCondition helathCondition) {
+		int count = 0;
+		for (Diagnostic diagnostic : diagnosticList) {
+			count += (diagnostic.getPatient().getHealthCondition().equals(helathCondition))?1:0;
+		}
+		return count;
+	}
+	
+	public double[] getConditions() {
+		HealthCondition[] healthConditions = HealthCondition.values();
+		double[] values = new double[healthConditions.length];
+		int count = 0;
+		int size = size();
+		for (HealthCondition healthCondition : healthConditions) {
+			values[count] = ((double)countPerCondition(healthCondition)*100/size);
+			count++;
+		}
+		return values;
 	}
 }
